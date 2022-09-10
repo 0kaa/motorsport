@@ -1,4 +1,4 @@
-# VisionFlo Frontend
+# MS Motor
 
 ### Setup and local development
 
@@ -20,19 +20,3 @@ $ yarn sb
 ```bash
 Will be updated soon.
 ```
-
-## Docker
-
-```bash
-# build Docker image
-docker build --tag vfappfrontend .
-
-# run Docker image
-docker run -it -p 3000:3000 vfappfrontend
-
-# Push Docker Image
-docker tag vfappfrontend visionflorepo/vfappfrontend
-docker push visionflorepo/vfappfrontend
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org), [TailwindCSS docs](https://tailwindcss.com/) and [Storybook](https://storybook.js.org/).
