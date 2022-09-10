@@ -23,19 +23,10 @@ module.exports = {
         },
       },
       spacing: {
-        4.5: '1.125rem',
-        26: '6.5rem',
-        34: '8.5rem',
-        38: '9.5rem',
-        66: '17rem',
-        88: '22rem',
-        afcard: '30.125rem',
-        180: '45rem',
-        120: '30rem',
-        54: '13.5rem',
+
       },
       fontFamily: {
-        inter: ['Inter', ...defaultTheme.fontFamily['sans']],
+        bai: ['Bai Jamjuree', ...defaultTheme.fontFamily['sans']],
       },
       zIndex: {
         70: '70',

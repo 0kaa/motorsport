@@ -6,7 +6,13 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;700&display=swap',
+      },
+    ],
   },
 
   css: ['~assets/css/transitions.css'],
@@ -18,7 +24,6 @@ export default {
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/vee-validate.js' },
     { src: '~/plugins/vue-tippy.js', mode: 'client' },
-    { src: '~plugins/vf.client.js' },
   ],
 
   components: true,
@@ -47,7 +52,7 @@ export default {
 
   proxy: {
     '/api': {
-      target: process.env.API_URL,
+      target: 'https://liner.test/',
       pathRewrite: {
         '^/api': '',
       },

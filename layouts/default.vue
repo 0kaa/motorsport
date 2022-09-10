@@ -3,15 +3,11 @@
     <client-only>
       <div
         lang="en"
-        class="flex flex-col justify-between min-h-screen gap-5 bg-white cursor-default font-inter"
+        class="flex flex-col justify-between min-h-screen gap-5 bg-white cursor-default font-bai"
       >
         <div>
-    
-          <Nuxt
-      
-          />
+          <Nuxt />
         </div>
-        
       </div>
     </client-only>
   </transition>

@@ -3,7 +3,7 @@
     <client-only>
       <div
         lang="en"
-        class="flex h-screen cursor-default flex-col bg-gray-50 pt-24 font-inter"
+        class="flex flex-col h-screen pt-24 cursor-default bg-gray-50 font-bai"
       >
         <Nuxt />
       </div>
