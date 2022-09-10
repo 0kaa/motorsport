@@ -1,0 +1,43 @@
+.tippy-tooltip.dark-theme {
+  color: #fff;
+  box-shadow: 0 0 20px 4px rgba(154, 161, 177, 0.15),
+    0 4px 80px -8px rgba(36, 40, 47, 0.25),
+    0 4px 4px -2px rgba(91, 94, 105, 0.15);
+  background-color: #0f172a;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.tippy-popper[x-placement^='top'] .dark-theme .tippy-arrow {
+  bottom: -15px;
+  border-right: 7px solid transparent !important;
+  border-top-color: #0f172a;
+}
+.tippy-popper[x-placement^='bottom'] .dark-theme .tippy-arrow {
+  top: -15px;
+  border-right: 7px solid transparent !important;
+  border-bottom-color: #0f172a;
+}
+.tippy-popper[x-placement^='right'] .dark-theme .tippy-arrow {
+  border-right-color: #0f172a !important;
+}
+.tippy-popper[x-placement^='left'] .dark-theme .tippy-arrow {
+  border-left-color: #0f172a !important;
+  border-right-color: transparent !important;
+  right: -15px;
+}
+
+.tippy-tooltip.dark-theme .tippy-backdrop {
+  background-color: #0f172a !important;
+}
+.tippy-tooltip.dark-theme .tippy-roundarrow {
+  fill: #0f172a !important;
+}
+.tippy-tooltip.dark-theme[data-animatefill] {
+  background-color: initial;
+}
+
+h2 {
+  color: #b2f5ea;
+  @apply font-semibold;
+}

@@ -1,0 +1,9 @@
+.layouts-enter-active,
+.layouts-leave-active {
+  transition: all 0.5s ease-out;
+}
+.layouts-enter,
+.layouts-leave-active {
+  opacity: 0;
+  transform-origin: 50% 50%;
+}

@@ -1,0 +1,51 @@
+.tippy-tooltip.inout-theme {
+  color: #fff;
+  background-color: #334e68;
+}
+
+.tippy-tooltip.inout-theme[x-placement^='top'] .tippy-arrow {
+  border-top: 8px solid #334e68;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+
+.tippy-tooltip.inout-theme[x-placement^='bottom'] .tippy-arrow {
+  border-bottom: 8px solid #334e68;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+
+.tippy-tooltip.inout-theme[x-placement^='left'] .tippy-arrow {
+  border-left: 8px solid #334e68;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.tippy-tooltip.inout-theme[x-placement^='right'] .tippy-arrow {
+  border-right: 8px solid #334e68 !important;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.tippy-arrow {
+  border-right: 8px solid #334e68 !important;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.tippy-tooltip.inout-theme .tippy-backdrop {
+  background-color: #334e68;
+}
+
+.tippy-tooltip.inout-theme[data-animatefill] {
+  background-color: initial;
+}
+
+h2 {
+  color: #b2f5ea;
+  @apply font-semibold;
+}
+
+.tippy-tooltip.inout-theme {
+  width: 210px !important;
+}
