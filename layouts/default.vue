@@ -6,6 +6,7 @@
         class="flex flex-col justify-between min-h-screen gap-5 bg-white cursor-default font-bai"
       >
         <div>
+          <Navbar />
           <Nuxt />
         </div>
       </div>

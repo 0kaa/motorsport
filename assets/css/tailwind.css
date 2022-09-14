@@ -12,3 +12,7 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+.category-link {
+  @apply inline-block border-b-[3px] border-primary text-xl font-bold uppercase;
+}

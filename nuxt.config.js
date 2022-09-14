@@ -22,6 +22,7 @@ export default {
   plugins: [
     { src: '~/plugins/api.js' },
     { src: '~/plugins/axios.js' },
+    { src: '~/plugins/owl-carousel', ssr: false },
     { src: '~/plugins/vee-validate.js' },
     { src: '~/plugins/vue-tippy.js', mode: 'client' },
   ],

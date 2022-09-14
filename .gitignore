@@ -7,7 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 .yarn-integrity
 .npm
-
+yarn.lock
 # node-waf configuration
 .lock-wscript
 
@@ -54,3 +54,4 @@ storybook-static
 
 # personal Adham
 data.json
+.vercel
