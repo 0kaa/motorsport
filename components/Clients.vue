@@ -24,9 +24,6 @@
                 </template> -->
             </carousel>
         </div>
-        <button>
-
-        </button>
     </div>
 </template>
 

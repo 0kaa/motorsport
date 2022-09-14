@@ -16,3 +16,9 @@
 .category-link {
   @apply inline-block border-b-[3px] border-primary text-xl font-bold uppercase;
 }
+.underline-title {
+  @apply relative block border-b border-black;
+}
+.underline-title span {
+  @apply -mb-[5px] inline-block border-b-[10px] border-black text-2xl font-bold leading-10;
+}
