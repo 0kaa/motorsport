@@ -1,13 +1,11 @@
 <template>
   <transition name="layouts" mode="out-in">
     <client-only>
-      <div
-        lang="en"
-        class="flex flex-col justify-between min-h-screen gap-5 bg-white cursor-default font-bai"
-      >
+      <div lang="en" class="flex flex-col justify-between min-h-screen gap-5 bg-white cursor-default font-bai">
         <div>
           <Navbar />
           <Nuxt />
+          <Footer />
         </div>
       </div>
     </client-only>
@@ -25,6 +23,7 @@ export default {
 .page-leave-active {
   transition: all 0.3s ease-out;
 }
+
 .page-enter,
 .page-leave-active {
   opacity: 0;

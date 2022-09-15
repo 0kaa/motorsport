@@ -15,7 +15,7 @@
       </div>
     </div>
     <Clients class="mb-[55px]" />
-    <section class="px-7">
+    <section class="px-7 mb-[55px]">
       <InlineTitle title="TOVÁBBI HÍREINK" />
       <div class="grid grid-cols-2 gap-5 mt-8 mb-[64px]">
         <div>
@@ -45,6 +45,7 @@
 
       </div>
     </section>
+    <Schedule />
   </div>
 </template>
 
