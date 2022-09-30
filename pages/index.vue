@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5 mb-20">
-    <Hero class="mb-[74px] px-7" />
+    <Hero class="mb-[74px] px-7" home />
     <div class="flex gap-5 px-7 mb-[55px]">
       <div class="grid flex-1 grid-cols-3 gap-x-5 gap-y-14">
         <ArticleCard :article="{img: 'article.jpg',title:'Ricciardo: totálisan megérdemeltem a büntetést'}" highlight />
@@ -42,18 +42,60 @@
         <ArticleCard :article="{img: 'article-sm-5.png', title:'Ricciardo: totálisan megérdemeltem a büntetést'}" />
         <ArticleCard :article="{img: 'article-sm-6.png', title:'Ricciardo: totálisan megérdemeltem a büntetést'}"
           highlight />
-
       </div>
     </section>
     <Schedule />
+    <section class="text-white bg-black py-[50px] pr-6 pl-9 mt-[55px] flex">
+      <div class="relative z-10 w-[30%] mt-10">
+        <h2 class="text-[88px] text-white font-bold mb-5">LEVEZETŐ</h2>
+        <p class="text-4xl font-bold">„A Red Bull sem mindig hoz jó döntéseket“ </p>
+      </div>
+      <div class="border-[3px] border-white rounded-[4px] overflow-hidden">
+        <img src="/levezeto.jpg" alt="levezeto" class="" />
+      </div>
+    </section>
+    <section class="p-5 mx-3 mt-[55px] border border-black">
+      <div class="inline-flex items-end gap-4 mb-8 border-b border-black">
+        <h2 class="text-3xl italic font-bold text-black">LEGOLVASOTTABB CIKKEK</h2>
+        <h3 class="text-lg italic font-bold text-primary">AZ ELMÚLT 24 ÓRÁBÓL</h3>
+      </div>
+      <div class="grid grid-cols-2 gap-8">
+        <div class="flex gap-5" v-for="i in 6" :key="i">
+          <div>
+            <img src="/hero-image.jpg" alt="article" class="w-[140px] h-[92px] object-cover" />
+          </div>
+          <div class="flex flex-col justify-between flex-1 h-full">
+            <h3 class="text-[22px] italic font-bold text-black">
+              Kritika a Ferrarinak címezve: „Persze, hogy előrébb kellene lenniük”
+            </h3>
+            <div class="flex gap-3 text-xs italic font-medium text-black">
+              <div>
+                2022. július 28 - 11:33
+              </div>
+              <div>|</div>
+              <div>
+                Motorsport / Forma-1
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  data() {
-    return {}
+  async asyncData({ $api, params, redirect }) {
+    try {
+      const { data } = await $api.articles.getArticles()
+
+      return { data: data.posts }
+    } catch (error) {
+      console.log(error)
+      redirect('/404')
+    }
   },
 }
 </script>

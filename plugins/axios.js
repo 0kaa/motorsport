@@ -1,4 +1,8 @@
+import https from 'https';
+
 export default (context, redirect) => {
+
+
   context.$axios.setHeader('Content-Type', 'application/json')
 
   // Overrides `Authorization` header with new value
@@ -18,6 +22,12 @@ export default (context, redirect) => {
     context.app.router.push("/");
   }
  */
+  const agent = new https.Agent({
+    rejectUnauthorized: false
+  });
+  context.$axios.onRequest(config => {
+    config.httpsAgent = agent;
+  });
   context.$axios.onError((error) => {
     if (error.response === undefined) {
       // Display a flash notification
@@ -26,7 +36,7 @@ export default (context, redirect) => {
     if (error.response == '401' || error.response.status == '401') {
       // Display a flash notification
       // console.log('401 :>> ');
-      context.app.router.push('/')
+      // context.app.router.push('/')
     }
 
     // Handle other types of errors (e.g., redirect to login on 401 errors)
