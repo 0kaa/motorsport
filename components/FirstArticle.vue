@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mt-10 mb-11 px-7">
+  <div class="relative px-4 my-8 lg:mt-10 lg:mb-11 lg:px-7">
     <div
       :style="`background-image:url('${article.featured_image.url}')`"
       class="rounded-[4px] bg-cover bg-left bg-no-repeat"
@@ -10,11 +10,11 @@
         AJÁNLOTT
       </div>
       <div
-        class="flex items-center justify-between rounded-[4px] bg-gradient-to-r from-black px-10 py-20 opacity-90"
+        class="flex flex-col items-center justify-between gap-5 rounded-[4px] bg-gradient-to-r from-black py-20 px-6 opacity-90 md:flex-row md:px-10"
       >
         <h3
           v-text="article.title"
-          class="w-2/3 text-4xl font-bold text-white"
+          class="w-full text-xl font-bold text-center text-white md:w-2/3 md:text-4xl"
         />
         <nuxt-link
           :to="{
@@ -24,7 +24,7 @@
               article: article.slug,
             },
           }"
-          class="flex items-center gap-3 rounded-md bg-[#ECECEC] py-3.5 px-8 text-lg font-bold text-black"
+          class="flex items-center gap-3 rounded-md bg-[#ECECEC] py-2 px-4 text-sm font-bold text-black md:py-3.5 md:px-8 md:text-lg"
         >
           <span>ELOLVASOM</span>
           <i class="fa-solid fa-right-long"></i>

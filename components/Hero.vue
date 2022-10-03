@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="article && Object.keys(article).length"
-    class="grid grid-cols-2 xl:min-h-[500px]"
+    class="lg:grid lg:min-h-[500px] lg:grid-cols-2"
     :class="{
       'gap-2': home,
     }"
@@ -18,13 +18,17 @@
           class="object-cover w-full h-full"
         />
       </div>
-      <div class="absolute -bottom-3 -left-3 z-[-1] h-[90%] w-5 bg-black"></div>
-      <div class="absolute -bottom-3 -left-3 z-[-1] h-5 w-[90%] bg-black"></div>
+      <div
+        class="absolute -bottom-3 -left-3 z-[-1] hidden h-[90%] w-5 bg-black lg:block"
+      ></div>
+      <div
+        class="absolute -bottom-3 -left-3 z-[-1] hidden h-5 w-[90%] bg-black lg:block"
+      ></div>
     </div>
     <div
-      class="flex flex-col items-start justify-center flex-1 pl-10 bg-black pr-14"
+      class="z-20 flex flex-col items-start justify-center flex-1 px-5 py-5 bg-black md:py-0 md:pl-10 md:pr-14"
     >
-      <div class="flex items-center gap-5 mb-5">
+      <div class="flex items-center gap-2 mb-5 md:gap-5">
         <nuxt-link
           :to="{
             name: 'category',
@@ -40,12 +44,13 @@
           href="#"
           class="text-white category-link"
           v-text="article.teams[0].title"
+          :style="`border-color:${article.teams[0].color}`"
           v-if="article && article.teams.length"
         />
       </div>
 
       <h2
-        class="mb-10 text-[40px] font-bold leading-[1.1] tracking-[-2%] text-white underline"
+        class="mb-5 text-xl font-bold text-white underline lg:mb-10 lg:text-[40px] lg:leading-[1.1] lg:tracking-[-2%]"
       >
         <nuxt-link
           :to="{
@@ -60,7 +65,10 @@
         />
         <span v-else v-text="article.title"></span>
       </h2>
-      <p class="text-lg font-medium text-white" v-text="article.excerpt" />
+      <p
+        class="text-xs font-medium text-white lg:text-lg"
+        v-text="article.excerpt"
+      />
     </div>
   </div>
 </template>

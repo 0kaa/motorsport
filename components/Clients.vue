@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="px-10 py-10 overflow-hidden text-white bg-black">
+    <div
+      class="px-4 py-4 overflow-hidden text-white bg-black lg:px-10 lg:py-10"
+    >
       <slick ref="slick" :options="slickOptions">
         <a href="#"
           ><img
@@ -73,7 +75,22 @@ export default {
       slidesToShow: 5,
       infinite: false,
       arrows: false,
-      // Any other options that can be got from plugin documentation
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     },
   }),
 }

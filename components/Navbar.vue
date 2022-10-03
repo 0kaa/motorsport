@@ -3,10 +3,27 @@
     <div
       class="flex items-center justify-between w-full px-6 py-5 mb-1 bg-dark"
     >
-      <nuxt-link to="/">
+      <nuxt-link to="/" class="max-w-[180px] xl:max-w-full">
         <img src="/logo.png" alt="logo" />
       </nuxt-link>
-      <div class="flex items-center gap-8">
+      <button class="text-white lg:hidden" @click="nav = true">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div
+        class="fixed top-0 left-0 flex items-center gap-8 z-100 lg:static lg:h-auto lg:w-auto lg:flex-row lg:bg-transparent"
+        :class="{
+          'h-full w-full flex-col bg-dark py-10 opacity-95': nav,
+          'left-full': !nav,
+        }"
+        @click="nav = false"
+      >
+        <button
+          v-if="nav"
+          @click="nav = false"
+          class="absolute flex items-center justify-center w-10 h-10 text-black bg-white rounded-full top-3 right-3 lg:hidden"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
         <nuxt-link
           class="text-xl font-bold text-white uppercase"
           v-for="(category, i) in categories"
@@ -24,15 +41,25 @@
     </div>
     <div class="navbar-slick relative bg-dark px-3 pr-4 text-[#F0F0F0]">
       <slick ref="navbar" :options="slickOptions">
-        <div
-          class="!flex !w-auto cursor-pointer gap-2 border-l-[4px] px-2 py-2 text-xs font-semibold"
-          :style="`border-color:${driver.team.color}`"
-          v-for="(driver, i) in drivers.drivers.slice(0, 20)"
-          :key="i"
-        >
-          <span v-text="driver.position" />
-          <span v-text="driver.driver.title" />
-          <span v-text="driver.points" />
+        <div v-for="(driver, i) in drivers.drivers.slice(0, 20)" :key="'d' + i">
+          <div
+            class="!flex !w-auto cursor-pointer gap-2 border-l-[4px] px-2 py-2 text-xs font-semibold"
+            :style="`border-color:${driver.team.color}`"
+          >
+            <span v-text="driver.position" />
+            <span v-text="driver.driver.title" />
+            <span v-text="driver.points" />
+          </div>
+        </div>
+        <div v-for="(team, i) in drivers.teams.slice(0, 20)" :key="'t' + i">
+          <div
+            class="!flex !w-auto cursor-pointer gap-2 border-l-[4px] px-2 py-2 text-xs font-semibold"
+            :style="`border-color:${team.team.color}`"
+          >
+            <span v-text="team.position" />
+            <span v-text="team.team.title" />
+            <span v-text="team.points" />
+          </div>
         </div>
       </slick>
 
@@ -47,14 +74,31 @@
 export default {
   name: 'Navbar',
   data: () => ({
+    nav: false,
     slickOptions: {
       slidesToShow: 7,
-      infinite: false,
+      infinite: true,
       swipeToSlide: true,
       nextArrow: '.nav-next-btn',
       prevArrow: false,
       autoplay: true,
       autoplaySpeed: 2000,
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
       // Any other options that can be got from plugin documentation
     },
   }),

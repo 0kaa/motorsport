@@ -14,13 +14,13 @@
 }
 
 .category-link {
-  @apply inline-block border-b-[3px] border-primary text-xl font-bold uppercase;
+  @apply inline-block border-b-[3px] border-primary text-xs font-bold uppercase md:text-xl;
 }
 .underline-title {
   @apply relative block border-b border-black;
 }
 .underline-title span {
-  @apply -mb-[5px] inline-block border-b-[10px] border-black text-2xl font-bold leading-10;
+  @apply -mb-[5px] inline-block border-b-[10px] border-black text-lg font-bold leading-10 lg:text-2xl;
 }
 
 .excerpt {

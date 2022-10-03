@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div class="flex items-center justify-between px-7">
-      <div class="flex items-center gap-2 mb-4">
+    <div class="flex items-center justify-between px-4 mb-4 lg:px-7">
+      <div class="flex items-center gap-2">
         <img src="/calendar.png" alt="calendar" />
-        <h3 class="text-xl font-bold text-black">MENETREND</h3>
+        <h3 class="text-sm font-bold text-black lg:text-xl">MENETREND</h3>
       </div>
-      <div class="flex items-center gap-[18px]">
+      <div class="flex items-center gap-3 lg:gap-[18px]">
         <button
-          class="text-xl font-medium text-black uppercase"
+          class="text-xs font-medium text-black uppercase lg:text-xl"
           v-for="(serie, i) in series"
           :key="i"
           v-text="serie.title"
@@ -75,7 +75,22 @@ export default {
       slidesToShow: 5,
       infinite: false,
       arrows: false,
-      // Any other options that can be got from plugin documentation
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     },
   }),
   mounted() {

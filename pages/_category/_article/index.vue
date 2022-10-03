@@ -1,8 +1,8 @@
 <template>
   <div class="mt-5 mb-20">
-    <Hero class="mb-[74px] px-7" :article="data.article" />
-    <div class="flex gap-8 px-7">
-      <div class="sticky -top-[50px] h-full w-[15%] pt-[70px]">
+    <Hero class="mb-10 px-4 lg:mb-[74px] lg:px-7" :article="data.article" />
+    <div class="flex flex-col-reverse gap-8 px-4 lg:flex-row lg:px-7">
+      <div class="sticky h-full lg:-top-[50px] lg:w-[15%] lg:pt-[70px]">
         <div class="flex flex-col gap-6">
           <nuxt-link
             :to="`/${category.slug}/${article.slug}`"
@@ -12,7 +12,7 @@
             <img
               :src="article.featured_image.url"
               alt=""
-              class="max-h-[130px] w-full object-cover"
+              class="max-h-[195px] w-full object-cover lg:max-h-[130px]"
             />
             <h3
               class="mt-2 mb-4 text-sm font-semibold text-black"
@@ -49,24 +49,26 @@
         >
           <a
             href="#"
-            class="font-semibold text-black text-md"
+            class="text-xs font-semibold text-black lg:text-md"
             v-text="data.article.post_author.name"
           />
 
           <div
-            class="font-semibold text-black text-md"
+            class="text-xs font-semibold text-black lg:text-md"
             v-text="data.article.published_at"
           />
         </div>
-        <div class="flex justify-between gap-10 pr-7">
+        <div
+          class="flex flex-col justify-between gap-10 pr-4 lg:flex-row lg:pr-7"
+        >
           <div class="flex-1">
             <div
-              class="mb-8 text-2xl font-bold text-black"
+              class="mb-4 text-sm font-bold text-black lg:mb-8 lg:text-2xl"
               v-text="data.article.excerpt"
             />
             <div class="article-content mb-7" v-html="data.article.content" />
 
-            <ConnectionArticles />
+            <!-- <ConnectionArticles /> -->
             <Taxonomies
               :category="category"
               :driver="driver"
@@ -168,7 +170,7 @@ export default {
 
 <style>
 .article-content p {
-  @apply mb-7 text-lg font-normal;
+  @apply mb-3 text-xs font-normal lg:mb-7 lg:text-lg;
 }
 
 .article-content blockquote {

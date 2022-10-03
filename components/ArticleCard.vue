@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{
-      'flex gap-[18px]': inline,
+      'gap-[18px] lg:flex': inline,
     }"
   >
     <div class="relative" v-if="article">
@@ -30,7 +30,7 @@
           class="object-cover w-full h-full"
           :class="{
             'max-h-[195px]': size == 'sm' && !inline,
-            'max-h-[166px] w-[295px]': inline,
+            'max-h-[195px] lg:max-h-[166px] lg:w-[295px]': inline,
           }"
         />
       </nuxt-link>
@@ -67,9 +67,9 @@
         <h3
           class="mt-8 font-bold text-black"
           :class="{
-            'text-[22px] leading-[26px]': size == 'sm',
-            'pr-14 text-4xl': size == 'lg',
-            '!mt-0 !pr-0': inline,
+            'text-lg lg:text-[22px] lg:leading-[26px]': size == 'sm',
+            'text-xl lg:pr-14 lg:text-4xl': size == 'lg',
+            'lg:!mt-0 lg:!pr-0': inline,
           }"
         >
           {{ article.title }}
@@ -77,9 +77,9 @@
       </nuxt-link>
       <p
         v-if="excerpt && article.excerpt"
-        class="pr-12 mt-3 excerpt"
+        class="mt-3 excerpt lg:pr-12"
         :class="{
-          'text-md font-normal': size == 'lg',
+          'text-sm font-normal lg:text-md': size == 'lg',
         }"
       >
         {{ article.excerpt }}

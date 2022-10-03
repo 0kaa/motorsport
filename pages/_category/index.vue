@@ -1,16 +1,23 @@
 <template>
   <div class="mt-5 mb-20" v-if="data.category_articles">
-    <Hero class="mb-[74px] px-7" :article="data.category_articles.data[0]" />
-    <div class="mb-[55px] px-7" v-if="data.category_articles.data.length">
+    <Hero
+      class="mb-10 px-4 lg:mb-[74px] lg:px-7"
+      home
+      :article="data.category_articles.data[0]"
+    />
+    <div
+      class="mb-[55px] px-4 lg:px-7"
+      v-if="data.category_articles.data.length"
+    >
       <h3
-        class="pb-1 mb-10 text-2xl font-bold text-black uppercase border-b border-black"
+        class="pb-1 mb-10 text-lg font-bold text-black uppercase border-b border-black lg:text-2xl"
       >
         <span class="ml-5 border-b-[10px] border-black">
           TOVÁBBI {{ data.category.slug }}-HÍREK
         </span>
       </h3>
 
-      <div class="grid flex-1 grid-cols-4 gap-x-5 gap-y-14">
+      <div class="grid flex-1 gap-x-5 gap-y-5 lg:grid-cols-4 lg:gap-y-14">
         <ArticleCard
           v-for="(article, i) in data.category_articles.data.slice(1, 5)"
           :key="i"
@@ -19,13 +26,13 @@
       </div>
     </div>
     <div
-      class="mb-[55px] px-7"
+      class="mb-10 px-4 lg:mb-[55px] lg:px-7"
       v-if="data.standings && data.standings.drivers && data.standings.teams"
     >
-      <div class="grid flex-1 grid-cols-2 gap-x-5">
+      <div class="grid flex-1 gap-x-5 lg:grid-cols-2">
         <div>
           <h3
-            class="pb-1 mb-10 text-2xl font-bold text-black border-b-2 border-black"
+            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
           >
             VERSENYZŐK
           </h3>
@@ -33,10 +40,18 @@
             <table class="w-full text-xs text-left">
               <thead class="text-[10px] uppercase text-black">
                 <tr>
-                  <th scope="col" class="px-6 py-2 font-normal">Poz.</th>
-                  <th scope="col" class="px-6 py-2 font-normal">Versenyző</th>
-                  <th scope="col" class="px-6 py-2 font-normal">Csapat</th>
-                  <th scope="col" class="px-6 py-2 font-normal">Pont</th>
+                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
+                    Poz.
+                  </th>
+                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
+                    Versenyző
+                  </th>
+                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
+                    Csapat
+                  </th>
+                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
+                    Pont
+                  </th>
                 </tr>
               </thead>
 
@@ -53,16 +68,19 @@
                   }"
                 >
                   <th
-                    class="px-6 py-2 font-bold text-black whitespace-nowrap"
+                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
                     v-text="driver.position"
                   />
-                  <td class="px-6 py-2" scope="row">
+                  <td class="px-3 py-2 lg:px-6" scope="row">
                     <div class="font-bold" v-text="driver.driver.title" />
                   </td>
-                  <td class="px-6 py-2" scope="row">
+                  <td class="px-3 py-2 lg:px-6" scope="row">
                     <div class="font-bold" v-text="driver.team.title" />
                   </td>
-                  <td class="px-6 py-2 font-bold" v-text="driver.points" />
+                  <td
+                    class="px-3 py-2 font-bold lg:px-6"
+                    v-text="driver.points"
+                  />
                 </tr>
               </tbody>
             </table>
@@ -81,7 +99,7 @@
         </div>
         <div>
           <h3
-            class="pb-1 mb-10 text-2xl font-bold text-black border-b-2 border-black"
+            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
           >
             CSAPATOK
           </h3>
@@ -89,9 +107,15 @@
             <table class="w-full text-xs text-left">
               <thead class="text-[10px] uppercase text-black">
                 <tr>
-                  <th scope="col" class="px-6 py-2 font-normal">Poz.</th>
-                  <th scope="col" class="px-6 py-2 font-normal">Csapat</th>
-                  <th scope="col" class="px-6 py-2 font-normal">Pont</th>
+                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
+                    Poz.
+                  </th>
+                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
+                    Csapat
+                  </th>
+                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
+                    Pont
+                  </th>
                 </tr>
               </thead>
 
@@ -105,13 +129,16 @@
                   }"
                 >
                   <th
-                    class="px-6 py-2 font-bold text-black whitespace-nowrap"
+                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
                     v-text="team.position"
                   />
-                  <td class="px-6 py-2" scope="row">
+                  <td class="px-3 py-2 lg:px-6" scope="row">
                     <div class="font-bold" v-text="team.team.title" />
                   </td>
-                  <td class="px-6 py-2 font-bold" v-text="team.points" />
+                  <td
+                    class="px-3 py-2 font-bold lg:px-6"
+                    v-text="team.points"
+                  />
                 </tr>
               </tbody>
             </table>
@@ -119,13 +146,13 @@
         </div>
       </div>
     </div>
-    <div class="mb-[55px] px-7">
-      <div class="flex justify-between gap-24">
-        <div class="flex flex-col flex-1 gap-12 pr-10">
+    <div class="mb-[55px] px-4 lg:px-7">
+      <div class="flex flex-col justify-between gap-24 lg:flex-row">
+        <div class="flex flex-col flex-1 gap-12 lg:pr-10">
           <div
             v-for="(article, i) in data.category_articles.data.slice(5, 100)"
             :key="i"
-            class="flex gap-5"
+            class="flex flex-col gap-5 lg:flex-row"
           >
             <div class="relative">
               <!-- <div
@@ -148,7 +175,7 @@
                   v-if="article.featured_image"
                   :src="article.featured_image.url"
                   alt="article"
-                  class="h-[195px] w-[315px] rounded-[4px] object-cover"
+                  class="h-[195px] w-full rounded-[4px] object-cover lg:h-[195px] lg:w-[315px]"
                 />
               </nuxt-link>
               <div class="absolute flex items-center gap-2 -bottom-5">
@@ -181,11 +208,13 @@
                   },
                 }"
               >
-                <h3 class="mt-2.5 text-[26px] font-bold leading-8 text-black">
+                <h3
+                  class="mt-2.5 text-lg font-bold leading-8 text-black lg:text-[26px]"
+                >
                   {{ article.title }}
                 </h3>
               </nuxt-link>
-              <p v-if="article.excerpt" class="pr-12 mt-3 excerpt">
+              <p v-if="article.excerpt" class="excerpt lg:mt-3 lg:pr-12">
                 {{ article.excerpt }}
               </p>
             </div>
