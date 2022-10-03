@@ -5,6 +5,7 @@ import Errors from '~/api/errors'
 import Articles from '~/api/articles'
 import Standings from '~/api/standings'
 import Series from '~/api/series'
+import Races from '~/api/races'
 
 export default (context, inject) => {
   // Initialize API factories
@@ -14,6 +15,7 @@ export default (context, inject) => {
     articles: Articles(context.$axios),
     standings: Standings(context.$axios),
     series: Series(context.$axios),
+    races: Races(context.$axios),
   }
 
   // Inject $api

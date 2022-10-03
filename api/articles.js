@@ -5,4 +5,7 @@ export default (axios) => ({
     getArticles() {
         return axios.get(`/home`)
     },
+    getItemsByCategory(category) {
+        return axios.get(`/${category}`)
+    }
 })

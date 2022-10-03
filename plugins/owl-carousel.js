@@ -1,5 +1,6 @@
 
 import Vue from 'vue'
-import OwlCarousel from 'v-owl-carousel'
+import Slick from 'vue-slick';
+import 'slick-carousel/slick/slick.css';
 
-Vue.component('carousel', OwlCarousel)
+Vue.component('slick', Slick)

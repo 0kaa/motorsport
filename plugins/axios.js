@@ -1,8 +1,6 @@
 import https from 'https';
 
 export default (context, redirect) => {
-
-
   context.$axios.setHeader('Content-Type', 'application/json')
 
   // Overrides `Authorization` header with new value
@@ -14,20 +12,13 @@ export default (context, redirect) => {
   // Removes default Content-Type header from `post` scope
   context.$axios.setHeader('X-Accel-Buffering', 'no')
 
-  /*   console.log('store.$storage.getUniversal:>> ', context.store.$storage.getUniversal('auth._token.local'));
-
-  console.log('context :>> ', context.route.fullPath); */
-
-  /*   if(context.store.$storage.getUniversal('auth._token.local') && context.route.fullPath == '/login' ) {
-    context.app.router.push("/");
-  }
- */
   const agent = new https.Agent({
     rejectUnauthorized: false
   });
   context.$axios.onRequest(config => {
     config.httpsAgent = agent;
   });
+  context.$axios.defaults.baseURL = 'https://msfrontend.hirertek.hu/api'
   context.$axios.onError((error) => {
     if (error.response === undefined) {
       // Display a flash notification

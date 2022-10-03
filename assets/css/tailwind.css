@@ -22,3 +22,11 @@
 .underline-title span {
   @apply -mb-[5px] inline-block border-b-[10px] border-black text-2xl font-bold leading-10;
 }
+
+.excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+  @apply overflow-hidden text-ellipsis;
+}

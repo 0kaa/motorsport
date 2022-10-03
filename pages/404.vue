@@ -1,35 +1,33 @@
 <template>
-    <div>
-        <h1>
-            {{ pageNotFound }}
-        </h1>
+  <div>
+    <h1>
+      {{ pageNotFound }}
+    </h1>
 
-        <NuxtLink to="/">
-            Home page
-        </NuxtLink>
-    </div>
+    <NuxtLink to="/"> Home page </NuxtLink>
+  </div>
 </template>
-  
+
 <script>
 export default {
-    props: {
-        error: {
-            type: Object,
-            default: null
-        }
+  name: '404',
+  props: {
+    error: {
+      type: Object,
+      default: null,
     },
-    data() {
-        return {
-            pageNotFound: '404 Not Found',
-            otherError: 'An error occurred'
-        }
-    },
-
+  },
+  data() {
+    return {
+      pageNotFound: '404 Not Found',
+      otherError: 'An error occurred',
+    }
+  },
 }
 </script>
-  
+
 <style scoped>
 h1 {
-    font-size: 20px;
+  font-size: 20px;
 }
 </style>

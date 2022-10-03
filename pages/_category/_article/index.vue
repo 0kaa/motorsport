@@ -1,0 +1,181 @@
+<template>
+  <div class="mt-5 mb-20">
+    <Hero class="mb-[74px] px-7" :article="data.article" />
+    <div class="flex gap-8 px-7">
+      <div class="sticky -top-[50px] h-full w-[15%] pt-[70px]">
+        <div class="flex flex-col gap-6">
+          <nuxt-link
+            :to="`/${category.slug}/${article.slug}`"
+            v-for="(article, i) in data.connectionArticles"
+            :key="i"
+          >
+            <img
+              :src="article.featured_image.url"
+              alt=""
+              class="max-h-[130px] w-full object-cover"
+            />
+            <h3
+              class="mt-2 mb-4 text-sm font-semibold text-black"
+              v-text="article.title"
+            ></h3>
+            <div class="h-px bg-black"></div>
+          </nuxt-link>
+        </div>
+        <div class="flex items-center justify-between mt-8">
+          <a
+            href="#"
+            class="flex items-center justify-center w-10 h-10 text-xl border border-black"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a
+            href="#"
+            class="flex items-center justify-center w-10 h-10 text-xl border border-black"
+          >
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a
+            :href="`/${category.slug}/${data.article.slug}`"
+            class="flex items-center justify-center w-10 h-10 text-xl border border-black"
+            @click.prevent="copyLink(category.slug, data.article.slug)"
+          >
+            <i class="fa-regular fa-copy"></i>
+          </a>
+        </div>
+      </div>
+      <div class="flex-1">
+        <div
+          class="relative mb-7 flex items-center justify-between border-b-[10px] border-black after:absolute after:right-0 after:top-full after:h-[150px] after:w-2.5 after:bg-black"
+        >
+          <a
+            href="#"
+            class="font-semibold text-black text-md"
+            v-text="data.article.post_author.name"
+          />
+
+          <div
+            class="font-semibold text-black text-md"
+            v-text="data.article.published_at"
+          />
+        </div>
+        <div class="flex justify-between gap-10 pr-7">
+          <div class="flex-1">
+            <div
+              class="mb-8 text-2xl font-bold text-black"
+              v-text="data.article.excerpt"
+            />
+            <div class="article-content mb-7" v-html="data.article.content" />
+
+            <ConnectionArticles />
+            <Taxonomies
+              :category="category"
+              :driver="driver"
+              :team="team"
+              :tag="tag"
+            />
+          </div>
+          <div class="flex w-[300px] flex-col gap-[50px]">
+            <div class="max-w-[300px]">
+              <img
+                src="/ad-1.png"
+                alt="ad"
+                class="object-cover w-full h-full"
+              />
+            </div>
+            <Standings
+              :standings="standings"
+              :series="series"
+              @selected="getStandingsBySeries"
+            />
+            <div class="max-w-[300px]">
+              <img
+                src="/ad-1.png"
+                alt="ad"
+                class="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'article-single',
+  async asyncData({ $api, params, redirect }) {
+    try {
+      const { data } = await $api.articles.getArticle(
+        params.category,
+        params.article
+      )
+      const standings = await $api.standings.getStandings(1)
+      const series = await $api.series.getSeries()
+      return {
+        data: data.data,
+        standings: standings.data.data,
+        series: series.data.data,
+      }
+    } catch (error) {
+      console.log(error)
+      redirect('/404')
+    }
+  },
+  methods: {
+    async copyLink() {
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        alert('Copied')
+      } catch ($e) {
+        alert('Cannot copy')
+      }
+    },
+    async getStandingsBySeries(serie) {
+      // console.log(serie)
+      try {
+        await this.$api.standings.getStandings(serie).then((res) => {
+          this.standings = res.data.data
+        })
+      } catch (error) {}
+    },
+  },
+  head() {
+    return {
+      title: this.data.article.title,
+    }
+  },
+  computed: {
+    driver() {
+      return this.data.article.drivers.length
+        ? this.data.article.drivers[0]
+        : {}
+    },
+    team() {
+      return this.data.article.teams.length ? this.data.article.teams[0] : {}
+    },
+    tag() {
+      return this.data.article.tags.length ? this.data.article.tags[0] : {}
+    },
+    category() {
+      return this.data.article.post_categories.find(
+        (cat) => cat.slug == this.$route.params.category
+      )
+    },
+  },
+}
+</script>
+
+<style>
+.article-content p {
+  @apply mb-7 text-lg font-normal;
+}
+
+.article-content blockquote {
+  @apply font-normal italic underline decoration-[#FF8686] decoration-[2px];
+}
+
+.article-content a {
+  @apply text-lg font-semibold text-primary underline;
+}
+</style>

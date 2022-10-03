@@ -18,7 +18,7 @@ export default {
 
   css: ['~assets/css/transitions.css'],
 
-  // dev: process.env.enviroment,
+  dev: process.env.enviroment,
 
   plugins: [
     { src: '~/plugins/api.js' },
@@ -36,8 +36,14 @@ export default {
     '@nuxtjs/stylelint-module',
   ],
 
+  dateFns: {
+    /* module options */
+    defaultLocale: 'hu'
+  },
+
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/universal-storage',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
@@ -47,26 +53,19 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://msfrontend.hirertek.hu/api'
+    // proxy: true,
+    // debug: true
   },
+  // proxy: {
+  //   '/api': 'https://liner.test/api'
+  // },
+
 
   build: {
-    standalone: true,
-    loaders: {
-      vue: {
-        prettify: false,
-      },
-    },
-    babel: {
-      plugins: [
-        ['@babel/plugin-proposal-private-methods', { loose: true }],
-        ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
-      ],
-    },
   },
 
   loading: {
-    color: '#7C3AED',
+    color: '#bd191c',
     height: '4px',
   },
 }

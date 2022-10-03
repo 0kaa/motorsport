@@ -45,11 +45,6 @@ module.exports = {
       minHeight: {
         '1/2': '50%',
       },
-      cursor: {
-        default: 'url(/arrow.png), auto',
-        pointer: 'url(/hand.png), auto',
-        drag: 'url(/drag.png), auto',
-      },
     },
   },
   plugins: [
