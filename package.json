@@ -13,6 +13,7 @@
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/universal-storage": "^0.5.9",
+    "@nuxtjs/vercel-builder": "^0.22.1",
     "core-js": "^3.23.2",
     "debounce": "^1.2.1",
     "https": "^1.0.0",
