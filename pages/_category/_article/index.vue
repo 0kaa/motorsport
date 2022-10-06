@@ -66,7 +66,11 @@
               class="mb-4 text-sm font-bold text-black lg:mb-8 lg:text-2xl"
               v-text="data.article.excerpt"
             />
-            <div class="article-content mb-7" v-html="data.article.content" />
+            <RecommendedArticle
+              :article="recommendedArticle"
+              v-if="recommendedArticle.id !== data.article.id"
+            />
+            <div class="article-content mb-7" v-html="articleContent" />
 
             <!-- <ConnectionArticles /> -->
             <Taxonomies
@@ -112,12 +116,14 @@ export default {
         params.category,
         params.article
       )
+      const recommendedArticle = await $api.articles.getRecommendedArticle()
       const standings = await $api.standings.getStandings(1)
       const series = await $api.series.getSeries()
       return {
         data: data.data,
         standings: standings.data.data,
         series: series.data.data,
+        recommendedArticle: recommendedArticle.data,
       }
     } catch (error) {
       console.log(error)
@@ -163,6 +169,9 @@ export default {
       return this.data.article.post_categories.find(
         (cat) => cat.slug == this.$route.params.category
       )
+    },
+    articleContent() {
+      return this.data.article.content
     },
   },
 }

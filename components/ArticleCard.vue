@@ -4,14 +4,14 @@
       'gap-[18px] lg:flex': inline,
     }"
   >
-    <div class="relative" v-if="article">
+    <div class="relative z-10" v-if="article">
       <div
         v-if="highlight"
-        class="absolute -top-1.5 -left-1.5 h-[80%] w-2 bg-[#ED1C24]"
+        class="absolute -top-1.5 -left-1.5 z-[-1] h-[80%] w-2 rounded-tl-lg bg-[#ED1C24]"
       ></div>
       <div
         v-if="highlight"
-        class="absolute -top-1.5 -left-1.5 h-2 w-[80%] bg-[#ED1C24]"
+        class="absolute -top-1.5 -left-1.5 z-[-1] h-2 w-[80%] rounded-tl-lg bg-[#ED1C24]"
       ></div>
       <nuxt-link
         :to="{
@@ -25,7 +25,11 @@
       >
         <img
           v-if="article.featured_image"
-          :src="article.featured_image.url"
+          :src="
+            article.featured_image.url
+              ? article.featured_image.url
+              : '/placeholder.jpeg'
+          "
           alt="article"
           class="object-cover w-full h-full"
           :class="{
@@ -39,18 +43,25 @@
           :to="{
             name: 'category',
             params: {
-              category: article.post_categories[0].slug,
+              category: !category
+                ? article.post_categories[0].slug
+                : category.slug,
             },
           }"
           class="border-b-[3px] border-[#CF0000] bg-white px-1 py-0.5 text-[13px] font-bold text-black"
-          v-text="article.post_categories[0].title"
+          v-text="!category ? article.post_categories[0].title : category.title"
         />
-        <a
-          href="#"
+        <nuxt-link
+          :to="{
+            name: 'teams-team',
+            params: {
+              team: !team ? article.teams[0].slug : team.slug,
+            },
+          }"
           v-if="article.teams.length"
-          class="border-b-[3px] bg-white px-1 py-0.5 text-[13px] font-bold text-black"
-          :style="`border-color:${article.teams[0].color}`"
-          v-text="article.teams[0].title"
+          class="border-b-[3px] bg-white px-1 py-0.5 text-[13px] font-bold uppercase text-black"
+          :style="`border-color:${!team ? article.teams[0].color : team.color}`"
+          v-text="!team ? article.teams[0].title : team.title"
         />
       </div>
     </div>
@@ -59,13 +70,15 @@
         :to="{
           name: 'category-article',
           params: {
-            category: article.post_categories[0].slug,
+            category: !category
+              ? article.post_categories[0].slug
+              : category.slug,
             article: article.slug,
           },
         }"
       >
         <h3
-          class="mt-8 font-bold text-black"
+          class="mt-8 font-bold text-black excerpt"
           :class="{
             'text-lg lg:text-[22px] lg:leading-[26px]': size == 'sm',
             'text-xl lg:pr-14 lg:text-4xl': size == 'lg',
@@ -108,9 +121,25 @@ export default {
       type: Boolean,
       default: false,
     },
-    highlight: {
-      type: Boolean,
-      default: false,
+  },
+  computed: {
+    highlight() {
+      return this.article.post_settings.find(
+        (setting) => setting.key == 'highlight_green'
+      ).value == '0'
+        ? false
+        : true
+    },
+
+    category() {
+      return this.article.post_categories.find(
+        (cat) => cat.slug == this.$route.params.category
+      )
+    },
+    team() {
+      return this.article.teams.find(
+        (team) => team.slug == this.$route.params.team
+      )
     },
   },
 }

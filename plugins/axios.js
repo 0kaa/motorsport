@@ -18,7 +18,8 @@ export default (context, redirect) => {
   context.$axios.onRequest(config => {
     config.httpsAgent = agent;
   });
-  context.$axios.defaults.baseURL = 'https://liner.test/api'
+  context.$axios.defaults.baseURL = 'https://msfrontend.hirertek.hu/api'
+  // context.$axios.defaults.baseURL = 'https://liner.test/api'
   context.$axios.onError((error) => {
     if (error.response === undefined) {
       // Display a flash notification

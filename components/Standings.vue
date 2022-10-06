@@ -39,8 +39,8 @@
         CSAPATOK
       </button>
     </div>
-    <div class="relative">
-      <table class="w-full border border-[#DFDFDF] text-left text-xs">
+    <div class="relative border border-[#DFDFDF]">
+      <table class="w-full text-xs text-left">
         <thead
           class="border-b border-[#DFDFDF] text-[10px] uppercase text-black"
         >
@@ -62,7 +62,7 @@
           >
             <th
               class="px-1 py-2 font-bold text-center text-black whitespace-nowrap"
-              v-text="driver.position"
+              v-text="driver.position + '.'"
             />
             <td class="py-2 pl-0 pr-6" scope="row">
               <div
@@ -95,7 +95,7 @@
           >
             <th
               class="px-1 py-2 font-bold text-center text-black whitespace-nowrap"
-              v-text="team.position"
+              v-text="team.position + '.'"
             />
             <td class="py-3 pl-0 pr-6" scope="row">
               <div
@@ -125,6 +125,17 @@
           </tr>
         </tbody>
       </table>
+      <div class="flex justify-center py-3">
+        <button>
+          <img
+            src="/more.png"
+            class="max-w-[40px]"
+            :class="{ '-scale-y-100': limit !== 5 }"
+            alt="more"
+            @click="changeLimit"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -135,11 +146,19 @@ export default {
   data: () => ({
     selected: '',
     tab: 'driver',
+    limit: 5,
   }),
   mounted() {
     this.selected = this.series[0].id
   },
   methods: {
+    changeLimit() {
+      if (this.limit == 5) {
+        this.limit = 100
+      } else {
+        this.limit = 5
+      }
+    },
     select(serie) {
       this.selected = serie.id
       this.$emit('selected', this.selected)
@@ -158,12 +177,12 @@ export default {
   computed: {
     drivers() {
       return this.standings && this.standings.drivers
-        ? this.standings.drivers.slice(0, 5)
+        ? this.standings.drivers.slice(0, this.limit)
         : []
     },
     teams() {
       return this.standings && this.standings.teams
-        ? this.standings.teams.slice(0, 5)
+        ? this.standings.teams.slice(0, this.limit)
         : []
     },
   },

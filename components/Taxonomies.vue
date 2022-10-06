@@ -13,20 +13,36 @@
         class="text-xs text-black lg:text-md"
         v-text="category.title"
       />
-      <a
-        href="#"
+      <nuxt-link
+        :to="{
+          name: 'teams-team',
+          params: {
+            team: team.slug,
+          },
+        }"
         class="pl-2 text-xs text-black border-l border-black lg:pl-4 lg:text-md"
         v-text="team.title"
         v-if="team.title"
       />
-      <a
-        href="#"
+
+      <nuxt-link
+        :to="{
+          name: 'drivers-driver',
+          params: {
+            driver: driver.slug,
+          },
+        }"
         class="pl-2 text-xs text-black border-l border-black lg:pl-4 lg:text-md"
         v-if="driver.title"
         v-text="driver.title"
       />
-      <a
-        href="#"
+      <nuxt-link
+        :to="{
+          name: 'tags-tag',
+          params: {
+            tag: tag.slug,
+          },
+        }"
         class="pl-2 text-xs text-black border-l border-black lg:pl-4 lg:text-md"
         v-if="tag.title"
         v-text="tag.title"

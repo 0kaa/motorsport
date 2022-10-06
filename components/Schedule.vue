@@ -39,8 +39,10 @@
             -
             {{ $dateFns.format(new Date(lowDate(race.infos)), 'MM.dd') }}
           </div>
-          <button class="absolute z-10 -bottom-3">
-            <img src="flip.png" alt="flip" />
+          <button
+            class="absolute left-0 right-0 -bottom-3 z-10 mx-auto flex h-6 w-6 items-center justify-center rounded-[4px] border-2 border-white bg-black"
+          >
+            <i class="fa-solid fa-plus"></i>
           </button>
         </nuxt-link>
       </slick>

@@ -1,25 +1,25 @@
 <template>
-  <div class="mt-5 mb-20" v-if="data.category_articles">
+  <div class="mt-5 mb-20" v-if="data.driver_articles">
     <Hero
       class="mb-10 px-4 lg:mb-[74px] lg:px-7"
       home
-      :article="data.category_articles.data[0]"
+      :article="data.driver_articles.data[0]"
     />
     <div
       class="mb-[55px] px-4 lg:px-7"
-      v-if="data.category_articles.data.length > 1"
+      v-if="data.driver_articles.data.length > 1"
     >
       <h3
         class="pb-1 mb-10 text-lg font-bold text-black uppercase border-b border-black lg:text-2xl"
       >
         <span class="ml-5 border-b-[10px] border-black">
-          TOVÁBBI {{ data.category.slug }}-HÍREK
+          TOVÁBBI {{ data.driver.slug }}-HÍREK
         </span>
       </h3>
 
       <div class="grid flex-1 gap-x-5 gap-y-5 lg:grid-cols-4 lg:gap-y-14">
         <ArticleCard
-          v-for="(article, i) in data.category_articles.data.slice(1, 5)"
+          v-for="(article, i) in data.driver_articles.data.slice(1, 5)"
           :key="i"
           :article="article"
         />
@@ -148,12 +148,12 @@
     </div>
     <div
       class="mb-[55px] px-4 lg:px-7"
-      v-if="data.category_articles.data.length > 1"
+      v-if="data.driver_articles.data.length > 1"
     >
       <div class="flex flex-col justify-between gap-24 lg:flex-row">
         <div class="flex flex-col flex-1 gap-12 lg:pr-10">
           <div
-            v-for="(article, i) in data.category_articles.data.slice(5, 100)"
+            v-for="(article, i) in data.driver_articles.data.slice(5, 100)"
             :key="i"
             class="flex flex-col gap-5 lg:flex-row"
           >
@@ -282,18 +282,15 @@
 
 <script>
 export default {
-  name: 'category',
+  name: 'driver',
   data: () => ({
     limit: 10,
     buttonDisabled: false,
   }),
   async asyncData({ $api, params, redirect }) {
     try {
-      const { data } = await $api.articles.getItemsByCategory(
-        params.category,
-        1
-      )
-      return { data: data, meta: data.category_articles.meta }
+      const { data } = await $api.articles.getItemsByDriver(params.driver, 1)
+      return { data: data, meta: data.driver_articles.meta }
     } catch (error) {
       console.log(error)
       redirect('/404')
@@ -306,12 +303,12 @@ export default {
   },
   head() {
     return {
-      title: this.data.category.title,
+      title: this.data.driver.title,
       meta: [
         {
           name: 'description',
           hid: 'description',
-          content: this.data.category.description,
+          content: this.data.driver.description,
         },
       ],
     }
@@ -320,10 +317,10 @@ export default {
     async paginate(index) {
       this.buttonDisabled = true
       await this.$api.articles
-        .getItemsByCategory(this.data.category.slug, index)
+        .getItemsByDriver(this.data.driver.slug, index)
         .then((res) => {
           this.data = res.data
-          this.meta = res.data.category_articles.meta
+          this.meta = res.data.driver_articles.meta
           window.scrollTo({
             top: 0,
             behavior: 'smooth',
