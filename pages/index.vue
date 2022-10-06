@@ -181,7 +181,7 @@ export default {
         races: data.races,
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       redirect('/404')
     }
   },
