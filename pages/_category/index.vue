@@ -233,42 +233,13 @@
               </p>
             </div>
           </div>
-          <div class="flex justify-center" v-if="meta.last_page > 1">
-            <div
-              class="flex items-center justify-center rounded-[4px] border border-black"
-            >
-              <button
-                class="relative h-full py-3 px-4 text-xl font-light text-black transition-all ease-in-out after:absolute after:top-0 after:right-0 after:h-full after:w-px after:skew-x-[-20deg] after:bg-black hover:text-primary disabled:text-gray-300"
-                :disabled="meta.current_page == 1 || buttonDisabled"
-                @click="paginate(meta.current_page - 1)"
-              >
-                <i class="fa-solid fa-chevron-left"></i>
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-
-              <button
-                v-for="i in pages"
-                :key="i"
-                v-text="i"
-                class="relative py-3 pl-4 pr-6 text-[26px] font-bold text-black after:absolute after:top-0 after:right-0 after:h-full after:w-px after:skew-x-[-20deg] after:bg-black hover:text-primary"
-                :class="{
-                  'text-primary': i == meta.current_page,
-                }"
-                @click="paginate(i)"
-                :disabled="i == meta.current_page || buttonDisabled"
-              />
-              <button
-                class="relative h-full px-4 py-3 text-xl font-light text-black transition-all ease-in-out hover:text-primary disabled:text-gray-300"
-                :disabled="
-                  meta.current_page == meta.last_page || buttonDisabled
-                "
-                @click="paginate(meta.current_page + 1)"
-              >
-                <i class="fa-solid fa-chevron-right"></i>
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-            </div>
-          </div>
+          <Pagination
+            v-if="meta.last_page > 1"
+            :currentPage="meta.current_page"
+            :totalPages="pages"
+            :buttonDisabled="buttonDisabled"
+            @select="(i) => paginate(i)"
+          />
         </div>
         <div class="flex w-[300px] flex-col gap-[50px]">
           <img src="/ad-1.png" alt="ad" class="object-cover w-full h-full" />
@@ -287,12 +258,20 @@ export default {
     limit: 10,
     buttonDisabled: false,
   }),
-  async asyncData({ $api, params, redirect }) {
+  async asyncData({ $api, query, params, redirect }) {
     try {
+      const page = query.page ? query.page : 1
+      console.log(query)
       const { data } = await $api.articles.getItemsByCategory(
         params.category,
-        1
+        page
       )
+      if (
+        data.category_articles.meta.to == null ||
+        data.category_articles.meta.from == null
+      ) {
+        redirect('/404')
+      }
       return { data: data, meta: data.category_articles.meta }
     } catch (error) {
       console.log(error)
@@ -324,6 +303,12 @@ export default {
         .then((res) => {
           this.data = res.data
           this.meta = res.data.category_articles.meta
+          this.$route.query.page = this.meta.current_page
+          history.pushState(
+            {},
+            null,
+            `${this.$route.path}?page=${this.$route.query.page}`
+          )
           window.scrollTo({
             top: 0,
             behavior: 'smooth',

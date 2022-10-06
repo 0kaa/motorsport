@@ -70,7 +70,11 @@
         class="flex-1 overflow-hidden rounded-[4px] border-[3px] border-white"
       >
         <img
-          :src="levezeto.featured_image.url"
+          :src="
+            levezeto.featured_image.url
+              ? levezeto.featured_image.url
+              : '/placeholder.jpeg'
+          "
           alt="levezeto"
           class="max-h-[500px] w-full object-cover"
         />
@@ -103,7 +107,11 @@
             }"
           >
             <img
-              :src="article.featured_image.url"
+              :src="
+                article.featured_image.url
+                  ? article.featured_image.url
+                  : '/placeholder.jpeg'
+              "
               alt="article"
               class="max-h-[195px] w-full object-cover lg:h-[92px] lg:w-[140px]"
             />
