@@ -200,7 +200,7 @@
                 />
                 <nuxt-link
                   :to="{
-                    name: 'teams-team',
+                    name: 'csapatok-team',
                     params: {
                       team: article.teams[0].slug,
                     },
@@ -260,7 +260,7 @@ export default {
   }),
   async asyncData({ $api, query, params, redirect }) {
     try {
-      const page = query.page ? query.page : 1
+      const page = query.oldal ? query.oldal : 1
       console.log(query)
       const { data } = await $api.articles.getItemsByCategory(
         params.category,
@@ -303,11 +303,11 @@ export default {
         .then((res) => {
           this.data = res.data
           this.meta = res.data.category_articles.meta
-          this.$route.query.page = this.meta.current_page
+          this.$route.query.oldal = this.meta.current_page
           history.pushState(
             {},
             null,
-            `${this.$route.path}?page=${this.$route.query.page}`
+            `${this.$route.path}?oldal=${this.$route.query.oldal}`
           )
           window.scrollTo({
             top: 0,

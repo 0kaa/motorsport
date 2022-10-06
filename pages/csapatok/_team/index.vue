@@ -25,127 +25,7 @@
         />
       </div>
     </div>
-    <div
-      class="mb-10 px-4 lg:mb-[55px] lg:px-7"
-      v-if="data.standings && data.standings.drivers && data.standings.teams"
-    >
-      <div class="grid flex-1 gap-x-5 lg:grid-cols-2">
-        <div>
-          <h3
-            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
-          >
-            VERSENYZŐK
-          </h3>
-          <div class="relative">
-            <table class="w-full text-xs text-left">
-              <thead class="text-[10px] uppercase text-black">
-                <tr>
-                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
-                    Poz.
-                  </th>
-                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
-                    Versenyző
-                  </th>
-                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
-                    Csapat
-                  </th>
-                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
-                    Pont
-                  </th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <tr
-                  class=""
-                  v-for="(driver, i) in data.standings.drivers.slice(
-                    limit == 10 ? 0 : 10,
-                    limit
-                  )"
-                  :key="i"
-                  :class="{
-                    'bg-[#F5F5F5]': i % 2 === 0,
-                  }"
-                >
-                  <th
-                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
-                    v-text="driver.position"
-                  />
-                  <td class="px-3 py-2 lg:px-6" scope="row">
-                    <div class="font-bold" v-text="driver.driver.title" />
-                  </td>
-                  <td class="px-3 py-2 lg:px-6" scope="row">
-                    <div class="font-bold" v-text="driver.team.title" />
-                  </td>
-                  <td
-                    class="px-3 py-2 font-bold lg:px-6"
-                    v-text="driver.points"
-                  />
-                </tr>
-              </tbody>
-            </table>
-            <div class="mt-4 text-center">
-              <button @click="changeLimit">
-                <img
-                  src="/more.png"
-                  alt="more"
-                  :class="{
-                    '-scale-y-100': limit !== 10,
-                  }"
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3
-            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
-          >
-            CSAPATOK
-          </h3>
-          <div class="relative">
-            <table class="w-full text-xs text-left">
-              <thead class="text-[10px] uppercase text-black">
-                <tr>
-                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
-                    Poz.
-                  </th>
-                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
-                    Csapat
-                  </th>
-                  <th scope="col" class="px-3 py-2 font-normal lg:px-6">
-                    Pont
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr
-                  class=""
-                  v-for="(team, i) in data.standings.teams.slice(0, 10)"
-                  :key="i"
-                  :class="{
-                    'bg-[#F5F5F5]': i % 2 === 0,
-                  }"
-                >
-                  <th
-                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
-                    v-text="team.position"
-                  />
-                  <td class="px-3 py-2 lg:px-6" scope="row">
-                    <div class="font-bold" v-text="team.team.title" />
-                  </td>
-                  <td
-                    class="px-3 py-2 font-bold lg:px-6"
-                    v-text="team.points"
-                  />
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
     <div
       class="mb-[55px] px-4 lg:px-7"
       v-if="data.team_articles.data.length > 1"
@@ -200,7 +80,7 @@
                 />
                 <nuxt-link
                   :to="{
-                    name: 'teams-team',
+                    name: 'csapatok-team',
                     params: {
                       team: data.team.slug,
                     },
@@ -260,7 +140,7 @@ export default {
   }),
   async asyncData({ $api, query, params, redirect }) {
     try {
-      const page = query.page ? query.page : 1
+      const page = query.oldal ? query.oldal : 1
       const { data } = await $api.articles.getItemsByTeam(params.team, page)
       return { data: data, meta: data.team_articles.meta }
     } catch (error) {
@@ -293,11 +173,11 @@ export default {
         .then((res) => {
           this.data = res.data
           this.meta = res.data.team_articles.meta
-          this.$route.query.page = this.meta.current_page
+          this.$route.query.oldal = this.meta.current_page
           history.pushState(
             {},
             null,
-            `${this.$route.path}?page=${this.$route.query.page}`
+            `${this.$route.path}?oldal=${this.$route.query.oldal}`
           )
           window.scrollTo({
             top: 0,

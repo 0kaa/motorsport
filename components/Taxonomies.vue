@@ -15,7 +15,7 @@
       />
       <nuxt-link
         :to="{
-          name: 'teams-team',
+          name: 'csapatok-team',
           params: {
             team: team.slug,
           },
@@ -27,7 +27,7 @@
 
       <nuxt-link
         :to="{
-          name: 'drivers-driver',
+          name: 'versenyzok-driver',
           params: {
             driver: driver.slug,
           },
@@ -38,7 +38,7 @@
       />
       <nuxt-link
         :to="{
-          name: 'tags-tag',
+          name: 'tema-tag',
           params: {
             tag: tag.slug,
           },

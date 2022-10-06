@@ -69,7 +69,7 @@
 
         <nuxt-link
           :to="{
-            name: 'teams-team',
+            name: 'csapatok-team',
             params: {
               team: !team ? article.teams[0].slug : team.slug,
             },
