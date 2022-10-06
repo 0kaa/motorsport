@@ -1,6 +1,7 @@
 export default {
   head: {
     title: 'MS-Motors',
+    titleTemplate: '%s - MS-Motors',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -19,11 +20,11 @@ export default {
   css: ['~assets/css/transitions.css'],
 
   dev: process.env.enviroment,
-
+  target: 'server',
   plugins: [
     { src: '~/plugins/api.js' },
     { src: '~/plugins/axios.js' },
-    { src: '~/plugins/owl-carousel', ssr: false },
+    { src: '~/plugins/owl-carousel', ssr: true },
     { src: '~/plugins/vee-validate.js' },
     { src: '~/plugins/vue-tippy.js', mode: 'client' },
   ],

@@ -39,14 +39,16 @@
         </button>
       </div>
     </div>
-    <div class="navbar-slick relative bg-dark px-3 pr-4 text-[#F0F0F0]">
+    <div
+      class="navbar-slick relative max-h-[35px] overflow-hidden bg-dark px-3 pr-4 text-[#F0F0F0]"
+    >
       <slick ref="navbar" :options="slickOptions">
         <div v-for="(driver, i) in drivers.drivers.slice(0, 20)" :key="'d' + i">
           <div
             class="!flex !w-auto cursor-pointer gap-2 border-l-[4px] px-2 py-2 text-xs font-semibold"
             :style="`border-color:${driver.team.color}`"
           >
-            <span v-text="driver.position" />
+            <span v-text="driver.position + '.'" />
             <span v-text="driver.driver.title" />
             <span v-text="driver.points" />
           </div>
@@ -56,7 +58,7 @@
             class="!flex !w-auto cursor-pointer gap-2 border-l-[4px] px-2 py-2 text-xs font-semibold"
             :style="`border-color:${team.team.color}`"
           >
-            <span v-text="team.position" />
+            <span v-text="team.position + '.'" />
             <span v-text="team.team.title" />
             <span v-text="team.points" />
           </div>

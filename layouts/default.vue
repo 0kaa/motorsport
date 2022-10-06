@@ -7,7 +7,7 @@
     >
       <div>
         <Navbar :categories="categories" :drivers="drivers" />
-        <Nuxt />
+        <Nuxt class="mx-auto max-w-[1320px]" />
         <Footer />
       </div>
     </div>
