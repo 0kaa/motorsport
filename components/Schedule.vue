@@ -27,8 +27,12 @@
           v-for="(race, i) in races"
           :key="i"
           :to="{
-            name: 'futam-year-race',
-            params: { year: race.year, race: race.slug },
+            name: 'futam-series-year-race',
+            params: {
+              series: race.series,
+              year: race.year,
+              race: race.slug,
+            },
           }"
           class="relative my-3 flex flex-col items-center justify-center gap-2 rounded-[4px] border border-white px-3 py-6 text-center"
         >
