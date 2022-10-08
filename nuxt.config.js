@@ -1,6 +1,10 @@
 import axios from 'axios'
 import https from 'https';
-
+const instance = axios.create({
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false
+  })
+});
 const range = (size, startAt = 1) => [...Array(size).keys()].map(i => i + startAt);
 
 const getSitemapsConfigurations = () => {
@@ -12,7 +16,7 @@ const getSitemapsConfigurations = () => {
           rejectUnauthorized: false
         })
       });
-      const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-data?skip=${index > 1 ? index * 300 : 0}`)
+      const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-data?page=${index}`)
       const routes = data.data.map((article, i) => {
         return {
           url: article.url,
@@ -96,8 +100,89 @@ export default {
       '/kereses',
       '/szerzoi-jogok',
     ],
-    path: '/sitemap.xml',
+    path: '/sitemap/index.xml',
     sitemaps: [
+
+      {
+        path: '/sitemap/tags.xml',
+        routes: async () => {
+          const instance = axios.create({
+            httpsAgent: new https.Agent({
+              rejectUnauthorized: false
+            })
+          });
+          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-tags`)
+          const routes = data.data.map((tag, i) => {
+            return {
+              url: tag.url,
+            }
+          })
+          return routes
+        },
+        cacheTime: 1000,
+        trailingSlash: true,
+        exclude: ['/**'], //here we exclude all static routes
+      },
+      {
+        path: '/sitemap/teams.xml',
+        routes: async () => {
+          const instance = axios.create({
+            httpsAgent: new https.Agent({
+              rejectUnauthorized: false
+            })
+          });
+          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-teams`)
+          const routes = data.data.map((team, i) => {
+            return {
+              url: team.url,
+            }
+          })
+          return routes
+        },
+        cacheTime: 1000,
+        trailingSlash: true,
+        exclude: ['/**'], //here we exclude all static routes
+      },
+      {
+        path: '/sitemap/drivers.xml',
+        routes: async () => {
+          const instance = axios.create({
+            httpsAgent: new https.Agent({
+              rejectUnauthorized: false
+            })
+          });
+          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-drivers`)
+          const routes = data.data.map((driver, i) => {
+            return {
+              url: driver.url,
+            }
+          })
+          return routes
+        },
+        cacheTime: 1000,
+        trailingSlash: true,
+        exclude: ['/**'], //here we exclude all static routes
+      },
+      {
+        path: '/sitemap/races.xml',
+        routes: async () => {
+          const instance = axios.create({
+            httpsAgent: new https.Agent({
+              rejectUnauthorized: false
+            })
+          });
+          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-races`)
+          const routes = data.data.map((race, i) => {
+            return {
+              url: race.url,
+            }
+          })
+          return routes
+        },
+        cacheTime: 1000,
+        trailingSlash: true,
+        exclude: ['/**'], //here we exclude all static routes
+      },
       ...getSitemapsConfigurations(),
     ]
 
@@ -108,7 +193,7 @@ export default {
     // debug: true
   },
   // proxy: {
-  //   '/api': 'https://liner.test/api'
+  //   '/api': 'https://msfrontend.hirertek.hu/api'
   // },
 
 
