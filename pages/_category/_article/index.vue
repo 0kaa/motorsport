@@ -77,7 +77,7 @@
               v-if="recommendedArticle.id !== data.article.id"
             />
             <div class="article-content mb-7" v-html="articleContent" />
-
+            <video-player :options="videoOptions" />
             <!-- <ConnectionArticles /> -->
             <Taxonomies
               :category="category"
@@ -138,6 +138,29 @@ export default {
   },
   data: () => ({
     currentUrl: '',
+    videoOptions: {
+      autoplay: true,
+      controls: true,
+      responsive: true,
+      fluid: true,
+      breakpoints: {
+        tiny: 300,
+        xsmall: 400,
+        small: 500,
+        medium: 600,
+        large: 700,
+        xlarge: 800,
+        huge: 900,
+      },
+      poster: '/mclaren_subteacher.jpeg',
+
+      sources: [
+        {
+          src: 'https://linerdisk.b-cdn.net/mcLaren_subteacher.mp4',
+          type: 'video/mp4',
+        },
+      ],
+    },
   }),
   mounted() {
     this.currentUrl = window.location.href
