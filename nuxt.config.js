@@ -16,8 +16,8 @@ const getSitemapsConfigurations = () => {
       const routes = data.data.map((article, i) => {
         return {
           url: article.url,
-          changefreq: 'daily',
-          priority: 1,
+          // changefreq: 'daily',
+          // priority: 1,
           lastmod: article.mod
         }
       })
