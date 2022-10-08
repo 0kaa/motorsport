@@ -81,9 +81,55 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
     '@nuxtjs/sitemap',
+    '@nuxtjs/feed',
     '@nuxtjs/universal-storage',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
+  feed: [
+    // A default feed configuration object
+    {
+      path: '/rss', // The route to your feed.
+      async create(feed) {
+        feed.options = {
+          title: 'Motorsport RSS: Legfrissebb',
+          link: 'https://motorsport.hu/rss',
+          description: 'Articles from https://motorsport.hu',
+          copyright: "2022 - Motorsport – Liner Media Group Kft.",
+        }
+
+        const instance = axios.create({
+          httpsAgent: new https.Agent({
+            rejectUnauthorized: false
+          })
+        });
+        const { data } = await (instance.post('https://msfrontend.hirertek.hu/api/get-rss-posts'))
+
+        data.data.forEach(post => {
+          feed.addItem({
+            title: post.title,
+            id: post.url,
+            link: `/${post.post_categories[0].slug}/${post.slug}`,
+            description: post.excerpt,
+            content: post.content,
+            published: new Date(post.published_at),
+            image: post.featured_image.url
+          })
+        })
+
+        // feed.addCategory('Nuxt.js')
+
+        // feed.addContributor({
+        //   name: 'Alexander Lichter',
+        //   email: 'example@lichter.io',
+        //   link: 'https://lichter.io/'
+        // })
+      },
+      cacheTime: 1000, // How long should the feed be cached
+      type: 'rss2', // Can be: rss2, atom1, json1
+      data: [] // Will be passed as 2nd argument to `create` function
+    }
+  ],
+
   tailwindcss: {
     exposeConfig: true,
     viewer: false,
