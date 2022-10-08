@@ -108,7 +108,7 @@ export default {
           feed.addItem({
             title: post.title,
             id: post.url,
-            link: `/${post.post_categories[0].slug}/${post.slug}`,
+            link: `https://ms-motors.vercel.app/${post.post_categories[0].slug}/${post.slug}`,
             description: post.excerpt,
             content: post.content,
             published: new Date(post.published_at),
