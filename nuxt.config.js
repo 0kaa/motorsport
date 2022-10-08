@@ -1,7 +1,33 @@
 import axios from 'axios'
 import https from 'https';
 
+const range = (size, startAt = 1) => [...Array(size).keys()].map(i => i + startAt);
 
+const getSitemapsConfigurations = () => {
+  return range(10).map(index => ({
+    path: `/sitemap-${index}.xml`,
+    routes: async () => {
+      const instance = axios.create({
+        httpsAgent: new https.Agent({
+          rejectUnauthorized: false
+        })
+      });
+      const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-data?skip=${index > 1 ? index * 300 : 0}`)
+      const routes = data.data.map((article, i) => {
+        return {
+          url: article.url,
+          changefreq: 'daily',
+          priority: 1,
+          lastmod: article.mod
+        }
+      })
+      return routes
+    },
+    cacheTime: 1000,
+    trailingSlash: true,
+    exclude: ['/**'], //here we exclude all static routes
+  }));
+}
 
 export default {
   head: {
@@ -72,63 +98,7 @@ export default {
     ],
     path: '/sitemap.xml',
     sitemaps: [
-      {
-        exclude: [
-          '/404',
-          '/adatkezelesi-tajekoztato',
-          '/contact',
-          '/cookie-szabalyzat',
-          '/impresszum',
-          '/kereses',
-          '/szerzoi-jogok',
-        ],
-        path: '/sitemap-1.xml',
-        routes: async () => {
-          const instance = axios.create({
-            httpsAgent: new https.Agent({
-              rejectUnauthorized: false
-            })
-          });
-          const { data } = await instance.post('https://msfrontend.hirertek.hu/api/get-sitemap-data?skip=0')
-          const routes = data.data.map(article => {
-            return {
-              url: article.url,
-              changefreq: 'daily',
-              priority: 1,
-              lastmod: article.mod
-            }
-          })
-          return routes
-        }
-      }, {
-        exclude: [
-          '/404',
-          '/adatkezelesi-tajekoztato',
-          '/contact',
-          '/cookie-szabalyzat',
-          '/impresszum',
-          '/kereses',
-          '/szerzoi-jogok',
-        ],
-        path: '/sitemap-2.xml',
-        routes: async () => {
-          const instance = axios.create({
-            httpsAgent: new https.Agent({
-              rejectUnauthorized: false
-            })
-          });
-          const { data } = await instance.post('https://msfrontend.hirertek.hu/api/get-sitemap-data?skip=200')
-          const routes = data.data.map(article => {
-            return {
-              url: article.url,
-              changefreq: 'daily',
-              priority: 1,
-              lastmod: article.mod
-            }
-          })
-          return routes
-        }
-      }
+      ...getSitemapsConfigurations(),
     ]
 
   },
