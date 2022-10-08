@@ -16,7 +16,7 @@
                   : '/placeholder.jpeg'
               "
               alt=""
-              class="max-h-[195px] w-full rounded-md object-cover lg:max-h-[130px]"
+              class="max-h-[195px] min-h-[195px] w-full rounded-md object-cover lg:max-h-[130px]"
             />
             <h3
               class="mt-2 mb-4 text-sm font-semibold text-black"
@@ -27,13 +27,15 @@
         </div>
         <div class="flex items-center justify-between mt-8">
           <a
-            href="#"
+            target="_blank"
+            :href="`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`"
             class="flex items-center justify-center w-10 h-10 text-xl border border-black"
           >
             <i class="fa-brands fa-facebook-f"></i>
           </a>
           <a
-            href="#"
+            :href="`https://twitter.com/intent/tweet?text=${data.article.title} &url=${currentUrl}`"
+            target="_blank"
             class="flex items-center justify-center w-10 h-10 text-xl border border-black"
           >
             <i class="fa-brands fa-twitter"></i>
@@ -133,6 +135,12 @@ export default {
       console.log(error)
       redirect('/404')
     }
+  },
+  data: () => ({
+    currentUrl: '',
+  }),
+  mounted() {
+    this.currentUrl = window.location.href
   },
   methods: {
     async copyLink() {

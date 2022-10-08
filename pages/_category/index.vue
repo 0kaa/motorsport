@@ -37,7 +37,7 @@
             VERSENYZŐK
           </h3>
           <div class="relative">
-            <table class="w-full text-xs text-left">
+            <table class="w-full text-left">
               <thead class="text-[10px] uppercase text-black">
                 <tr>
                   <th scope="col" class="px-3 py-2 font-normal lg:px-6">
@@ -104,7 +104,7 @@
             CSAPATOK
           </h3>
           <div class="relative">
-            <table class="w-full text-xs text-left">
+            <table class="w-full text-left">
               <thead class="text-[10px] uppercase text-black">
                 <tr>
                   <th scope="col" class="px-3 py-2 font-normal lg:px-6">
@@ -195,7 +195,7 @@
                       category: article.post_categories[0].slug,
                     },
                   }"
-                  class="border-b-[3px] border-[#CF0000] bg-white px-1 py-0.5 text-[13px] font-bold text-black"
+                  class="border-b-[3px] border-[#CF0000] bg-white px-1 py-0.5 text-[13px] font-bold uppercase text-black"
                   v-text="article.post_categories[0].title"
                 />
                 <nuxt-link
@@ -206,7 +206,7 @@
                     },
                   }"
                   v-if="article.teams.length"
-                  class="border-b-[3px] bg-white px-1 py-0.5 text-[13px] font-bold text-black"
+                  class="border-b-[3px] bg-white px-1 py-0.5 text-[13px] font-bold uppercase text-black"
                   :style="`border-color:${article.teams[0].color}`"
                   v-text="article.teams[0].title"
                 />

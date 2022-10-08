@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Search
+      v-if="searchModal"
+      @close="searchModal = false"
+      @searchSubmit="searchSubmit"
+    />
     <div
       class="flex items-center justify-between w-full px-6 py-5 mb-1 bg-dark"
     >
@@ -10,7 +15,7 @@
         <i class="fa-solid fa-bars"></i>
       </button>
       <div
-        class="fixed top-0 left-0 flex items-center gap-8 z-100 lg:static lg:h-auto lg:w-auto lg:flex-row lg:bg-transparent"
+        class="fixed top-0 left-0 flex items-center gap-8 z-90 lg:static lg:h-auto lg:w-auto lg:flex-row lg:bg-transparent"
         :class="{
           'h-full w-full flex-col bg-dark py-10 opacity-95': nav,
           'left-full': !nav,
@@ -34,7 +39,7 @@
         <button>
           <img src="/dark.png" alt="search" />
         </button>
-        <button>
+        <button @click="searchModal = true">
           <img src="/search.png" alt="search" />
         </button>
       </div>
@@ -103,7 +108,19 @@ export default {
       ],
       // Any other options that can be got from plugin documentation
     },
+    searchModal: false,
   }),
+  methods: {
+    searchSubmit(searchTerm) {
+      this.searchModal = false
+      this.$router.push({
+        name: 'kereses',
+        query: {
+          q: searchTerm,
+        },
+      })
+    },
+  },
 
   props: {
     categories: {

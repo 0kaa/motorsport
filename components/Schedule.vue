@@ -34,7 +34,10 @@
         >
           <img :src="race.flag" alt="hun" class="mx-auto !w-[50px]" />
           <h3 class="mt-3 font-bold text-white text-md" v-text="race.title" />
-          <div class="text-[13px] font-bold text-white">
+          <div
+            class="text-[13px] font-bold text-white"
+            v-if="race.infos.length"
+          >
             {{ $dateFns.format(new Date(highDate(race.infos)), 'yyyy.MM.dd') }}
             -
             {{ $dateFns.format(new Date(lowDate(race.infos)), 'MM.dd') }}

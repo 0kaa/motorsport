@@ -33,8 +33,8 @@
           alt="article"
           class="object-cover w-full h-full"
           :class="{
-            'max-h-[195px]': size == 'sm' && !inline,
-            'max-h-[195px] lg:max-h-[166px] lg:w-[295px]': inline,
+            'max-h-[195px] min-h-[195px]': size == 'sm' && !inline,
+            'max-h-[195px] min-h-[195px] lg:max-h-[166px] lg:w-[295px]': inline,
           }"
         />
       </nuxt-link>

@@ -30,6 +30,8 @@ export default {
       .getDrivers(1, this.$dateFns.format(new Date(), 'yyyy'))
       .then((res) => {
         this.drivers = res.data.data
+        this.$store.commit('setTeams', res.data.data.teams)
+        this.$store.commit('setDrivers', res.data.data.drivers)
       })
   },
 }

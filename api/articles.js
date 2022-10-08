@@ -5,6 +5,9 @@ export default (axios) => ({
     getArticles() {
         return axios.get(`/home`)
     },
+    getArticlesByTitle(title, page = 1) {
+        return axios.post(`/search?page=${page}&q=${title}`)
+    },
     getItemsByCategory(category, i) {
         return axios.get(`/${category}?page=${i}`)
     },

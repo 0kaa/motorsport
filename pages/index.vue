@@ -113,7 +113,7 @@
                   : '/placeholder.jpeg'
               "
               alt="article"
-              class="max-h-[195px] w-full object-cover lg:h-[92px] lg:w-[140px]"
+              class="h-[195px] w-full rounded-[4px] object-cover lg:h-[92px] lg:w-[140px]"
             />
           </nuxt-link>
           <div class="flex flex-col justify-between flex-1 h-full">

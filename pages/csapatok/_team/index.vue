@@ -75,7 +75,7 @@
                       category: article.post_categories[0].slug,
                     },
                   }"
-                  class="border-b-[3px] border-[#CF0000] bg-white px-1 py-0.5 text-[13px] font-bold text-black"
+                  class="border-b-[3px] border-[#CF0000] bg-white px-1 py-0.5 text-[13px] font-bold uppercase text-black"
                   v-text="article.post_categories[0].title"
                 />
                 <nuxt-link
@@ -86,7 +86,7 @@
                     },
                   }"
                   v-if="article.teams.length"
-                  class="border-b-[3px] bg-white px-1 py-0.5 text-[13px] font-bold text-black"
+                  class="border-b-[3px] bg-white px-1 py-0.5 text-[13px] font-bold uppercase text-black"
                   :style="`border-color:${data.team.color}`"
                   v-text="data.team.title"
                 />
