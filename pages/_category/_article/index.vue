@@ -16,7 +16,7 @@
                   : '/placeholder.jpeg'
               "
               alt=""
-              class="max-h-[195px] min-h-[195px] w-full rounded-md object-cover lg:max-h-[130px]"
+              class="max-h-[195px] min-h-[195px] w-full rounded-md object-cover lg:max-h-[130px] lg:min-h-[130px]"
             />
             <h3
               class="mt-2 mb-4 text-sm font-semibold text-black"
