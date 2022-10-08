@@ -1,3 +1,8 @@
+import axios from 'axios'
+import https from 'https';
+
+
+
 export default {
   head: {
     title: 'MS-Motors',
@@ -45,12 +50,43 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
+    '@nuxtjs/sitemap',
     '@nuxtjs/universal-storage',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
   tailwindcss: {
     exposeConfig: true,
     viewer: false,
+  },
+
+  sitemap: {
+    gzip: true,
+    exclude: [
+      '/404',
+      '/adatkezelesi-tajekoztato',
+      '/contact',
+      '/cookie-szabalyzat',
+      '/impresszum',
+      '/kereses',
+      '/szerzoi-jogok',
+    ],
+    routes: async () => {
+      const instance = axios.create({
+        httpsAgent: new https.Agent({
+          rejectUnauthorized: false
+        })
+      });
+      const { data } = await instance.post('https://msfrontend.hirertek.hu/api/get-sitemap-data')
+      const routes = data.data.map(article => {
+        return {
+          url: article.url,
+          changefreq: 'daily',
+          priority: 1,
+          lastmod: article.mod
+        }
+      })
+      return routes
+    }
   },
 
   axios: {
