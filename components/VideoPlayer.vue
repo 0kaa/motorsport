@@ -43,6 +43,7 @@ export default {
       this.player.log('onPlayerReady', this)
     })
   },
+
   beforeDestroy() {
     if (this.player) {
       this.player.dispose()
