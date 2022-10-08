@@ -70,23 +70,67 @@ export default {
       '/kereses',
       '/szerzoi-jogok',
     ],
-    routes: async () => {
-      const instance = axios.create({
-        httpsAgent: new https.Agent({
-          rejectUnauthorized: false
-        })
-      });
-      const { data } = await instance.post('https://msfrontend.hirertek.hu/api/get-sitemap-data')
-      const routes = data.data.map(article => {
-        return {
-          url: article.url,
-          changefreq: 'daily',
-          priority: 1,
-          lastmod: article.mod
+    path: '/sitemap.xml',
+    sitemaps: [
+      {
+        exclude: [
+          '/404',
+          '/adatkezelesi-tajekoztato',
+          '/contact',
+          '/cookie-szabalyzat',
+          '/impresszum',
+          '/kereses',
+          '/szerzoi-jogok',
+        ],
+        path: '/sitemap-1.xml',
+        routes: async () => {
+          const instance = axios.create({
+            httpsAgent: new https.Agent({
+              rejectUnauthorized: false
+            })
+          });
+          const { data } = await instance.post('https://msfrontend.hirertek.hu/api/get-sitemap-data?skip=0')
+          const routes = data.data.map(article => {
+            return {
+              url: article.url,
+              changefreq: 'daily',
+              priority: 1,
+              lastmod: article.mod
+            }
+          })
+          return routes
         }
-      })
-      return routes
-    }
+      }, {
+        exclude: [
+          '/404',
+          '/adatkezelesi-tajekoztato',
+          '/contact',
+          '/cookie-szabalyzat',
+          '/impresszum',
+          '/kereses',
+          '/szerzoi-jogok',
+        ],
+        path: '/sitemap-2.xml',
+        routes: async () => {
+          const instance = axios.create({
+            httpsAgent: new https.Agent({
+              rejectUnauthorized: false
+            })
+          });
+          const { data } = await instance.post('https://msfrontend.hirertek.hu/api/get-sitemap-data?skip=200')
+          const routes = data.data.map(article => {
+            return {
+              url: article.url,
+              changefreq: 'daily',
+              priority: 1,
+              lastmod: article.mod
+            }
+          })
+          return routes
+        }
+      }
+    ]
+
   },
 
   axios: {
