@@ -156,7 +156,7 @@ export default {
 
       sources: [
         {
-          src: 'https://linerdisk.b-cdn.net/mcLaren_subteacher.mp4',
+          src: '/video.mp4',
           type: 'video/mp4',
         },
       ],
@@ -218,7 +218,10 @@ export default {
 }
 
 .article-content blockquote {
-  @apply font-normal italic underline decoration-[#FF8686] decoration-[2px];
+  @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] lg:mb-7 lg:text-lg;
+}
+.article-content iframe {
+  @apply mx-auto mb-3 h-[700px] w-full rounded-[4px] !border border-solid !border-[#BEBEBE] p-5 lg:mb-7 lg:w-10/12;
 }
 
 .article-content a {
