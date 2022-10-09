@@ -156,7 +156,7 @@ export default {
 
       sources: [
         {
-          src: '/video.mp4',
+          src: 'https://linerdisk.b-cdn.net/mcLaren_subteacher.mp4',
           type: 'video/mp4',
         },
       ],
