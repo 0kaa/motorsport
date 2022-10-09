@@ -77,7 +77,7 @@
               v-if="recommendedArticle.id !== data.article.id"
             />
             <div class="article-content mb-7" v-html="articleContent" />
-            <!-- <video-player :options="videoOptions" /> -->
+            <video-player :options="videoOptions" />
             <!-- <ConnectionArticles /> -->
             <Taxonomies
               :category="category"
