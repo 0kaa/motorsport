@@ -60,31 +60,49 @@ export default {
   },
   methods: {
     videoJs() {
-      videojs(`video-js`, {
+      // videojs.registerPlugin('ads-setup', function (opts) {
+      //   var player = this
+      //   var adsCancelTimeout = 3000
+
+      //   var vastAd = player.vastClient({
+      //     //Media tag URL
+      //     adTag:
+      //       'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
+      //     playAdAlways: true,
+      //     //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
+      //     adCancelTimeout: adsCancelTimeout,
+      //     adsEnabled: true,
+      //   })
+      //   vastAd.enable()
+      // })
+      const player = videojs(`video-js`, {
         controls: true,
         autoplay: true,
         preload: 'auto',
         loop: false,
         muted: true,
         playbackRates: [0.7, 1.0, 1.5, 2.0],
+        poster: '/mclaren_subteacher.jpeg',
         width: '100%',
         height: '100%',
         fluid: true,
       })
-      videojs.registerPlugin('ads-setup', function (opts) {
-        var player = this
-        var adsCancelTimeout = 3000
-
-        var vastAd = player.vastClient({
-          //Media tag URL
-          adTag:
-            'https://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/6062/iab_vast_samples/skippable&ciu_szs=300x250,728x90&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1',
-          playAdAlways: true,
-          //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
-          adCancelTimeout: adsCancelTimeout,
-          adsEnabled: true,
-        })
+      var vastPlugin = player.vastClient({
+        adTagUrl:
+          'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
+        playAdAlways: true,
+        //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
+        adCancelTimeout: 3000,
+        adsEnabled: true,
       })
+      player.on('reset', function () {
+        if (!vastPlugin.isEnabled()) {
+          vastPlugin.enable()
+        } else {
+          vastAd.disable()
+        }
+      })
+      videojs.options.autoplay = true
     },
   },
   mounted() {
@@ -108,7 +126,7 @@ export default {
     document.body.appendChild(vast)
     setTimeout(() => {
       this.videoJs()
-    }, 1000)
+    }, 3000)
   },
   // mounted() {
   //   // videojs.registerPlugin('ads-setup', function (opts) {
