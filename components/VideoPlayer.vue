@@ -42,22 +42,22 @@ export default {
         fluid: true,
       })
 
-      var vastPlugin = this.player.vastClient({
-        adTagUrl:
-          'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
-        playAdAlways: true,
-        //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
-        adCancelTimeout: 3000,
-        adsEnabled: true,
-      })
-      this.player.on('reset', function () {
-        if (!vastPlugin.isEnabled()) {
-          vastPlugin.enable()
-        } else {
-          vastAd.disable()
-        }
-      })
       setTimeout(() => {
+        var vastPlugin = this.player.vastClient({
+          adTagUrl:
+            'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
+          playAdAlways: true,
+          //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
+          adCancelTimeout: 3000,
+          adsEnabled: true,
+        })
+        this.player.on('reset', function () {
+          if (!vastPlugin.isEnabled()) {
+            vastPlugin.enable()
+          } else {
+            vastAd.disable()
+          }
+        })
         this.player.play()
       }, 1000)
     },
@@ -110,7 +110,6 @@ export default {
     //   'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs_5.vast.vpaid.min.js'
     // document.body.appendChild(video)
     // document.body.appendChild(vast)
-    console.log('yes')
     setTimeout(() => {
       this.videoJs()
     }, 100)
