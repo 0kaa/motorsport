@@ -49,6 +49,29 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;700&display=swap',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://vjs.zencdn.net/7.18.1/video-js.css',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs.vast.vpaid.min.css',
+      },
+    ],
+    script: [
+      {
+        src: 'https://vjs.zencdn.net/7.18.1/video.min.js',
+        type: 'text/javascript',
+        charset: 'utf-8',
+        crossorigin: 'anonymous',
+        // defer: true,
+      },
+      {
+        src: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs_5.vast.vpaid.min.js',
+        crossorigin: 'anonymous',
+        async: true,
+        body: true,
+      },
     ],
   },
 
