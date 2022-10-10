@@ -57,6 +57,9 @@ export default {
           vastAd.disable()
         }
       })
+      setTimeout(() => {
+        this.player.play()
+      }, 1000)
     },
   },
   head() {
