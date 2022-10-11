@@ -55,7 +55,8 @@
           >
             <span v-text="driver.position + '.'" />
             <span v-text="driver.driver.title" />
-            <span v-text="driver.points" />
+            <span> - </span>
+            <span v-text="driver.points + ' pont'" />
           </div>
         </div>
         <div v-for="(team, i) in drivers.teams.slice(0, 20)" :key="'t' + i">
@@ -65,7 +66,8 @@
           >
             <span v-text="team.position + '.'" />
             <span v-text="team.team.title" />
-            <span v-text="team.points" />
+            <span> - </span>
+            <span v-text="team.points + ' pont'" />
           </div>
         </div>
       </slick>
@@ -92,7 +94,21 @@ export default {
       autoplaySpeed: 2000,
       responsive: [
         {
-          breakpoint: 600,
+          breakpoint: 1480,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5,
+          },
+        },
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+          },
+        },
+        {
+          breakpoint: 800,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
