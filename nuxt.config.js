@@ -72,6 +72,12 @@ export default {
         async: true,
         body: true,
       },
+
+      // {
+      //   src: 'https://www.instagram.com/embed.js',
+      //   async: true,
+      //   body: true,
+      // },
     ],
   },
 

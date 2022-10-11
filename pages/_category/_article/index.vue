@@ -163,20 +163,28 @@ export default {
       ],
     },
   }),
+
   mounted() {
     this.currentUrl = window.location.href
+    if (window.instgrm) window.instgrm.Embeds.process()
+    const oldScript = document.querySelector(
+      'script[src="https://platform.twitter.com/widgets.js"]'
+    )
+    if (oldScript) {
+      oldScript.parentNode.removeChild(oldScript)
+    }
     var script = document.createElement('script')
     script.src = 'https://platform.twitter.com/widgets.js'
     document.body.appendChild(script)
-    var instagram = document.createElement('script')
-    instagram.src = 'https://www.instagram.com/embed.js'
-    document.body.appendChild(instagram)
+
+    // document
+    //   .querySelectorAll('script[src="https://www.instagram.com/embed.js"]')
+    //   .forEach((e) => e.remove())
+    // var instagram = document.createElement('script')
+    // instagram.src = 'https://www.instagram.com/embed.js'
+    // document.body.appendChild(instagram)
   },
   methods: {
-    wrap(el, wrapper) {
-      el.parentNode.insertBefore(wrapper, el)
-      wrapper.appendChild(el)
-    },
     resizeIframe(obj) {
       obj.style.height =
         obj.contentWindow.document.documentElement.scrollHeight + 'px'
@@ -233,6 +241,20 @@ export default {
 
 .article-content blockquote {
   @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] lg:mb-7 lg:text-lg;
+}
+.article-content iframe {
+  @apply !mx-auto max-w-full overflow-x-hidden lg:!w-[81%];
+}
+.article-content .instagram-media,
+.article-content .twitter-tweet {
+  @apply !mb-3 lg:!mb-7;
+}
+
+.twitter-tweet {
+  @apply !mx-auto;
+}
+.article-content .embed-youtube {
+  @apply mb-3 h-[300px] lg:mb-7;
 }
 .article-content a {
   @apply text-lg font-semibold text-primary underline;
