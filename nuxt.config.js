@@ -43,6 +43,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [
+      { rel: 'alternate', type: 'application/rss+xml', href: '/rss', },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' },
       {
@@ -57,6 +58,7 @@ export default {
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs.vast.vpaid.min.css',
       },
+
     ],
     script: [
       {
@@ -88,6 +90,7 @@ export default {
   plugins: [
     { src: '~/plugins/api.js' },
     { src: '~/plugins/axios.js' },
+    { src: '~/plugins/jsonld.js' },
     { src: '~/plugins/owl-carousel', ssr: true },
     { src: '~/plugins/vee-validate.js' },
     { src: '~/plugins/vue-tippy.js', mode: 'client' },

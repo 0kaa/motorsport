@@ -206,8 +206,148 @@ export default {
     },
   },
   head() {
+    const link = this.data.article.post_categories.find(
+      (cat) => cat.slug == this.$route.params.category
+    )
+    const title = this.data.article.title
+    const slug = this.data.article.slug
+    const excerpt = this.data.article.excerpt
+    const teams = this.data.article.teams
+    const drivers = this.data.article.drivers
+    const races = this.data.article.races
+    const tags = this.data.article.tags
+    const all = tags.concat(drivers, teams, races)
+    let keywords = []
+    let meta = [
+      {
+        hid: 'description',
+        name: 'description',
+        content: excerpt,
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'motorsport',
+      },
+      {
+        hid: 'mobile-web-app-capable',
+        name: 'mobile-web-app-capable',
+        content: 'yes',
+      },
+      {
+        hid: 'apple-mobile-web-app-title',
+        name: 'apple-mobile-web-app-title',
+        content: 'motorsport',
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: `https://motorsport.hu/${link.slug}/${slug}`,
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: title,
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: excerpt,
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: this.data.article.featured_image.url
+          ? this.data.article.featured_image.url
+          : 'https://motorsport.hu/placeholder.jpeg',
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'article',
+      },
+      {
+        hid: 'article:published_time',
+        name: 'article:published_time',
+        content: this.data.article.published_at,
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary',
+      },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: '@msport_hu',
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: title,
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: excerpt,
+      },
+    ]
+    all.forEach((item, i) => {
+      if (item) {
+        meta.push({
+          hid: `article:tag:${i}`,
+          name: `article:tag:${i}`,
+          content: item.title,
+        })
+        keywords.push(item.title)
+      }
+    })
+    meta.push({
+      hid: 'keywords',
+      name: 'keywords',
+      content: keywords.join(', '),
+    })
     return {
-      title: this.data.article.title,
+      title,
+      meta,
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://motorsport.hu/${link.slug}/${slug}`,
+        },
+      ],
+    }
+  },
+  jsonld() {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'NewsArticle',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://motorsport.hu',
+        headline: this.data.article.title,
+        image: [
+          this.data.article.featured_image.url
+            ? this.data.article.featured_image.url
+            : 'https://motorsport.hu/placeholder.jpeg',
+        ],
+        datePublished: this.data.article.published_at,
+        dateModified: this.data.article.updated_at,
+        author: [
+          {
+            '@type': 'Person',
+            name: this.data.article.post_author.name,
+          },
+        ],
+        publisher: {
+          '@type': 'Organization',
+          name: 'Motorsport',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://motorsport.hu/logo.png',
+          },
+        },
+      },
     }
   },
   computed: {
