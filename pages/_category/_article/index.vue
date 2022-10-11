@@ -116,6 +116,7 @@
 <script>
 export default {
   name: 'article-single',
+
   async asyncData({ $api, params, redirect }) {
     try {
       const { data } = await $api.articles.getArticle(
@@ -164,19 +165,9 @@ export default {
   }),
   mounted() {
     this.currentUrl = window.location.href
-    setTimeout(() => {
-      var frms = document.getElementsByTagName('iframe'),
-        n
-      for (n = 0; n < frms.length; n++) {
-        var wrapper = document.createElement('div')
-        wrapper.classList = 'iframe-container'
-        this.wrap(frms[n], wrapper)
-        // frms[n].style.height = frms[n].document.body.scrollHeight + 'px'
-        // iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
-      }
-
-      // const iframe = document.getElementById('iframe')
-    }, 100)
+    var script = document.createElement('script')
+    script.src = 'https://platform.twitter.com/widgets.js'
+    document.body.appendChild(script)
   },
   methods: {
     wrap(el, wrapper) {
@@ -196,7 +187,6 @@ export default {
       }
     },
     async getStandingsBySeries(serie) {
-      // console.log(serie)
       try {
         await this.$api.standings.getStandings(serie).then((res) => {
           this.standings = res.data.data
@@ -241,17 +231,6 @@ export default {
 .article-content blockquote {
   @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] lg:mb-7 lg:text-lg;
 }
-/* .article-content iframe {
-  @apply mx-auto mb-3 h-[700px] w-full rounded-[4px] !border border-solid !border-[#BEBEBE] p-5 lg:mb-7 lg:w-10/12;
-} */
-
-.article-content .iframe-container {
-  @apply relative mb-4 overflow-hidden pt-[100%];
-}
-.article-content .iframe-container iframe {
-  @apply absolute top-0 left-0 right-0 mx-auto h-full w-[85%];
-}
-
 .article-content a {
   @apply text-lg font-semibold text-primary underline;
 }

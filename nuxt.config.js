@@ -72,6 +72,17 @@ export default {
         async: true,
         body: true,
       },
+      {
+        src: 'https://platform.twitter.com/widgets.js',
+        crossorigin: 'anonymous',
+        async: true,
+        body: true,
+      },
+      {
+        src: 'https://www.instagram.com/embed.js',
+        async: true,
+        body: true,
+      },
     ],
   },
 
