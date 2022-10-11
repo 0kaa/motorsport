@@ -168,6 +168,9 @@ export default {
     var script = document.createElement('script')
     script.src = 'https://platform.twitter.com/widgets.js'
     document.body.appendChild(script)
+    var instagram = document.createElement('script')
+    instagram.src = 'https://www.instagram.com/embed.js'
+    document.body.appendChild(instagram)
   },
   methods: {
     wrap(el, wrapper) {
