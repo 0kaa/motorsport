@@ -15,7 +15,7 @@
           class="absolute top-0 right-0 h-full w-full overflow-hidden rounded-[4px] bg-cover"
         >
           <div
-            class="absolute top-0 right-0 flex h-full flex-col items-center justify-between gap-5 rounded-[4px] bg-cover px-6 md:flex-row md:px-10"
+            class="absolute top-0 right-0 flex h-full flex-col items-center justify-center gap-5 rounded-[4px] bg-cover px-6 text-center md:flex-row md:px-10 md:text-left lg:justify-between"
             :style="`background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%); background-color: #0000009e;`"
           >
             <h3

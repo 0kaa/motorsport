@@ -21,8 +21,10 @@
                 <button class="text-xl font-medium text-[#ABABAB] uppercase">MOTOGP</button> -->
       </div>
     </div>
-    <div class="px-10 overflow-hidden text-white bg-black py-7">
-      <slick ref="slick" :options="slickOptions">
+    <div
+      class="relative px-4 py-4 overflow-hidden text-white bg-black schedule-slick lg:px-10 lg:py-7"
+    >
+      <slick ref="schedule_slick" :options="slickOptions">
         <nuxt-link
           v-for="(race, i) in races"
           :key="i"
@@ -53,24 +55,11 @@
           </button>
         </nuxt-link>
       </slick>
-      <!-- <h3 class="next-btn">Next</h3>
-      <h3 class="prev-btn">Prev</h3> -->
-      <!-- <carousel :items="5" :margin="12" :dots="false" :nav="false" :loop="false" :rewind="true">
-                <nuxt-link v-for="(race,i) in races" :key="i" to="/"
-                    class="flex flex-col items-center my-3 relative justify-center gap-2 px-3 py-6 border border-white rounded-[4px]">
-                    <img :src="race.flag" alt="hun" class="!w-[50px]">
-                    <h3 class="font-bold text-white text-md" v-text="race.title" />
-                    <div class="font-bold text-[13px] text-white">
-                        {{ $dateFns.format(new Date(highDate(race.infos) ), 'yyyy.MM.dd')}}
-                        -
-                        {{ $dateFns.format(new Date(lowDate(race.infos) ), 'MM.dd')}}
-
-                    </div>
-                    <button class="absolute z-10 -bottom-3">
-                        <img src="flip.png" alt="flip" />
-                    </button>
-                </nuxt-link>
-            </carousel> -->
+      <button
+        class="absolute top-0 bottom-0 m-auto text-white client-next-btn right-2 lg:right-5"
+      >
+        <i class="fa-solid fa-angles-right fa-2x"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -83,7 +72,12 @@ export default {
     slickOptions: {
       slidesToShow: 5,
       infinite: false,
-      arrows: false,
+      swipeToSlide: true,
+      infinite: true,
+      nextArrow: '.client-next-btn',
+      prevArrow: false,
+      autoplay: true,
+      autoplaySpeed: 5000,
       responsive: [
         {
           breakpoint: 600,
@@ -111,10 +105,10 @@ export default {
   watch: {
     races(newVal, val) {
       // this.$refs.slick.reSlick()
-      this.$refs.slick.destroy()
+      this.$refs.schedule_slick.destroy()
       this.$nextTick(() => {
-        this.$refs.slick.create(this.slickOptions)
-        this.$refs.slick.goTo(0, true)
+        this.$refs.schedule_slick.create(this.slickOptions)
+        this.$refs.schedule_slick.goTo(0, true)
       })
     },
   },
@@ -134,17 +128,17 @@ export default {
       this.tab = id
     },
     next() {
-      this.$refs.slick.next()
+      this.$refs.schedule_slick.next()
     },
 
     prev() {
-      this.$refs.slick.prev()
+      this.$refs.schedule_slick.prev()
     },
 
     reInit() {
       // Helpful if you have to deal with v-for to update dynamic lists
       this.$nextTick(() => {
-        this.$refs.slick.reSlick()
+        this.$refs.schedule_slick.reSlick()
       })
     },
     highDate(infos) {
@@ -169,12 +163,17 @@ export default {
 }
 </script>
 <style>
-.slick-slide {
-  margin: 0 12px;
+.schedule-slick .slick-slide {
+  margin: 0 10px !important;
+  height: 100%;
 }
 
 /* the parent */
-.slick-list {
-  margin: 0 -12px;
+.schedule-slick .slick-list {
+  margin-right: 30px !important;
+}
+
+.schedule-slick .slick-disabled {
+  @apply cursor-not-allowed opacity-30;
 }
 </style>
