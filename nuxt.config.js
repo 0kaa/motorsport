@@ -133,7 +133,6 @@ export default {
             id: post.url,
             link: `https://ms-motors.vercel.app/${post.post_categories[0].slug}/${post.slug}`,
             description: post.excerpt,
-            content: post.content,
             published: new Date(post.published_at),
             image: post.featured_image.url
           })
