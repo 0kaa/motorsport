@@ -5,11 +5,9 @@
       lang="en"
       class="flex flex-col justify-between min-h-screen gap-5 bg-white font-bai"
     >
-      <div>
-        <Navbar :categories="categories" :drivers="drivers" />
-        <Nuxt class="mx-auto max-w-[1320px]" />
-        <Footer />
-      </div>
+      <Navbar :categories="categories" :drivers="drivers" />
+      <Nuxt class="mx-auto max-w-[1320px]" />
+      <Footer />
     </div>
     <!-- </client-only> -->
   </transition>

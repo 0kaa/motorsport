@@ -114,9 +114,15 @@ export default {
     '@nuxtjs/proxy',
     '@nuxtjs/sitemap',
     '@nuxtjs/feed',
+    '@nuxtjs/toast',
     '@nuxtjs/universal-storage',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
+  toast: {
+    position: 'top-center',
+    duration: 3000
+  },
+
   feed: [
     // A default feed configuration object
     {
