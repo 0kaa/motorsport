@@ -7,7 +7,9 @@
       <h3
         class="pb-1 mb-10 text-lg font-bold text-black uppercase border-b border-black lg:text-2xl"
       >
-        <span class="ml-5 border-b-[10px] border-black"> *-HÍREK </span>
+        <span class="ml-5 border-b-[10px] border-black">
+          {{ $route.query.q }}-HÍREK
+        </span>
       </h3>
       <div class="grid flex-1 gap-x-5 gap-y-5 lg:grid-cols-4 lg:gap-y-14">
         <ArticleCard
