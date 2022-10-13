@@ -200,9 +200,10 @@
                 />
                 <nuxt-link
                   :to="{
-                    name: 'csapatok-team',
+                    name: 'csapatok-series-team',
                     params: {
                       team: article.teams[0].slug,
+                      series: article.teams[0].taxonomny_slug,
                     },
                   }"
                   v-if="article.teams.length"

@@ -15,9 +15,10 @@
       />
       <nuxt-link
         :to="{
-          name: 'csapatok-team',
+          name: 'csapatok-series-team',
           params: {
             team: team.slug,
+            series: team.taxonomny_slug,
           },
         }"
         class="border-l border-black pl-2 text-[10px] text-black lg:pl-4 lg:text-md"
@@ -27,9 +28,10 @@
 
       <nuxt-link
         :to="{
-          name: 'versenyzok-driver',
+          name: 'versenyzok-series-driver',
           params: {
             driver: driver.slug,
+            series: driver.taxonomny_slug,
           },
         }"
         class="border-l border-black pl-2 text-[10px] text-black lg:pl-4 lg:text-md"

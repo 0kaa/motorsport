@@ -59,13 +59,24 @@
           >
             <i class="fa-brands fa-twitter"></i>
           </a>
-          <a
-            :href="`/${category.slug}/${data.article.slug}`"
-            class="flex items-center justify-center w-10 h-10 text-xl border border-black"
-            @click.prevent="copyLink(category.slug, data.article.slug)"
-          >
-            <i class="fa-regular fa-copy"></i>
-          </a>
+
+          <div class="relative">
+            <a
+              :href="`/${category.slug}/${data.article.slug}`"
+              class="flex items-center justify-center w-10 h-10 text-xl border border-black"
+              @click.prevent="copyLink(category.slug, data.article.slug)"
+            >
+              <i class="fa-regular fa-copy"></i>
+            </a>
+            <transition name="layouts" mode="out-in">
+              <div
+                v-if="showCopyTooltip"
+                class="absolute top-[-35px] left-[-35px] right-0 z-10 w-[110px] bg-white py-1 px-2 text-center text-xs font-bold shadow-lg"
+              >
+                URL másolva!
+              </div>
+            </transition>
+          </div>
         </div>
       </div>
       <div class="flex-1">
@@ -74,7 +85,7 @@
         >
           <a
             href="#"
-            class="text-xs font-semibold text-black lg:text-md"
+            class="text-xs font-semibold text-black uppercase lg:text-md"
             v-text="data.article.post_author.name"
           />
 
@@ -169,6 +180,7 @@ export default {
     }
   },
   data: () => ({
+    showCopyTooltip: false,
     currentUrl: '',
     videoOptions: {
       autoplay: true,
@@ -228,9 +240,12 @@ export default {
     async copyLink() {
       try {
         await navigator.clipboard.writeText(window.location.href)
-        alert('Copied')
+        this.showCopyTooltip = true
+        setTimeout(() => {
+          this.showCopyTooltip = false
+        }, 2000)
       } catch ($e) {
-        alert('Cannot copy')
+        console.log($e)
       }
     },
     async getStandingsBySeries(serie) {

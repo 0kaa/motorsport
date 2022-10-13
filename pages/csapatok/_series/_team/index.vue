@@ -80,9 +80,10 @@
                 />
                 <nuxt-link
                   :to="{
-                    name: 'csapatok-team',
+                    name: 'csapatok-series-team',
                     params: {
                       team: data.team.slug,
+                      series: data.team.taxonomy_id.slug,
                     },
                   }"
                   v-if="article.teams.length"
@@ -141,7 +142,11 @@ export default {
   async asyncData({ $api, query, params, redirect }) {
     try {
       const page = query.oldal ? query.oldal : 1
-      const { data } = await $api.articles.getItemsByTeam(params.team, page)
+      const { data } = await $api.articles.getItemsByTeam(
+        params.team,
+        params.series,
+        page
+      )
       return { data: data, meta: data.team_articles.meta }
     } catch (error) {
       console.log(error)
@@ -169,7 +174,11 @@ export default {
     async paginate(index) {
       this.buttonDisabled = true
       await this.$api.articles
-        .getItemsByTeam(this.data.team.slug, index)
+        .getItemsByTeam(
+          this.data.team.slug,
+          this.data.team.taxonomy_id.slug,
+          index
+        )
         .then((res) => {
           this.data = res.data
           this.meta = res.data.team_articles.meta

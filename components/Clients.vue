@@ -6,9 +6,10 @@
       <slick ref="client-slick" :options="slickOptions">
         <nuxt-link
           :to="{
-            name: 'csapatok-team',
+            name: 'csapatok-series-team',
             params: {
               team: team.team.slug,
+              series: team.team.taxonomny_slug,
             },
           }"
           v-for="(team, i) in teams"
@@ -25,7 +26,7 @@
         </nuxt-link>
       </slick>
       <button
-        class="absolute top-0 bottom-0 m-auto text-white client-next-btn right-2 lg:right-5"
+        class="absolute top-0 bottom-0 m-auto text-white brand-next-btn right-2 lg:right-5"
       >
         <i class="fa-solid fa-angles-right fa-2x"></i>
       </button>
@@ -47,7 +48,7 @@ export default {
       infinite: false,
       swipeToSlide: true,
       infinite: true,
-      nextArrow: '.client-next-btn',
+      nextArrow: '.brand-next-btn',
       prevArrow: false,
       autoplay: true,
       autoplaySpeed: 5000,

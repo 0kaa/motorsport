@@ -34,7 +34,7 @@ export default {
         autoplay: true,
         preload: 'auto',
         loop: false,
-        muted: false,
+        muted: true,
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         poster: '/mclaren_subteacher.jpeg',
         width: '100%',

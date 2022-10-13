@@ -14,11 +14,11 @@ export default (axios) => ({
     getItemsByTag(tag, i) {
         return axios.post(`/tags/${tag}?page=${i}`)
     },
-    getItemsByDriver(driver, i) {
-        return axios.post(`/drivers/${driver}?page=${i}`)
+    getItemsByDriver(driver, series, i) {
+        return axios.post(`/drivers/${driver}?series=${series}&page=${i}`)
     },
-    getItemsByTeam(team, i) {
-        return axios.post(`/teams/${team}?page=${i}`)
+    getItemsByTeam(team, series, i) {
+        return axios.post(`/teams/${team}?series=${series}&page=${i}`)
     },
     getRecommendedArticle(id) {
         return axios.post(`/get-recommended-article/${id}`)

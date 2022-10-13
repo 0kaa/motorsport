@@ -70,9 +70,12 @@
 
         <nuxt-link
           :to="{
-            name: 'csapatok-team',
+            name: 'csapatok-series-team',
             params: {
               team: !team ? article.teams[0].slug : team.slug,
+              series: !team
+                ? article.teams[0].taxonomny_slug
+                : team.taxonomny_slug,
             },
           }"
           class="uppercase category-link lg:text-white"
