@@ -8,6 +8,7 @@
             :to="`/${category.slug}/${article.slug}`"
             v-for="(article, i) in data.connectionArticles"
             :key="i"
+            class="flex items-end gap-2 lg:block"
           >
             <img
               :src="
@@ -16,16 +17,34 @@
                   : '/placeholder.jpeg'
               "
               alt=""
-              class="max-h-[195px] min-h-[195px] w-full rounded-md object-cover lg:max-h-[130px] lg:min-h-[130px]"
+              class="max-h-[55px] max-w-[100px] rounded-md object-cover lg:max-h-[130px] lg:min-h-[130px] lg:max-w-full"
             />
-            <h3
-              class="mt-2 mb-4 text-sm font-semibold text-black"
-              v-text="article.title"
-            ></h3>
+            <div>
+              <nuxt-link
+                :to="{
+                  name: 'category',
+                  params: {
+                    category: !category
+                      ? article.post_categories[0].slug
+                      : category.slug,
+                  },
+                }"
+                class="text-[10px] font-bold text-black lg:hidden"
+                v-text="
+                  !category ? article.post_categories[0].title : category.title
+                "
+              />
+              <h3
+                class="text-[13px] font-semibold text-black lg:mt-2 lg:mb-4 lg:text-sm"
+                v-text="article.title"
+              ></h3>
+            </div>
             <div class="h-px bg-black"></div>
           </nuxt-link>
         </div>
-        <div class="flex items-center justify-between mt-8">
+        <div
+          class="flex items-center justify-center gap-3 mt-8 lg:justify-between"
+        >
           <a
             target="_blank"
             :href="`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`"
@@ -76,9 +95,16 @@
               :article="recommendedArticle"
               v-if="recommendedArticle.id !== data.article.id"
             />
+
             <div class="article-content mb-7" v-html="articleContent" />
+            <ConnectionArticles
+              class="connection-component"
+              v-if="twoArticles && twoArticles.length"
+              :articles="twoArticles"
+              :category="category"
+            />
             <video-player :options="videoOptions" />
-            <!-- <ConnectionArticles /> -->
+
             <Taxonomies
               :category="category"
               :driver="driver"
@@ -86,8 +112,8 @@
               :tag="tag"
             />
           </div>
-          <div class="flex w-[300px] flex-col gap-[50px]">
-            <div class="max-w-[300px]">
+          <div class="flex flex-col gap-[50px] lg:w-[300px]">
+            <div class="lg:max-w-[300px]">
               <img
                 src="/ad-1.png"
                 alt="ad"
@@ -99,7 +125,7 @@
               :series="series"
               @selected="getStandingsBySeries"
             />
-            <div class="max-w-[300px]">
+            <div class="lg:max-w-[300px]">
               <img
                 src="/ad-1.png"
                 alt="ad"
@@ -123,7 +149,11 @@ export default {
         params.category,
         params.article
       )
-      const recommendedArticle = await $api.articles.getRecommendedArticle()
+
+      const recommendedArticle = await $api.articles.getLatestThreeArticles()
+      const twoArticles = await $api.articles.getRecommendedArticle(
+        data.data.article.id
+      )
       const standings = await $api.standings.getStandings(1)
       const series = await $api.series.getSeries()
       return {
@@ -131,6 +161,7 @@ export default {
         standings: standings.data.data,
         series: series.data.data,
         recommendedArticle: recommendedArticle.data,
+        twoArticles: twoArticles.data,
       }
     } catch (error) {
       console.log(error)
@@ -176,19 +207,24 @@ export default {
     var script = document.createElement('script')
     script.src = 'https://platform.twitter.com/widgets.js'
     document.body.appendChild(script)
+    // add component before last 2 paragraphs
+    const articleContent = document.querySelector('.article-content')
+    const lastParagraph =
+      articleContent.querySelectorAll('.article-content p')[
+        articleContent.querySelectorAll('.article-content p').length - 3
+      ]
+    const connectionComponent = document.querySelector('.connection-component')
+    lastParagraph.parentNode.insertBefore(
+      connectionComponent,
+      lastParagraph.nextSibling
+    )
 
-    // document
-    //   .querySelectorAll('script[src="https://www.instagram.com/embed.js"]')
-    //   .forEach((e) => e.remove())
-    // var instagram = document.createElement('script')
-    // instagram.src = 'https://www.instagram.com/embed.js'
-    // document.body.appendChild(instagram)
+    // const articleContent = document.querySelector('.article-content')
+    // const secondParagraph = articleContent.querySelectorAll('p')[1]
+    // const component = document.querySelector('.connection-component')
+    // secondParagraph.after(component)
   },
   methods: {
-    resizeIframe(obj) {
-      obj.style.height =
-        obj.contentWindow.document.documentElement.scrollHeight + 'px'
-    },
     async copyLink() {
       try {
         await navigator.clipboard.writeText(window.location.href)
@@ -383,7 +419,7 @@ export default {
   @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] lg:mb-7 lg:text-lg;
 }
 .article-content iframe {
-  @apply !mx-auto max-w-full overflow-x-hidden lg:!w-[81%];
+  @apply !mx-auto !min-w-max max-w-full overflow-x-hidden lg:!w-[81%];
 }
 .article-content .instagram-media,
 .article-content .twitter-tweet {

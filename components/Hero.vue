@@ -4,6 +4,7 @@
     class="relative z-10 lg:grid lg:min-h-[500px] lg:grid-cols-2"
     :class="{
       'gap-1': home,
+      'flex flex-col-reverse': !home,
     }"
   >
     <div
@@ -51,9 +52,9 @@
       ></div>
     </div>
     <div
-      class="relative z-10 flex flex-1 flex-col items-start justify-center bg-[#151515] px-5 py-5 md:py-0 md:pl-10 md:pr-14"
+      class="relative z-10 flex flex-1 flex-col items-start justify-center md:py-0 md:pl-10 md:pr-14 lg:bg-[#151515]"
     >
-      <div class="flex items-center gap-2 mb-5 md:gap-5">
+      <div class="flex items-center gap-2 mb-3 md:gap-5 lg:mb-5">
         <nuxt-link
           :to="{
             name: 'category',
@@ -63,7 +64,7 @@
                 : category.slug,
             },
           }"
-          class="text-white category-link"
+          class="category-link lg:text-white"
           v-text="!category ? article.post_categories[0].title : category.title"
         />
 
@@ -74,7 +75,7 @@
               team: !team ? article.teams[0].slug : team.slug,
             },
           }"
-          class="text-white uppercase category-link"
+          class="uppercase category-link lg:text-white"
           v-text="!team ? article.teams[0].title : team.title"
           :style="`border-color:${!team ? article.teams[0].color : team.color}`"
           v-if="article && article.teams.length"
@@ -82,7 +83,7 @@
       </div>
 
       <h2
-        class="mb-5 text-xl font-bold text-white underline lg:mb-10 lg:leading-[1.1] lg:tracking-[-2%]"
+        class="mb-5 text-xl font-bold leading-[1.1] text-black lg:mb-10 lg:tracking-[-2%] lg:text-white lg:underline"
         :class="{
           'lg:text-[38px]': home,
           'lg:text-[42px]': !home,

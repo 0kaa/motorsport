@@ -20,7 +20,10 @@ export default (axios) => ({
     getItemsByTeam(team, i) {
         return axios.post(`/teams/${team}?page=${i}`)
     },
-    getRecommendedArticle() {
-        return axios.post(`/get-recommended-article`)
+    getRecommendedArticle(id) {
+        return axios.post(`/get-recommended-article/${id}`)
+    },
+    getLatestThreeArticles() {
+        return axios.post(`/get-latest-articles`)
     }
 })

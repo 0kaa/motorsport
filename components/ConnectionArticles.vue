@@ -1,24 +1,50 @@
 <template>
-    <div class="mb-6">
-        <h3
-            class="text-center text-white font-bold text-lg bg-[#2B2B2B] py-2 rounded-[4px] rounded-bl-none rounded-br-none">
-            KAPCSOLÓDÓ</h3>
-        <ul class="text-center">
-            <li class="bg-[#F4F4F4] text-black font-bold text-[13px] py-2 border-b border-[#BDBDBD]">
-                <i class="fa-solid fa-chevron-right"></i>
-                <a href="#">Hihetetlen: 9-re nőtt a büntetett F1-es versenyzők száma Monzában!</a>
-            </li>
-            <li class="bg-[#F4F4F4] text-black font-bold text-[13px] py-2">
-                <i class="fa-solid fa-chevron-right"></i>
-                <a href="#">Verstappen elárulta, hogy el tudja-e képzelni magát apaként: „Sokat
-                    változtam”</a>
-            </li>
-        </ul>
-    </div>
+  <div class="mb-6">
+    <h3
+      class="rounded-[4px] rounded-bl-none rounded-br-none bg-[#2B2B2B] py-2 text-center text-xs font-bold text-white lg:text-lg"
+    >
+      KAPCSOLÓDÓ
+    </h3>
+    <ul class="text-center">
+      <li
+        v-for="(article, i) in articles"
+        :key="i"
+        class="bg-[#F4F4F4] p-2 !text-[10px] font-bold lg:!text-[13px]"
+        :class="{
+          'border-b border-[#BDBDBD]': i !== articles.length - 1,
+        }"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+        <nuxt-link
+          class="!text-[10px] font-bold !text-black lg:!text-[13px]"
+          :to="{
+            name: 'category-article',
+            params: {
+              category: !category
+                ? article.post_categories[0].slug
+                : category.slug,
+              article: article.slug,
+            },
+          }"
+          v-text="article.title"
+        />
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'ConnectionArticles'
+  name: 'ConnectionArticles',
+  props: {
+    articles: {
+      type: Array,
+      default: () => [],
+    },
+    category: {
+      type: Object,
+      default: () => {},
+    },
+  },
 }
 </script>

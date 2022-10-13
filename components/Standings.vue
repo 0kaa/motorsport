@@ -125,7 +125,10 @@
           </tr>
         </tbody>
       </table>
-      <div class="flex justify-center py-3">
+      <div
+        class="flex justify-center py-3"
+        v-if="drivers.length || teams.length"
+      >
         <button>
           <img
             src="/more.png"

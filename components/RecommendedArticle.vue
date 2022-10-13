@@ -13,7 +13,7 @@
         },
       }"
       v-text="article.title"
-      class="z-10 py-3 ml-8 font-bold text-white bg-black px-7 text-md"
+      class="z-10 ml-8 bg-black py-2 px-2.5 text-md text-white lg:py-3 lg:px-7 lg:font-bold"
     />
   </div>
 </template>
