@@ -21,7 +21,7 @@
               team.team.image.url ? team.team.image.url : '/placeholder.jpeg'
             "
             alt="oracle"
-            class="object-cover"
+            class="max-h-[45px] object-cover"
           />
         </nuxt-link>
       </slick>
@@ -45,7 +45,6 @@ export default {
   data: () => ({
     slickOptions: {
       slidesToShow: 5,
-      infinite: false,
       swipeToSlide: true,
       infinite: true,
       nextArrow: '.brand-next-btn',

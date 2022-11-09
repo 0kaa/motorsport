@@ -113,7 +113,7 @@
                   : '/placeholder.jpeg'
               "
               alt="article"
-              class="h-[195px] w-full rounded-[4px] object-cover lg:h-[92px] lg:w-[140px]"
+              class="h-[175px] w-full rounded-[4px] object-cover lg:h-[92px] lg:w-[140px]"
             />
           </nuxt-link>
           <div class="flex flex-col justify-between flex-1 h-full">
@@ -178,7 +178,9 @@ export default {
         series: series.data.data,
         stickyArticle: data.sticky_article,
         featuredArticle: data.featured_article,
-        races: data.races,
+        races: data.races.sort((a, b) => {
+          return new Date(a.lowDate) - new Date(b.lowDate)
+        }),
       }
     } catch (error) {
       // console.log(error)
@@ -188,7 +190,10 @@ export default {
   methods: {
     async getRaces(id) {
       await this.$api.races.getRaces(id).then((res) => {
-        this.races = res.data.data
+        // sort races by lowDate
+        this.races = res.data.data.sort((a, b) => {
+          return new Date(a.lowDate) - new Date(b.lowDate)
+        })
       })
     },
   },

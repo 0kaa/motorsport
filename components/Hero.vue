@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="article && Object.keys(article).length"
-    class="relative z-10 lg:grid lg:min-h-[500px] lg:grid-cols-2"
+    class="relative z-10 lg:grid lg:min-h-[450px] lg:grid-cols-2"
     :class="{
       'gap-1': home,
       'flex flex-col-reverse': !home,
@@ -107,7 +107,11 @@
       </h2>
       <p
         v-if="home"
-        class="text-xs font-medium text-white lg:text-lg"
+        class="text-xs font-medium lg:text-lg"
+        :class="{
+          'text-black lg:text-white': home,
+          'text-white': !home,
+        }"
         v-text="article.excerpt"
       />
     </div>

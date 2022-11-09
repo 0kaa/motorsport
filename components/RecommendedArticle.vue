@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col mt-16 mb-7">
+  <div class="relative flex flex-col mt-16 recommended-article mb-7">
     <span
       v-text="'Ajánlott'"
       class="absolute px-8 pt-2 pb-4 font-bold text-white -top-10 max-w-max bg-primary text-md"
@@ -13,7 +13,7 @@
         },
       }"
       v-text="article.title"
-      class="z-10 ml-8 bg-black py-2 px-2.5 text-md text-white lg:py-3 lg:px-7 lg:font-bold"
+      class="z-10 ml-8 bg-black py-2 px-2.5 !text-md !text-white !no-underline lg:py-3 lg:px-7 lg:font-bold"
     />
   </div>
 </template>

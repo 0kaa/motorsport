@@ -25,35 +25,39 @@
       class="relative px-4 py-4 overflow-hidden text-white bg-black schedule-slick lg:px-10 lg:py-7"
     >
       <slick ref="schedule_slick" :options="slickOptions">
-        <nuxt-link
+        <div
           v-for="(race, i) in races"
           :key="i"
-          :to="{
-            name: 'futam-series-year-race',
-            params: {
-              series: race.series,
-              year: race.year,
-              race: race.slug,
-            },
+          class="relative my-3 flex h-[140px] flex-col items-center justify-center gap-2 rounded-[4px] border border-white px-3 py-6 text-center"
+          :class="{
+            'border-primary':
+              race.lowDate > today && race.lowDate <= highDateInRaces,
           }"
-          class="relative my-3 flex flex-col items-center justify-center gap-2 rounded-[4px] border border-white px-3 py-6 text-center"
         >
-          <img :src="race.flag" alt="hun" class="mx-auto !w-[50px]" />
+          <img :src="race.flag" alt="hun" class="mx-auto !w-[45px]" />
           <h3 class="mt-3 font-bold text-white text-md" v-text="race.title" />
           <div
             class="text-[13px] font-bold text-white"
             v-if="race.infos.length"
           >
-            {{ $dateFns.format(new Date(highDate(race.infos)), 'yyyy.MM.dd') }}
+            {{ $dateFns.format(new Date(race.lowDate), 'yyyy.MM.dd') }}
             -
-            {{ $dateFns.format(new Date(lowDate(race.infos)), 'MM.dd') }}
+            {{ $dateFns.format(new Date(race.highDate), 'MM.dd') }}
           </div>
-          <button
-            class="absolute left-0 right-0 -bottom-3 z-10 mx-auto flex h-6 w-6 items-center justify-center rounded-[4px] border-2 border-white bg-black"
+          <nuxt-link
+            :to="{
+              name: 'futam-series-year-race',
+              params: {
+                series: race.series,
+                year: race.year,
+                race: race.slug,
+              },
+            }"
+            class="absolute left-0 right-0 -bottom-3 z-10 mx-auto flex h-8 w-8 items-center justify-center rounded-[4px] border-2 border-white bg-black"
           >
             <i class="fa-solid fa-plus"></i>
-          </button>
-        </nuxt-link>
+          </nuxt-link>
+        </div>
       </slick>
       <button
         class="absolute top-0 bottom-0 m-auto text-white client-next-btn right-2 lg:right-5"
@@ -73,11 +77,8 @@ export default {
       slidesToShow: 5,
       infinite: false,
       swipeToSlide: true,
-      infinite: true,
       nextArrow: '.client-next-btn',
       prevArrow: false,
-      autoplay: true,
-      autoplaySpeed: 5000,
       responsive: [
         {
           breakpoint: 600,
@@ -108,7 +109,7 @@ export default {
       this.$refs.schedule_slick.destroy()
       this.$nextTick(() => {
         this.$refs.schedule_slick.create(this.slickOptions)
-        this.$refs.schedule_slick.goTo(0, true)
+        // this.$refs.schedule_slick.goTo(20, true)
       })
     },
   },
@@ -139,6 +140,10 @@ export default {
       // Helpful if you have to deal with v-for to update dynamic lists
       this.$nextTick(() => {
         this.$refs.schedule_slick.reSlick()
+        this.$refs.schedule_slick.goTo(
+          this.races.length - this.slickOptions.slidesToShow,
+          true
+        )
       })
     },
     highDate(infos) {
@@ -155,6 +160,31 @@ export default {
       infos.forEach((info) => {
         if (info.end_date > date) {
           date = info.end_date
+        }
+      })
+      return date
+    },
+  },
+  computed: {
+    today() {
+      // format 2022/03/20 16:00
+      return this.$dateFns.format(new Date(), 'yyyy/MM/dd HH:mm')
+    },
+    highDateInRaces() {
+      var dates = this.races.map((race) => {
+        var date = race.infos[0].start_date
+        race.infos.forEach((info) => {
+          if (info.start_date < date) {
+            date = info.start_date
+          }
+        })
+        return date
+      })
+      // get the highest date
+      var date = dates[0]
+      dates.forEach((d) => {
+        if (d > date) {
+          date = d
         }
       })
       return date

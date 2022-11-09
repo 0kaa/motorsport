@@ -6,7 +6,9 @@
       class="flex flex-col justify-between min-h-screen gap-5 bg-white font-bai"
     >
       <Navbar :categories="categories" :drivers="drivers" />
-      <Nuxt class="mx-auto max-w-[1320px]" />
+      <div>
+        <Nuxt class="mx-auto max-w-[1320px]" />
+      </div>
       <Footer />
     </div>
     <!-- </client-only> -->

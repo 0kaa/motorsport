@@ -35,7 +35,7 @@
                 "
               />
               <h3
-                class="text-[13px] font-semibold text-black lg:mt-2 lg:mb-4 lg:text-sm"
+                class="text-[13px] font-semibold text-black lg:mt-2 lg:mb-4 lg:text-[15px]"
                 v-text="article.title"
               ></h3>
             </div>
@@ -104,7 +104,11 @@
             />
             <RecommendedArticle
               :article="recommendedArticle"
-              v-if="recommendedArticle.id !== data.article.id"
+              v-if="
+                recommendedArticle &&
+                Object.keys(recommendedArticle).length &&
+                recommendedArticle.id !== data.article.id
+              "
             />
 
             <div class="article-content mb-7" v-html="articleContent" />
@@ -123,7 +127,7 @@
               :tag="tag"
             />
           </div>
-          <div class="flex flex-col gap-[50px] lg:w-[300px]">
+          <div class="hidden flex-col gap-[50px] lg:flex lg:w-[300px]">
             <div class="lg:max-w-[300px]">
               <img
                 src="/ad-1.png"
@@ -221,15 +225,28 @@ export default {
     document.body.appendChild(script)
     // add component before last 2 paragraphs
     const articleContent = document.querySelector('.article-content')
-    const lastParagraph =
-      articleContent.querySelectorAll('.article-content p')[
-        articleContent.querySelectorAll('.article-content p').length - 3
-      ]
+
+    const thirdParagraph =
+      articleContent.querySelectorAll('.article-content p')[2]
+
+    const firstParagraph =
+      articleContent.querySelectorAll('.article-content p')[0]
+
     const connectionComponent = document.querySelector('.connection-component')
-    lastParagraph.parentNode.insertBefore(
-      connectionComponent,
-      lastParagraph.nextSibling
-    )
+    const recommendedArticle = document.querySelector('.recommended-article')
+
+    if (connectionComponent) {
+      thirdParagraph.parentNode.insertBefore(
+        connectionComponent,
+        thirdParagraph.nextSibling
+      )
+    }
+    if (recommendedArticle) {
+      firstParagraph.parentNode.insertBefore(
+        recommendedArticle,
+        firstParagraph.nextSibling
+      )
+    }
 
     // const articleContent = document.querySelector('.article-content')
     // const secondParagraph = articleContent.querySelectorAll('p')[1]
@@ -427,7 +444,7 @@ export default {
 
 <style>
 .article-content p {
-  @apply mb-3 text-xs font-normal lg:mb-7 lg:text-lg;
+  @apply mb-3 text-sm font-normal lg:mb-7 lg:text-lg;
 }
 
 .article-content blockquote {

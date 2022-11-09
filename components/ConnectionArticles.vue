@@ -9,14 +9,14 @@
       <li
         v-for="(article, i) in articles"
         :key="i"
-        class="bg-[#F4F4F4] p-2 !text-[10px] font-bold lg:!text-[13px]"
+        class="bg-[#F4F4F4] p-2 !text-[10px] font-bold lg:!text-[17px]"
         :class="{
           'border-b border-[#BDBDBD]': i !== articles.length - 1,
         }"
       >
         <i class="fa-solid fa-chevron-right"></i>
         <nuxt-link
-          class="!text-[10px] font-bold !text-black lg:!text-[13px]"
+          class="!text-[10px] font-bold !text-black lg:!text-[17px]"
           :to="{
             name: 'category-article',
             params: {

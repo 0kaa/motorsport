@@ -10,7 +10,7 @@
       v-if="data.category_articles.data.length > 1"
     >
       <h3
-        class="pb-1 mb-10 text-lg font-bold text-black uppercase border-b border-black lg:text-2xl"
+        class="mb-10 border-b border-black pb-1 text-lg font-bold uppercase text-black lg:text-2xl"
       >
         <span class="ml-5 border-b-[10px] border-black">
           TOVÁBBI {{ data.category.slug }}-HÍREK
@@ -32,7 +32,7 @@
       <div class="grid flex-1 gap-x-5 lg:grid-cols-2">
         <div>
           <h3
-            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
+            class="mb-5 border-b-2 border-black pb-1 text-md font-bold text-black lg:mb-10 lg:text-2xl"
           >
             VERSENYZŐK
           </h3>
@@ -68,7 +68,7 @@
                   }"
                 >
                   <th
-                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
+                    class="whitespace-nowrap px-3 py-2 font-bold text-black lg:px-6"
                     v-text="driver.position"
                   />
                   <td class="px-3 py-2 lg:px-6" scope="row">
@@ -99,7 +99,7 @@
         </div>
         <div>
           <h3
-            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
+            class="mb-5 border-b-2 border-black pb-1 text-md font-bold text-black lg:mb-10 lg:text-2xl"
           >
             CSAPATOK
           </h3>
@@ -129,7 +129,7 @@
                   }"
                 >
                   <th
-                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
+                    class="whitespace-nowrap px-3 py-2 font-bold text-black lg:px-6"
                     v-text="team.position"
                   />
                   <td class="px-3 py-2 lg:px-6" scope="row">
@@ -151,7 +151,7 @@
       v-if="data.category_articles.data.length > 1"
     >
       <div class="flex flex-col justify-between gap-24 lg:flex-row">
-        <div class="flex flex-col flex-1 gap-12 lg:pr-10">
+        <div class="flex flex-1 flex-col gap-12 lg:pr-10">
           <div
             v-for="(article, i) in data.category_articles.data.slice(5, 100)"
             :key="i"
@@ -184,10 +184,10 @@
                       : '/placeholder.jpeg'
                   "
                   alt="article"
-                  class="h-[195px] w-full rounded-[4px] object-cover lg:h-[195px] lg:w-[315px]"
+                  class="h-[175px] w-full rounded-[4px] object-cover lg:h-[175px] lg:w-[315px]"
                 />
               </nuxt-link>
-              <div class="absolute flex items-center gap-2 -bottom-5">
+              <div class="absolute -bottom-5 flex items-center gap-2">
                 <nuxt-link
                   :to="{
                     name: 'category',
@@ -243,9 +243,9 @@
           />
         </div>
         <div class="flex w-[300px] flex-col gap-[50px]">
-          <img src="/ad-1.png" alt="ad" class="object-cover w-full h-full" />
-          <img src="/ad-1.png" alt="ad" class="object-cover w-full h-full" />
-          <img src="/ad-1.png" alt="ad" class="object-cover w-full h-full" />
+          <img src="/ad-1.png" alt="ad" class="h-full w-full object-cover" />
+          <img src="/ad-1.png" alt="ad" class="h-full w-full object-cover" />
+          <img src="/ad-1.png" alt="ad" class="h-full w-full object-cover" />
         </div>
       </div>
     </div>

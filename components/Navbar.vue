@@ -8,7 +8,7 @@
     <div
       class="flex items-center justify-between w-full px-6 py-5 mb-1 bg-dark"
     >
-      <nuxt-link to="/" class="max-w-[180px] xl:max-w-full">
+      <nuxt-link to="/" class="max-w-[180px] xl:max-w-[240px]">
         <img src="/logo.png" alt="logo" />
       </nuxt-link>
       <button class="text-white lg:hidden" @click="nav = true">
