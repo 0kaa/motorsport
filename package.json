@@ -51,5 +51,11 @@
     "stylelint": "^14.9.1",
     "stylelint-config-recommended-vue": "^1.4.0",
     "tailwindcss": "^3.1.4"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "35000"
+    }
   }
 }
