@@ -31,7 +31,7 @@
           class="relative my-3 flex h-[140px] flex-col items-center justify-center gap-2 rounded-[4px] border border-white px-3 py-6 text-center"
           :class="{
             'border-primary':
-              race.lowDate > today && race.lowDate <= highDateInRaces,
+              race.lowDate > today && race.lowDate < highDateInRaces,
           }"
         >
           <img :src="race.flag" alt="hun" class="mx-auto !w-[45px]" />
