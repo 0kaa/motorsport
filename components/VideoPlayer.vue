@@ -31,7 +31,8 @@ export default {
     videoJs() {
       this.player = videojs(`video-js`, {
         controls: true,
-        autoplay: false,
+        autoplay: true,
+        playsinline: true,
         preload: 'auto',
         loop: false,
         muted: true,
