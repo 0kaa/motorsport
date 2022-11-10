@@ -2,8 +2,8 @@
   <div class="my-8 px-4 md:h-[210px] lg:mt-10 lg:mb-11 lg:px-7">
     <div class="relative rounded-[4px] md:bg-black">
       <div
-        :style="`background-image:url('${article.featured_image.url}')`"
-        class="article-image absolute top-0 right-0 hidden h-[210px] w-[75%] rounded-[4px] bg-cover bg-bottom bg-no-repeat md:block"
+        :style="`background-image:url('${article.featured_image['7x']}')`"
+        class="article-image absolute top-0 right-0 hidden h-[210px] w-[75%] rounded-[4px] bg-center bg-no-repeat md:block"
       ></div>
       <div class="md:h-[210px] md:rounded-[4px]">
         <div

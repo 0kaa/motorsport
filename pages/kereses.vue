@@ -19,7 +19,7 @@
         />
       </div>
     </div>
-    <div class="mb-[55px] px-4 lg:px-7" v-if="data.length > 4">
+    <div class="mb-[55px]" v-if="data.length > 4">
       <div class="flex flex-col justify-between gap-24 lg:flex-row">
         <div class="flex flex-col flex-1 gap-12 lg:pr-10">
           <div
@@ -49,8 +49,8 @@
                 <img
                   v-if="article.featured_image"
                   :src="
-                    article.featured_image.url
-                      ? article.featured_image.url
+                    article.featured_image['4x']
+                      ? article.featured_image['4x']
                       : '/placeholder.jpeg'
                   "
                   alt="article"

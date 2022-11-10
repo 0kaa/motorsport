@@ -26,8 +26,8 @@
         <img
           v-if="article.featured_image"
           :src="
-            article.featured_image.url
-              ? article.featured_image.url
+            article.featured_image['4x']
+              ? article.featured_image['4x']
               : '/placeholder.jpeg'
           "
           alt="article"

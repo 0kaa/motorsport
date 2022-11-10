@@ -19,8 +19,8 @@
       <div class="h-full">
         <img
           :src="
-            article.featured_image.url
-              ? article.featured_image.url
+            article.featured_image['6x']
+              ? article.featured_image['6x']
               : '/placeholder.jpeg'
           "
           alt="hero image"

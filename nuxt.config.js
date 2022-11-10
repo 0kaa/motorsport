@@ -146,7 +146,7 @@ export default {
           feed.addItem({
             title: post.title,
             id: post.url,
-            link: `https://ms-motors.vercel.app/${post.post_categories[0].slug}/${post.slug}`,
+            link: `https://motorsport.hu/${post.post_categories[0].slug}/${post.slug}`,
             description: post.excerpt,
             published: new Date(post.published_at),
             image: post.featured_image.url

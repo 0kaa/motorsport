@@ -12,8 +12,8 @@
           >
             <img
               :src="
-                article.featured_image.url
-                  ? article.featured_image.url
+                article.featured_image['3x']
+                  ? article.featured_image['3x']
                   : '/placeholder.jpeg'
               "
               alt=""
@@ -295,7 +295,7 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'motorsport',
+        content: 'Motorsport',
       },
       {
         hid: 'mobile-web-app-capable',
@@ -305,7 +305,7 @@ export default {
       {
         hid: 'apple-mobile-web-app-title',
         name: 'apple-mobile-web-app-title',
-        content: 'motorsport',
+        content: 'Motorsport',
       },
       {
         hid: 'og:url',
