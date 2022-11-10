@@ -2,7 +2,7 @@
   <div class="mt-5 mb-20">
     <FirstArticle v-if="firstArticle" :article="firstArticle" />
     <Hero
-      class="mb-10 px-4 lg:mb-[74px] lg:px-7"
+      class="mb-10 px-4 lg:mb-[74px] lg:px-[38px]"
       home
       :article="stickyArticle !== null ? stickyArticle : featuredArticle"
     />

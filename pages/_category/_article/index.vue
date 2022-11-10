@@ -248,7 +248,7 @@ export default {
       )
     }
 
-    // auto play video.js when visible in viewport
+    // auto play video.js when visible in viewport playsinline
     const videoPlayer = document.querySelector('.video-js')
     const observer = new IntersectionObserver(
       (entries) => {

@@ -9,12 +9,13 @@
   >
     <div
       v-if="home"
-      class="absolute -top-3 right-3 z-[-1] hidden h-[70%] w-5 rounded-t-xl bg-black lg:block"
+      class="absolute -top-1.5 right-[30px] z-[-1] hidden h-[70%] w-2.5 rounded-t-xl bg-black lg:block"
     ></div>
     <div
       v-if="home"
-      class="absolute -top-3 right-3 z-[-1] hidden h-5 w-[215px] rounded-tr-lg bg-primary lg:block"
+      class="absolute -top-2.5 right-[30px] z-[-1] hidden h-2.5 w-[360px] rounded-tr-lg bg-primary lg:block"
     ></div>
+
     <div class="relative z-10">
       <div class="h-full">
         <img
@@ -36,23 +37,27 @@
       </div>
       <div
         v-if="!home"
-        class="absolute -bottom-3 -left-3 z-[-1] hidden h-[90%] w-5 bg-black lg:block"
+        class="absolute -bottom-2.5 -left-2.5 z-[-1] hidden h-[90%] w-2.5 bg-black lg:block"
       ></div>
       <div
         v-if="!home"
-        class="absolute -bottom-3 -left-3 z-[-1] hidden h-5 w-[90%] bg-black lg:block"
+        class="absolute -bottom-2.5 -left-2.5 z-[-1] hidden h-2.5 w-[90%] bg-black lg:block"
       ></div>
       <div
         v-if="home"
-        class="absolute -bottom-3 -left-3 z-[-1] hidden h-[70%] w-5 rounded-b-xl bg-black lg:block"
+        class="absolute -bottom-1.5 -left-2.5 z-[-1] hidden h-[70%] w-2.5 rounded-b-xl bg-black lg:block"
       ></div>
       <div
         v-if="home"
-        class="absolute -bottom-3 -left-3 z-[-1] hidden h-5 w-[215px] rounded-bl-lg bg-primary lg:block"
+        class="absolute -bottom-2.5 -left-2.5 z-[-1] hidden h-2.5 w-[360px] rounded-bl-lg bg-primary lg:block"
       ></div>
     </div>
     <div
-      class="relative z-10 flex flex-1 flex-col items-start justify-center md:py-0 md:pl-10 md:pr-14 lg:bg-[#151515]"
+      class="relative z-10 flex flex-col items-start justify-center flex-1 md:py-0 md:pl-10 md:pr-14"
+      :class="{
+        'md:border md:border-black lg:bg-white': home,
+        'lg:bg-[#151515]': !home,
+      }"
     >
       <div class="flex items-center gap-2 mb-3 md:gap-5 lg:mb-5">
         <nuxt-link
@@ -64,7 +69,11 @@
                 : category.slug,
             },
           }"
-          class="category-link lg:text-white"
+          class="category-link"
+          :class="{
+            'lg:text-black': home,
+            'lg:text-white': !home,
+          }"
           v-text="!category ? article.post_categories[0].title : category.title"
         />
 
@@ -78,7 +87,11 @@
                 : team.taxonomny_slug,
             },
           }"
-          class="uppercase category-link lg:text-white"
+          class="uppercase category-link"
+          :class="{
+            'lg:text-black': home,
+            'lg:text-white': !home,
+          }"
           v-text="!team ? article.teams[0].title : team.title"
           :style="`border-color:${!team ? article.teams[0].color : team.color}`"
           v-if="article && article.teams.length"
@@ -86,10 +99,10 @@
       </div>
 
       <h2
-        class="mb-5 text-xl font-bold leading-[1.1] text-black lg:mb-10 lg:tracking-[-2%] lg:text-white lg:underline"
+        class="mb-5 text-xl font-bold leading-[1.1] text-black lg:mb-10 lg:tracking-[-2%] lg:underline"
         :class="{
-          'lg:text-[38px]': home,
-          'lg:text-[42px]': !home,
+          'lg:text-[38px] lg:text-black': home,
+          'lg:text-[42px] lg:text-white': !home,
         }"
       >
         <nuxt-link
@@ -107,11 +120,7 @@
       </h2>
       <p
         v-if="home"
-        class="text-xs font-medium lg:text-lg"
-        :class="{
-          'text-black lg:text-white': home,
-          'text-white': !home,
-        }"
+        class="text-xs font-medium text-black lg:text-lg"
         v-text="article.excerpt"
       />
     </div>

@@ -23,6 +23,11 @@
         v-text="'Cookie-szabályzat'"
         class="pl-2 text-xs font-bold text-white lg:text-sm"
       />
+      <nuxt-link
+        to="contact"
+        v-text="'Kapcsolat'"
+        class="pl-2 text-xs font-bold text-white lg:text-sm"
+      />
     </div>
   </div>
 </template>
