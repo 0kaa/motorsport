@@ -115,8 +115,14 @@ export default {
     '@nuxtjs/feed',
     '@nuxtjs/toast',
     '@nuxtjs/universal-storage',
+    '@nuxtjs/gtm',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
+
+  gtm: {
+    enable: true,
+    id: 'GTM-MMNS5SC'
+  },
   toast: {
     position: 'top-center',
     duration: 3000

@@ -115,7 +115,7 @@
         >
           <div class="flex-1">
             <div
-              class="mb-4 text-xl font-bold leading-[1.2] text-black lg:mb-8 lg:text-2xl"
+              class="mb-4 text-xl font-bold leading-[1.5] text-black lg:mb-8 lg:text-2xl"
               v-text="data.article.excerpt"
             />
             <RecommendedArticle
@@ -471,7 +471,7 @@ export default {
 
 <style>
 .article-content p {
-  @apply mb-[30px] text-lg font-normal leading-[1.35] lg:mb-7 lg:text-lg;
+  @apply mb-[30px] text-lg font-normal leading-[1.55] lg:mb-7 lg:text-lg;
 }
 
 .article-content blockquote {
