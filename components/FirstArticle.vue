@@ -4,9 +4,9 @@
       <div
         class="article-image absolute top-0 right-0 hidden h-[210px] w-[75%] rounded-[4px] bg-center bg-no-repeat md:block"
       ></div>
-      <div class="md:h-[210px] md:rounded-[4px]">
+      <div class="md:h-[195px] md:rounded-[4px]">
         <div
-          class="absolute -top-1.5 left-6 z-10 bg-white px-4 text-md font-bold text-[#AD2D27] before:absolute before:right-0 before:top-0 before:hidden before:h-4 before:w-4 before:rounded-tr-[4px] before:border-t-[3px] before:border-r-[3px] before:border-primary after:absolute after:left-0 after:top-0 after:hidden after:h-4 after:w-4 after:rounded-tr-sm after:rounded-tl-[4px] after:border-t-[3px] after:border-l-[3px] after:border-primary md:-top-4 md:left-20 md:rounded-md md:bg-[#ECECEC] md:py-1 md:text-lg md:text-black before:md:block after:md:block"
+          class="absolute -top-1.5 left-6 z-10 bg-white px-4 text-md font-bold text-[#AD2D27] before:absolute before:-top-[3px] before:left-0 before:right-0 before:mx-auto before:h-[5px] before:w-[70%] before:bg-white md:-top-4 md:left-20 md:rounded-md md:border-[3px] md:border-primary md:bg-white md:py-1 md:text-lg md:text-black"
         >
           AJÁNLOTT
         </div>
