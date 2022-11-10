@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-full">
+  <div class="max-w-full video-player">
     <!-- <video ref="videoPlayer" class="video-js"></video> -->
     <video id="video-js" class="video-js">
       <source
@@ -31,7 +31,7 @@ export default {
     videoJs() {
       this.player = videojs(`video-js`, {
         controls: true,
-        autoplay: true,
+        autoplay: false,
         preload: 'auto',
         loop: false,
         muted: true,
@@ -58,7 +58,7 @@ export default {
             vastAd.disable()
           }
         })
-        this.player.play()
+        // this.player.play()
       }, 1000)
     },
   },

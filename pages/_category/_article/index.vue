@@ -248,10 +248,21 @@ export default {
       )
     }
 
-    // const articleContent = document.querySelector('.article-content')
-    // const secondParagraph = articleContent.querySelectorAll('p')[1]
-    // const component = document.querySelector('.connection-component')
-    // secondParagraph.after(component)
+    // auto play video.js when visible in viewport
+    const videoPlayer = document.querySelector('.video-js')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoPlayer.play()
+          } else {
+            videoPlayer.pause()
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+    observer.observe(videoPlayer)
   },
   methods: {
     async copyLink() {
@@ -295,7 +306,7 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'Motorsport',
+        content: 'Motorsport.hu',
       },
       {
         hid: 'mobile-web-app-capable',
@@ -305,7 +316,7 @@ export default {
       {
         hid: 'apple-mobile-web-app-title',
         name: 'apple-mobile-web-app-title',
-        content: 'Motorsport',
+        content: 'Motorsport.hu',
       },
       {
         hid: 'og:url',
@@ -409,7 +420,7 @@ export default {
         ],
         publisher: {
           '@type': 'Organization',
-          name: 'Motorsport',
+          name: 'Motorsport.hu',
           logo: {
             '@type': 'ImageObject',
             url: 'https://motorsport.hu/logo.png',

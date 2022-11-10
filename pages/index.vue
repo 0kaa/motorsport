@@ -193,7 +193,20 @@ export default {
         {
           hid: 'og:site_name',
           property: 'og:site_name',
-          content: 'Motorsport',
+          content: 'Motorsport.hu',
+        },
+        // description
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'F1 hírek, eredmények és egyéb érdekességek a motorsport világából',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'F1 hírek, eredmények és egyéb érdekességek a motorsport világából',
         },
         {
           hid: 'mobile-web-app-capable',
@@ -203,7 +216,7 @@ export default {
         {
           hid: 'apple-mobile-web-app-title',
           name: 'apple-mobile-web-app-title',
-          content: 'Motorsport',
+          content: 'Motorsport.hu',
         },
         {
           hid: 'og:type',
@@ -213,7 +226,7 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'Motorsport',
+          content: 'Motorsport.hu',
         },
       ],
       link: [
