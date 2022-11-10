@@ -36,9 +36,9 @@
           :to="{ name: 'category', params: { category: category.slug } }"
           v-text="category.title"
         />
-        <button>
+        <!-- <button>
           <img src="/dark.png" alt="search" />
-        </button>
+        </button> -->
         <button @click="searchModal = true">
           <img src="/search.png" alt="search" />
         </button>
