@@ -1,8 +1,11 @@
 <template>
-  <div
-    class="flex flex-wrap items-center justify-between gap-4 py-6 bg-black px-7"
-  >
+  <div class="flex flex-wrap items-center justify-between gap-4 p-4 bg-black">
     <div class="flex flex-wrap gap-2 divide-x-2 divide-[#C0C0C0]">
+      <nuxt-link
+        to="/"
+        class="text-xs font-bold text-white lg:text-sm"
+        v-text="''"
+      />
       <nuxt-link
         to="/impresszum"
         class="pl-2 text-xs font-bold text-white lg:text-sm"

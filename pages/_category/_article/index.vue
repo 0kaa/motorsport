@@ -1,8 +1,13 @@
 <template>
-  <div class="mt-5 mb-20">
+  <div class="mt-0 mb-4">
     <Hero class="mb-10 px-4 lg:mb-[74px] lg:px-7" :article="data.article" />
     <div class="flex flex-col-reverse gap-8 px-4 lg:flex-row lg:px-7">
       <div class="sticky h-full lg:-top-[50px] lg:w-[15%] lg:pt-[70px]">
+        <div
+          class="mb-5 inline-block bg-black px-4 py-2.5 text-md font-bold uppercase text-white md:hidden"
+        >
+          OLVASS TOVÁBB
+        </div>
         <div class="flex flex-col gap-6">
           <nuxt-link
             :to="`/${category.slug}/${article.slug}`"
@@ -17,7 +22,7 @@
                   : '/placeholder.jpeg'
               "
               alt=""
-              class="max-h-[55px] max-w-[100px] rounded-md object-cover lg:max-h-[130px] lg:min-h-[130px] lg:max-w-full"
+              class="max-h-[65px] min-h-[65px] max-w-[100px] rounded-md object-cover lg:max-h-[130px] lg:min-h-[130px] lg:max-w-full"
             />
             <div>
               <nuxt-link
@@ -35,7 +40,7 @@
                 "
               />
               <h3
-                class="text-[13px] font-semibold text-black lg:mt-2 lg:mb-4 lg:text-[15px]"
+                class="text-md font-semibold text-black lg:mt-2 lg:mb-4 lg:text-[15px]"
                 v-text="article.title"
               ></h3>
             </div>
@@ -78,6 +83,17 @@
             </transition>
           </div>
         </div>
+        <div class="mt-8">
+          <nuxt-link
+            to="/"
+            class="flex items-center justify-center gap-3 px-4 py-2 text-sm border border-black lg:hidden lg:text-lg"
+          >
+            <i class="fa-solid fa-house"></i>
+            <h3 class="pl-3 font-semibold text-black border-l border-black">
+              Kezdőlap
+            </h3>
+          </nuxt-link>
+        </div>
       </div>
       <div class="flex-1">
         <div
@@ -99,7 +115,7 @@
         >
           <div class="flex-1">
             <div
-              class="mb-4 text-sm font-bold text-black lg:mb-8 lg:text-2xl"
+              class="mb-4 text-xl font-bold leading-[1.2] text-black lg:mb-8 lg:text-2xl"
               v-text="data.article.excerpt"
             />
             <RecommendedArticle
@@ -455,7 +471,7 @@ export default {
 
 <style>
 .article-content p {
-  @apply mb-3 text-sm font-normal lg:mb-7 lg:text-lg;
+  @apply mb-[30px] text-lg font-normal leading-[1.35] lg:mb-7 lg:text-lg;
 }
 
 .article-content blockquote {

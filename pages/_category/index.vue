@@ -184,7 +184,7 @@
                       : '/placeholder.jpeg'
                   "
                   alt="article"
-                  class="h-[175px] w-full rounded-[4px] object-cover lg:h-[175px] lg:w-[315px]"
+                  class="h-[200px] w-full rounded-[4px] object-cover lg:h-[175px] lg:w-[315px]"
                 />
               </nuxt-link>
               <div class="absolute flex items-center gap-2 -bottom-5">

@@ -72,7 +72,7 @@
           class="category-link"
           :class="{
             'lg:text-black': home,
-            'lg:text-white': !home,
+            '!text-[13px] md:text-xl lg:text-white': !home,
           }"
           v-text="!category ? article.post_categories[0].title : category.title"
         />
@@ -90,7 +90,7 @@
           class="uppercase category-link"
           :class="{
             'lg:text-black': home,
-            'lg:text-white': !home,
+            '!text-[13px] md:text-xl lg:text-white': !home,
           }"
           v-text="!team ? article.teams[0].title : team.title"
           :style="`border-color:${!team ? article.teams[0].color : team.color}`"
@@ -99,10 +99,10 @@
       </div>
 
       <h2
-        class="mb-5 text-xl font-bold leading-[1.1] text-black lg:mb-10 lg:tracking-[-2%] lg:underline"
+        class="mb-5 font-bold text-black lg:mb-10 lg:tracking-[-2%] lg:underline"
         :class="{
-          'lg:text-[38px] lg:text-black': home,
-          'lg:text-[42px] lg:text-white': !home,
+          'text-xl leading-[1.1] lg:text-[38px] lg:text-black': home,
+          'text-[26px] leading-[1.2] lg:text-[42px] lg:text-white': !home,
         }"
       >
         <nuxt-link

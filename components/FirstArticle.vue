@@ -1,5 +1,5 @@
 <template>
-  <div class="my-8 px-4 md:h-[210px] lg:mt-10 lg:mb-11 lg:px-7">
+  <div class="my-8 mt-4 px-[0.7rem] md:h-[210px] lg:mt-10 lg:mb-11 lg:px-7">
     <div class="relative rounded-[4px] md:bg-black">
       <div
         class="article-image absolute top-0 right-0 hidden h-[210px] w-[75%] rounded-[4px] bg-center bg-no-repeat md:block"

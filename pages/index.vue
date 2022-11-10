@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5 mb-20">
+  <div class="mt-5 mb-4">
     <FirstArticle v-if="firstArticle" :article="firstArticle" />
     <Hero
       class="mb-10 px-4 lg:mb-[74px] lg:px-[38px]"
@@ -113,7 +113,7 @@
                   : '/placeholder.jpeg'
               "
               alt="article"
-              class="h-[175px] w-full rounded-[4px] object-cover lg:h-[92px] lg:w-[140px]"
+              class="h-[200px] w-full rounded-[4px] object-cover lg:h-[92px] lg:w-[140px]"
             />
           </nuxt-link>
           <div class="flex flex-col justify-between flex-1 h-full">
