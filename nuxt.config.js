@@ -16,7 +16,7 @@ const getSitemapsConfigurations = () => {
           rejectUnauthorized: false
         })
       });
-      const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-data?page=${index}`)
+      const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-data?page=${index}`)
       const routes = data.data.map((article, i) => {
         return {
           url: article.url,
@@ -145,7 +145,7 @@ export default {
             rejectUnauthorized: false
           })
         });
-        const { data } = await (instance.post('https://msfrontend.hirertek.hu/api/get-rss-posts'))
+        const { data } = await (instance.post('https://api.motorsport.hu/api/get-rss-posts'))
 
         data.data.forEach(post => {
           feed.addItem({
@@ -199,7 +199,7 @@ export default {
               rejectUnauthorized: false
             })
           });
-          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-tags`)
+          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-tags`)
           const routes = data.data.map((tag, i) => {
             return {
               url: tag.url,
@@ -219,7 +219,7 @@ export default {
               rejectUnauthorized: false
             })
           });
-          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-teams`)
+          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-teams`)
           const routes = data.data.map((team, i) => {
             return {
               url: team.url,
@@ -239,7 +239,7 @@ export default {
               rejectUnauthorized: false
             })
           });
-          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-drivers`)
+          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-drivers`)
           const routes = data.data.map((driver, i) => {
             return {
               url: driver.url,
@@ -259,7 +259,7 @@ export default {
               rejectUnauthorized: false
             })
           });
-          const { data } = await instance.post(`https://msfrontend.hirertek.hu/api/get-sitemap-races`)
+          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-races`)
           const routes = data.data.map((race, i) => {
             return {
               url: race.url,
@@ -281,7 +281,7 @@ export default {
     // debug: true
   },
   // proxy: {
-  //   '/api': 'https://msfrontend.hirertek.hu/api'
+  //   '/api': 'https://api.motorsport.hu/api'
   // },
 
 
