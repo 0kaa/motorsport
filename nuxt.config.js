@@ -91,8 +91,6 @@ export default {
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/jsonld.js' },
     { src: '~/plugins/owl-carousel', ssr: true },
-    { src: '~/plugins/vee-validate.js' },
-    { src: '~/plugins/vue-tippy.js', mode: 'client' },
   ],
 
   components: true,
@@ -100,6 +98,7 @@ export default {
   buildModules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/date-fns',
+    'nuxt-delay-hydration',
     '@nuxtjs/stylelint-module',
   ],
 
@@ -114,6 +113,7 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/feed',
     '@nuxtjs/toast',
+    '@nuxt/image',
     '@nuxtjs/universal-storage',
     '@nuxtjs/gtm',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
@@ -171,7 +171,9 @@ export default {
       data: [] // Will be passed as 2nd argument to `create` function
     }
   ],
-
+  delayHydration: {
+    mode: 'init'
+  },
   tailwindcss: {
     exposeConfig: true,
     viewer: false,

@@ -16,7 +16,8 @@
           :key="'c_' + i + 1"
           class="!flex h-[90px] items-center justify-center rounded-[4px] border border-white py-3"
         >
-          <img
+          <nuxt-img
+            placeholder
             :src="
               team.team.image.url ? team.team.image.url : '/placeholder.jpeg'
             "

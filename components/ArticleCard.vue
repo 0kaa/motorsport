@@ -23,7 +23,10 @@
         }"
         class="block overflow-hidden rounded-[4px]"
       >
-        <img
+        <nuxt-img
+          quality="10"
+          format="webp"
+          loading="lazy"
           v-if="article.featured_image"
           :src="
             article.featured_image['4x']
