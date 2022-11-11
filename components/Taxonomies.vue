@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mt-5 flex flex-col justify-between gap-3 border-b border-[#D9D9D9] lg:flex-row"
+    class="mt-5 mb-5 flex flex-col justify-between gap-3 border-b border-[#D9D9D9] lg:flex-row"
   >
     <div class="flex items-center gap-1 lg:gap-4">
       <nuxt-link
