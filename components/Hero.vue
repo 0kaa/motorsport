@@ -101,7 +101,7 @@
       <h2
         class="mb-5 font-bold text-black lg:mb-10 lg:tracking-[-2%] lg:underline"
         :class="{
-          'text-xl leading-[1.1] lg:text-[38px] lg:text-black': home,
+          'text-xl leading-[1.3] lg:text-[38px] lg:text-black': home,
           'text-[26px] leading-[1.2] lg:text-[42px] lg:text-white': !home,
         }"
       >
@@ -120,7 +120,7 @@
       </h2>
       <p
         v-if="home"
-        class="text-xs font-medium text-black lg:text-lg"
+        class="text-md font-medium leading-[1.4] text-black lg:text-lg"
         v-text="article.excerpt"
       />
     </div>

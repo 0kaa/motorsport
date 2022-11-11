@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col mt-16 recommended-article mb-7">
+  <div class="recommended-article relative mt-16 mb-[30px] flex flex-col">
     <span
       v-text="'Ajánlott'"
       class="absolute px-8 pt-2 pb-4 font-bold text-white -top-10 max-w-max bg-primary text-md"

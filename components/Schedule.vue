@@ -100,8 +100,8 @@ export default {
   mounted() {
     this.tab = this.series[0].id
     this.reInit()
-    // this.slickOptions.nextArrow = document.querySelector('.next-btn')
-    // this.slickOptions.prevArrow = document.querySelector('.prev-btn')
+
+    // if mobile viewport change slidesToShow
   },
   watch: {
     races(newVal, val) {
@@ -144,6 +144,9 @@ export default {
           this.races.length - this.slickOptions.slidesToShow,
           true
         )
+        if (window.innerWidth < 600) {
+          this.$refs.schedule_slick.goTo(this.races.length - 2)
+        }
       })
     },
     highDate(infos) {

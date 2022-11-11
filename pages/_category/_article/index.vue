@@ -96,6 +96,13 @@
         </div>
       </div>
       <div class="flex-1">
+        <client-only>
+          <div id="motorsporthu_fekvo_1">
+            <component :is="'script'">
+              activateBanner('motorsporthu_fekvo_1')
+            </component>
+          </div>
+        </client-only>
         <div
           class="relative mb-7 flex items-center justify-between border-b-[10px] border-black after:absolute after:right-0 after:top-full after:h-[150px] after:w-2.5 after:bg-black"
         >
@@ -118,6 +125,13 @@
               class="mb-4 text-xl font-bold leading-[1.5] text-black lg:mb-8 lg:text-2xl"
               v-text="data.article.excerpt"
             />
+            <client-only>
+              <div id="motorsporthu_roadblock_1">
+                <component :is="'script'">
+                  activateBanner('motorsporthu_roadblock_1')
+                </component>
+              </div>
+            </client-only>
             <RecommendedArticle
               :article="recommendedArticle"
               v-if="
@@ -142,26 +156,37 @@
               :team="team"
               :tag="tag"
             />
+            <client-only>
+              <div id="motorsporthu_roadblock_2">
+                <component :is="'script'">
+                  activateBanner('motorsporthu_roadblock_2')
+                </component>
+              </div>
+            </client-only>
           </div>
           <div class="hidden flex-col gap-[50px] lg:flex lg:w-[300px]">
-            <div class="lg:max-w-[300px]">
-              <img
-                src="/ad-1.png"
-                alt="ad"
-                class="object-cover w-full h-full"
-              />
+            <div class="flex-1 bg-black lg:max-w-[300px]">
+              <client-only>
+                <div id="motorsporthu_jobb_1">
+                  <component :is="'script'">
+                    activateBanner('motorsporthu_jobb_1')
+                  </component>
+                </div>
+              </client-only>
             </div>
             <Standings
               :standings="standings"
               :series="series"
               @selected="getStandingsBySeries"
             />
-            <div class="lg:max-w-[300px]">
-              <img
-                src="/ad-1.png"
-                alt="ad"
-                class="object-cover w-full h-full"
-              />
+            <div class="flex-1 bg-black lg:max-w-[300px]">
+              <client-only>
+                <div id="motorsporthu_jobb_1">
+                  <component :is="'script'">
+                    activateBanner('motorsporthu_jobb_1')
+                  </component>
+                </div>
+              </client-only>
             </div>
           </div>
         </div>
@@ -471,7 +496,7 @@ export default {
 
 <style>
 .article-content p {
-  @apply mb-[30px] text-lg font-normal leading-[1.55] lg:mb-7 lg:text-lg;
+  @apply mb-[30px] text-lg font-normal leading-[1.55] lg:text-lg;
 }
 
 .article-content blockquote {

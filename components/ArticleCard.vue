@@ -85,7 +85,7 @@
         <h3
           class="mt-8 font-bold text-black excerpt"
           :class="{
-            'text-lg lg:text-[22px] lg:leading-[26px]': size == 'sm',
+            'text-lg lg:text-[22px] lg:leading-[1.5]': size == 'sm',
             'text-xl lg:pr-14 lg:text-4xl': size == 'lg',
             'lg:!mt-0 lg:!pr-0': inline,
           }"

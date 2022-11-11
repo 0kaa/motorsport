@@ -6,7 +6,7 @@
       ></div>
       <div class="md:h-[195px] md:rounded-[4px]">
         <div
-          class="absolute -top-1.5 left-6 z-10 bg-white px-4 text-md font-bold text-[#AD2D27] before:absolute before:-top-[3px] before:left-0 before:right-0 before:mx-auto before:h-[5px] before:w-[70%] before:bg-white md:-top-4 md:left-20 md:rounded-md md:border-[3px] md:border-primary md:bg-white md:py-1 md:text-lg md:text-black"
+          class="absolute -top-1.5 left-6 z-10 bg-white px-4 text-md font-bold text-[#AD2D27] before:absolute before:-top-[3px] before:left-0 before:right-0 before:mx-auto before:h-[5px] before:w-[70%] before:bg-white md:-top-4 md:left-20 md:rounded-[4px] md:border-[3px] md:border-primary md:bg-white md:py-1 md:text-lg md:text-black"
         >
           AJÁNLOTT
         </div>
