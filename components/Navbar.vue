@@ -90,8 +90,7 @@ export default {
       swipeToSlide: true,
       nextArrow: '.nav-next-btn',
       prevArrow: false,
-      autoplay: true,
-      autoplaySpeed: 2000,
+
       responsive: [
         {
           breakpoint: 1480,
