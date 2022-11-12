@@ -5,7 +5,11 @@
       lang="en"
       class="flex flex-col justify-between min-h-screen gap-5 bg-white font-bai"
     >
-      <Navbar :categories="categories" :drivers="drivers" />
+      <Navbar
+        :categories="categories"
+        :drivers="drivers"
+        v-if="categories.length && Object.keys(drivers).length"
+      />
       <div>
         <Nuxt class="mx-auto max-w-[1320px]" />
       </div>
@@ -22,11 +26,11 @@ export default {
     categories: [],
     drivers: [],
   }),
-  async fetch() {
-    await this.$api.series.getCategories().then((res) => {
+  mounted() {
+    this.$api.series.getCategories().then((res) => {
       this.categories = res.data.data
     })
-    await this.$api.standings
+    this.$api.standings
       .getDrivers(1, this.$dateFns.format(new Date(), 'yyyy'))
       .then((res) => {
         this.drivers = res.data.data
