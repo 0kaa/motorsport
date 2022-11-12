@@ -176,12 +176,12 @@ export default {
   async asyncData({ $api, params, redirect }) {
     try {
       const { data } = await $api.articles.getArticles()
-      const series = await $api.series.getSeries()
+      // const series = await $api.series.getSeries()
       return {
         data: data.posts,
         levezeto: data.levezeto,
         firstArticle: data.first_article,
-        series: series.data.data,
+        series: data.series,
         stickyArticle: data.sticky_article,
         featuredArticle: data.featured_article,
         races: data.races.sort((a, b) => {
