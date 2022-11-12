@@ -25,6 +25,7 @@
     "nuxt": "^2.15.8",
     "nuxt-delay-hydration": "^0.4.5",
     "nuxt-jsonld": "v1",
+    "nuxt-ssr-cache": "^1.5.2",
     "popper.js": "^1.16.1",
     "vue": "^2.6.14",
     "vue-slick": "^1.2.0"

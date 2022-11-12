@@ -1,6 +1,6 @@
 export default (axios) => ({
-    getArticle(category, slug) {
-        return axios.get(`/${category}/${slug}`)
+    getArticle(category, slug, cat_id = 1) {
+        return axios.get(`/${category}/${slug}?cat=${cat_id}`)
     },
     getArticles() {
         return axios.get(`/home`)

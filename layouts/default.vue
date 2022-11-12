@@ -26,7 +26,7 @@ export default {
     categories: [],
     drivers: [],
   }),
-  mounted() {
+  created() {
     this.$api.series.getCategories().then((res) => {
       this.categories = res.data.data
     })
