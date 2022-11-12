@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5 mb-4">
+  <div class="mt-5 mb-4" v-if="data.length">
     <FirstArticle v-if="firstArticle" :article="firstArticle" />
     <Hero
       class="mb-10 px-4 lg:mb-[74px] lg:px-[38px]"
@@ -18,13 +18,13 @@
         />
       </div>
       <div class="flex-1 bg-black lg:max-w-[300px]">
-        <client-only>
+        <!-- <client-only>
           <div id="motorsporthu_jobb_1">
             <component :is="'script'">
               activateBanner('motorsporthu_jobb_1')
             </component>
           </div>
-        </client-only>
+        </client-only> -->
       </div>
     </div>
     <Clients class="mb-[55px]" />
@@ -173,26 +173,54 @@
 <script>
 export default {
   name: 'Home',
-  async asyncData({ $api, params, redirect }) {
-    try {
-      const { data } = await $api.articles.getArticles()
-      // const series = await $api.series.getSeries()
-      return {
-        data: data.posts,
-        levezeto: data.levezeto,
-        firstArticle: data.first_article,
-        series: data.series,
-        stickyArticle: data.sticky_article,
-        featuredArticle: data.featured_article,
-        races: data.races.sort((a, b) => {
-          return new Date(a.lowDate) - new Date(b.lowDate)
-        }),
-      }
-    } catch (error) {
-      // console.log(error)
-      redirect('/404')
+  data: () => ({
+    data: [],
+    levezeto: {},
+    firstArticle: {},
+    series: [],
+    stickyArticle: {},
+    featuredArticle: [],
+    races: [],
+  }),
+  async fetch() {
+    await this.$api.articles.getArticles().then((res) => {
+      // console.log(res.data)
+      this.data = res.data.posts
+      this.levezeto = res.data.levezeto
+      this.firstArticle = res.data.first_article
+      this.series = res.data.series
+      this.stickyArticle = res.data.sticky_article
+      this.featuredArticle = res.data.featured_article
+      this.races = res.data.races.sort((a, b) => {
+        return new Date(a.lowDate) - new Date(b.lowDate)
+      })
+    })
+  },
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - 30000) {
+      this.$fetch()
     }
   },
+  // async asyncData({ $api, params, redirect }) {
+  //   try {
+  //     const { data } = await $api.articles.getArticles()
+  //     // const series = await $api.series.getSeries()
+  //     return {
+  //       data: data.posts,
+  //       levezeto: data.levezeto,
+  //       firstArticle: data.first_article,
+  //       series: data.series,
+  //       stickyArticle: data.sticky_article,
+  //       featuredArticle: data.featured_article,
+  //       races: data.races.sort((a, b) => {
+  //         return new Date(a.lowDate) - new Date(b.lowDate)
+  //       }),
+  //     }
+  //   } catch (error) {
+  //     // console.log(error)
+  //     redirect('/404')
+  //   }
+  // },
   head() {
     return {
       meta: [

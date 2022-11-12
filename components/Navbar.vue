@@ -29,13 +29,15 @@
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <nuxt-link
-          class="text-xl font-bold text-white uppercase"
-          v-for="(category, i) in categories"
-          :key="i"
-          :to="{ name: 'category', params: { category: category.slug } }"
-          v-text="category.title"
-        />
+        <template v-if="categories && categories.length">
+          <nuxt-link
+            class="text-xl font-bold text-white uppercase"
+            v-for="(category, i) in categories"
+            :key="i"
+            :to="{ name: 'category', params: { category: category.slug } }"
+            v-text="category.title"
+          />
+        </template>
         <!-- <button>
           <img src="/dark.png" alt="search" />
         </button> -->
@@ -46,6 +48,7 @@
     </div>
     <div
       class="navbar-slick relative max-h-[35px] overflow-hidden bg-dark px-3 pr-4 text-[#F0F0F0]"
+      v-if="drivers && Object.keys(drivers).length"
     >
       <slick ref="navbar" :options="slickOptions">
         <div v-for="(driver, i) in drivers.drivers.slice(0, 20)" :key="'d' + i">
@@ -144,7 +147,6 @@ export default {
     },
     drivers: {
       type: Object,
-      default: () => {},
     },
   },
 }

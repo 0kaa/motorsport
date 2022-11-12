@@ -5,14 +5,12 @@
       lang="en"
       class="flex flex-col justify-between min-h-screen gap-5 bg-white font-bai"
     >
-      <Navbar
-        :categories="categories"
-        :drivers="drivers"
-        v-if="categories.length && Object.keys(drivers).length"
-      />
-      <div>
-        <Nuxt class="mx-auto max-w-[1320px]" />
-      </div>
+      <Navbar :categories="categories" :drivers="drivers" />
+      <LazyHydrate when-visible>
+        <div>
+          <Nuxt class="mx-auto max-w-[1320px]" keep-alive />
+        </div>
+      </LazyHydrate>
       <Footer />
     </div>
     <!-- </client-only> -->
@@ -20,17 +18,23 @@
 </template>
 
 <script>
+import LazyHydrate from 'vue-lazy-hydration'
+
 export default {
   name: 'default',
+  components: {
+    LazyHydrate,
+  },
+
   data: () => ({
     categories: [],
-    drivers: [],
+    drivers: {},
   }),
-  async fetch() {
-    await this.$api.series.getCategories().then((res) => {
+  created() {
+    this.$api.series.getCategories().then((res) => {
       this.categories = res.data.data
     })
-    await this.$api.standings
+    this.$api.standings
       .getDrivers(1, this.$dateFns.format(new Date(), 'yyyy'))
       .then((res) => {
         this.drivers = res.data.data
