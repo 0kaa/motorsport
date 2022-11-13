@@ -1,9 +1,11 @@
 <template>
   <div class="flex flex-wrap items-center justify-between gap-4 p-4 bg-black">
-    <div class="flex flex-wrap gap-2 divide-x-2 divide-[#C0C0C0]">
+    <div
+      class="grid flex-1 grid-cols-2 flex-col flex-wrap gap-6 lg:flex lg:flex-row lg:gap-2 lg:divide-x-2 lg:divide-[#C0C0C0]"
+    >
       <nuxt-link
         to="/"
-        class="text-xs font-bold text-white lg:text-sm"
+        class="hidden text-xs font-bold text-white lg:block lg:text-sm"
         v-text="''"
       />
       <nuxt-link

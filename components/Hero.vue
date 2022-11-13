@@ -9,11 +9,11 @@
   >
     <div
       v-if="home"
-      class="absolute -top-1.5 right-[30px] z-[-1] hidden h-[70%] w-2.5 rounded-t-xl bg-black lg:block"
+      class="absolute -top-1.5 right-[20px] z-[-1] hidden h-[70%] w-2.5 rounded-t-xl bg-black lg:block"
     ></div>
     <div
       v-if="home"
-      class="absolute -top-2.5 right-[30px] z-[-1] hidden h-2.5 w-[360px] rounded-tr-lg bg-primary lg:block"
+      class="absolute -top-2.5 right-[20px] z-[-1] hidden h-2.5 w-[360px] rounded-tr-lg bg-primary lg:block"
     ></div>
 
     <div class="relative z-10">
@@ -54,7 +54,7 @@
       ></div>
     </div>
     <div
-      class="relative z-10 flex flex-col items-start justify-center flex-1 md:py-0 md:pl-10 md:pr-14"
+      class="relative z-[-2] flex flex-1 flex-col items-start justify-center md:py-0 md:pl-10 md:pr-14"
       :class="{
         'md:border md:border-black lg:bg-white': home,
         'lg:bg-[#151515]': !home,
