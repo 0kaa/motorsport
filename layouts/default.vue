@@ -30,10 +30,15 @@ export default {
     categories: [],
     drivers: {},
   }),
-  async fetch() {
-    await this.$api.series.getCategories().then((res) => {
-      this.categories = res.data.data
-    })
+  created() {
+    this.$api.series
+      .navbarContent(1, this.$dateFns.format(new Date(), 'yyyy'))
+      .then((res) => {
+        this.categories = res.data.categories
+        this.drivers = res.data.drivers
+        this.$store.commit('setTeams', res.data.drivers.teams)
+        this.$store.commit('setDrivers', res.data.drivers.drivers)
+      })
     // this.$api.standings
     //   .getDrivers(1, this.$dateFns.format(new Date(), 'yyyy'))
     //   .then((res) => {

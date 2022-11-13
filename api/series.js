@@ -5,4 +5,7 @@ export default (axios) => ({
     getCategories() {
         return axios.get(`categories`)
     },
+    navbarContent(category, year) {
+        return axios.post(`/navbar_content?cat=${category}&year=${year}`)
+    }
 })
