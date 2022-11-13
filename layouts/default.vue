@@ -8,7 +8,11 @@
       <Navbar :categories="categories" :drivers="drivers" />
       <LazyHydrate when-visible>
         <div>
-          <Nuxt class="mx-auto max-w-[1320px]" keep-alive />
+          <Nuxt
+            class="mx-auto max-w-[1320px]"
+            keep-alive
+            :keep-alive-props="{ exclude: ['article-single'] }"
+          />
         </div>
       </LazyHydrate>
       <Footer />

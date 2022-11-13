@@ -209,13 +209,6 @@ export default {
         params.article,
         1
       )
-
-      // const recommendedArticle = await $api.articles.getLatestThreeArticles()
-      // const twoArticles = await $api.articles.getRecommendedArticle(
-      //   data.data.article.id
-      // )
-      // const standings = await $api.standings.getStandings(1)
-      // const series = await $api.series.getSeries()
       return {
         data: data.data,
         standings: data.data.standings,
