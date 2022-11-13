@@ -55,7 +55,10 @@
                 }"
                 class="block"
               >
-                <img
+                <nuxt-img
+                  placeholder
+                  format="webp"
+                  loading="lazy"
                   v-if="article.featured_image"
                   :src="
                     article.featured_image['4x']

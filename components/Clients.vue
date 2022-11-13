@@ -18,6 +18,8 @@
         >
           <nuxt-img
             placeholder
+            format="webp"
+            loading="lazy"
             :src="
               team.team.image.url ? team.team.image.url : '/placeholder.jpeg'
             "

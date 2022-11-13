@@ -130,7 +130,10 @@
         v-if="drivers.length || teams.length"
       >
         <button>
-          <img
+          <nuxt-img
+            placeholder
+            format="webp"
+            loading="lazy"
             src="/more.png"
             class="max-w-[40px]"
             :class="{ '-scale-y-100': limit !== 5 }"

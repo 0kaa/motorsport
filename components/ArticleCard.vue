@@ -24,13 +24,14 @@
         class="block overflow-hidden rounded-[4px]"
       >
         <nuxt-img
-          quality="10"
           format="webp"
           loading="lazy"
           v-if="article.featured_image"
           :src="
-            article.featured_image['4x']
-              ? article.featured_image['4x']
+            article.featured_image['6x']
+              ? size == 'sm'
+                ? article.featured_image['4x']
+                : article.featured_image['6x']
               : '/placeholder.jpeg'
           "
           alt="article"

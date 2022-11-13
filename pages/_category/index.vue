@@ -86,7 +86,10 @@
             </table>
             <div class="mt-4 text-center">
               <button @click="changeLimit">
-                <img
+                <nuxt-img
+                  placeholder
+                  format="webp"
+                  loading="lazy"
                   src="/more.png"
                   alt="more"
                   :class="{
@@ -176,7 +179,10 @@
                 }"
                 class="block"
               >
-                <img
+                <nuxt-img
+                  placeholder
+                  format="webp"
+                  loading="lazy"
                   v-if="article.featured_image"
                   :src="
                     article.featured_image['4x']

@@ -18,7 +18,8 @@
 
     <div class="relative z-10">
       <div class="h-full">
-        <img
+        <nuxt-img
+          format="webp"
           :src="
             article.featured_image['6x']
               ? article.featured_image['6x']

@@ -15,7 +15,10 @@
             :key="i"
             class="flex items-end gap-2 lg:block"
           >
-            <img
+            <nuxt-img
+              placeholder
+              format="webp"
+              loading="lazy"
               :src="
                 article.featured_image['3x']
                   ? article.featured_image['3x']

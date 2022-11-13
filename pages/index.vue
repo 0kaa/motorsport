@@ -75,10 +75,11 @@
       <div
         class="flex-1 overflow-hidden rounded-[4px] border-[3px] border-white"
       >
-        <img
+        <nuxt-img
+          format="webp"
           :src="
-            levezeto.featured_image.url
-              ? levezeto.featured_image.url
+            levezeto.featured_image['7x']
+              ? levezeto.featured_image['7x']
               : '/placeholder.jpeg'
           "
           alt="levezeto"
@@ -112,7 +113,10 @@
               },
             }"
           >
-            <img
+            <nuxt-img
+              placeholder
+              format="webp"
+              loading="lazy"
               :src="
                 article.featured_image['3x']
                   ? article.featured_image['3x']

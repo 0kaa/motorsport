@@ -5,7 +5,7 @@
         <div
           class="relative overflow-hidden after:absolute after:top-0 after:left-0 after:z-10 after:h-full after:w-full after:bg-gradient-to-r after:from-black after:opacity-60 xl:h-[500px]"
         >
-          <img :src="race.image" alt="hero image" class="object-cover w-full" />
+          <img :src="race.image" alt="hero image" class="w-full object-cover" />
         </div>
         <div
           class="absolute -bottom-3 -left-3 z-[-1] h-[50%] w-5 bg-black"
@@ -27,8 +27,8 @@
             v-text="race.title"
           />
           <h5 class="text-xs font-bold text-white lg:text-xl">
-            <i class="inline fa-solid fa-location-dot fa-xs"></i>
-            <span v-text="race.location" class="inline ml-1" />
+            <i class="fa-solid fa-location-dot fa-xs inline"></i>
+            <span v-text="race.location" class="ml-1 inline" />
           </h5>
         </div>
       </div>
@@ -72,7 +72,7 @@
         <div class="content" v-html="race.content" />
       </div>
       <div class="max-w-[600px] flex-1">
-        <img :src="race.map" alt="map" class="object-cover w-full" />
+        <img :src="race.map" alt="map" class="w-full object-cover" />
       </div>
     </div>
     <div
@@ -126,7 +126,7 @@
     </div>
     <div class="mb-10 px-4 lg:mb-[55px] lg:px-7" v-if="race.posts.length">
       <h3
-        class="pb-1 mb-5 font-bold text-black uppercase border-b border-black text-md lg:mb-10 lg:text-2xl"
+        class="mb-5 border-b border-black pb-1 text-md font-bold uppercase text-black lg:mb-10 lg:text-2xl"
       >
         <span class="ml-5 border-b-[10px] border-black">
           {{ race.title }} HÍREK
@@ -146,7 +146,7 @@
       v-if="race.drivers.length && race.teams.length"
     >
       <h3
-        class="pb-1 mb-10 font-bold text-center text-black uppercase text-md lg:text-2xl"
+        class="mb-10 pb-1 text-center text-md font-bold uppercase text-black lg:text-2xl"
       >
         <span class="ml-5 border-b-[10px] border-black">
           {{ race.title }} VÉGEREDMÉNY
@@ -155,12 +155,12 @@
       <div class="grid flex-1 gap-y-5 gap-x-5 lg:grid-cols-2">
         <div>
           <h3
-            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
+            class="mb-5 border-b-2 border-black pb-1 text-md font-bold text-black lg:mb-10 lg:text-2xl"
           >
             VERSENYZŐK
           </h3>
           <div class="relative">
-            <table class="w-full text-xs text-left">
+            <table class="w-full text-left text-xs">
               <thead class="text-[10px] uppercase text-black">
                 <tr>
                   <th scope="col" class="px-3 py-2 font-normal lg:px-6">
@@ -191,7 +191,7 @@
                   }"
                 >
                   <th
-                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
+                    class="whitespace-nowrap px-3 py-2 font-bold text-black lg:px-6"
                     v-text="driver.position"
                   />
                   <td class="px-3 py-2 lg:px-6" scope="row">
@@ -209,7 +209,10 @@
             </table>
             <div class="mt-8 text-center">
               <button @click="changeLimit">
-                <img
+                <nuxt-img
+                  placeholder
+                  format="webp"
+                  loading="lazy"
                   src="/more.png"
                   alt="more"
                   :class="{
@@ -222,12 +225,12 @@
         </div>
         <div>
           <h3
-            class="pb-1 mb-5 font-bold text-black border-b-2 border-black text-md lg:mb-10 lg:text-2xl"
+            class="mb-5 border-b-2 border-black pb-1 text-md font-bold text-black lg:mb-10 lg:text-2xl"
           >
             CSAPATOK
           </h3>
           <div class="relative">
-            <table class="w-full text-xs text-left">
+            <table class="w-full text-left text-xs">
               <thead class="text-[10px] uppercase text-black">
                 <tr>
                   <th scope="col" class="px-3 py-2 font-normal lg:px-6">
@@ -252,7 +255,7 @@
                   }"
                 >
                   <th
-                    class="px-3 py-2 font-bold text-black whitespace-nowrap lg:px-6"
+                    class="whitespace-nowrap px-3 py-2 font-bold text-black lg:px-6"
                     v-text="team.position"
                   />
                   <td class="px-3 py-2 lg:px-6" scope="row">

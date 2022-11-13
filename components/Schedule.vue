@@ -2,7 +2,13 @@
   <div>
     <div class="flex items-center justify-between px-4 mb-4 lg:px-7">
       <div class="flex items-center gap-2">
-        <img src="/calendar.png" alt="calendar" />
+        <nuxt-img
+          placeholder
+          format="webp"
+          loading="lazy"
+          src="/calendar.png"
+          alt="calendar"
+        />
         <h3 class="text-sm font-bold text-black lg:text-xl">MENETREND</h3>
       </div>
       <div class="flex items-center gap-3 lg:gap-[18px]">
@@ -34,7 +40,14 @@
               race.lowDate > today && race.lowDate <= highDateInRaces,
           }"
         >
-          <img :src="race.flag" alt="hun" class="mx-auto !w-[45px]" />
+          <nuxt-img
+            placeholder
+            format="webp"
+            loading="lazy"
+            :src="race.flag"
+            alt="hun"
+            class="mx-auto !w-[45px]"
+          />
           <h3 class="mt-3 font-bold text-white text-md" v-text="race.title" />
           <div
             class="text-[13px] font-bold text-white"

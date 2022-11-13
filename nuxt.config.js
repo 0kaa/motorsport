@@ -120,6 +120,10 @@ export default {
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
   ],
 
+  image: {
+    domains: ['api.motorsport.hu']
+  },
+
   cache: {
     // if you're serving multiple host names (with differing
     // results) from the same server, set this option to true.
