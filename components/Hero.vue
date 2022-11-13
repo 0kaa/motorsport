@@ -20,8 +20,6 @@
       <div class="h-full">
         <nuxt-img
           format="webp"
-          placeholder
-          loading="lazy"
           :src="
             article.featured_image['6x']
               ? article.featured_image['6x']

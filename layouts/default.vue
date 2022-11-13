@@ -30,17 +30,17 @@ export default {
     categories: [],
     drivers: {},
   }),
-  created() {
-    this.$api.series.getCategories().then((res) => {
+  async fetch() {
+    await this.$api.series.getCategories().then((res) => {
       this.categories = res.data.data
     })
-    this.$api.standings
-      .getDrivers(1, this.$dateFns.format(new Date(), 'yyyy'))
-      .then((res) => {
-        this.drivers = res.data.data
-        this.$store.commit('setTeams', res.data.data.teams)
-        this.$store.commit('setDrivers', res.data.data.drivers)
-      })
+    // this.$api.standings
+    //   .getDrivers(1, this.$dateFns.format(new Date(), 'yyyy'))
+    //   .then((res) => {
+    //     this.drivers = res.data.data
+    //     this.$store.commit('setTeams', res.data.data.teams)
+    //     this.$store.commit('setDrivers', res.data.data.drivers)
+    //   })
   },
 }
 </script>
