@@ -77,6 +77,8 @@
       >
         <nuxt-img
           format="webp"
+          placeholder
+          loading="lazy"
           :src="
             levezeto.featured_image['7x']
               ? levezeto.featured_image['7x']

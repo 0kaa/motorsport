@@ -41,6 +41,8 @@
             />
 
             <nuxt-img
+              placeholder
+              loading="lazy"
               format="webp"
               class="hidden h-[170px] w-[350px] rounded-[4px] object-cover md:block"
               :src="article.featured_image['3x']"

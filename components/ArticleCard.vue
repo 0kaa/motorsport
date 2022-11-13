@@ -26,6 +26,7 @@
         <nuxt-img
           format="webp"
           loading="lazy"
+          placeholder
           v-if="article.featured_image"
           :src="
             article.featured_image['6x']
