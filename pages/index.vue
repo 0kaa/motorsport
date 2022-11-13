@@ -18,13 +18,13 @@
         />
       </div>
       <div class="flex-1 bg-black lg:max-w-[300px]">
-        <!-- <client-only>
+        <client-only>
           <div id="motorsporthu_jobb_1">
             <component :is="'script'">
               activateBanner('motorsporthu_jobb_1')
             </component>
           </div>
-        </client-only> -->
+        </client-only>
       </div>
     </div>
     <Clients class="mb-[55px]" />
@@ -91,6 +91,7 @@
     </section>
     <section
       class="mt-5 p-4 lg:mx-3 lg:mt-[55px] lg:border lg:border-black lg:p-5"
+      v-if="highlighted && highlighted.length"
     >
       <div class="items-end gap-4 mb-8 border-b border-black lg:inline-flex">
         <h2 class="text-3xl italic font-bold text-black">
@@ -103,7 +104,7 @@
       <div class="grid gap-8 lg:grid-cols-2">
         <div
           class="flex flex-col gap-5 lg:flex-row"
-          v-for="(article, i) in data.slice(14, 20)"
+          v-for="(article, i) in highlighted"
           :key="i"
         >
           <nuxt-link
@@ -186,6 +187,7 @@ export default {
     series: [],
     stickyArticle: {},
     featuredArticle: [],
+    highlighted: [],
     races: [],
   }),
   async fetch() {
@@ -197,6 +199,7 @@ export default {
       this.series = res.data.series
       this.stickyArticle = res.data.sticky_article
       this.featuredArticle = res.data.featured_article
+      this.highlighted = res.data.highlighted
       this.races = res.data.races.sort((a, b) => {
         return new Date(a.lowDate) - new Date(b.lowDate)
       })
