@@ -123,9 +123,9 @@
           />
         </div>
         <div class="flex w-[300px] flex-col gap-[50px]">
-          <img src="/ad-1.png" alt="ad" class="object-cover w-full h-full" />
-          <img src="/ad-1.png" alt="ad" class="object-cover w-full h-full" />
-          <img src="/ad-1.png" alt="ad" class="object-cover w-full h-full" />
+          <div class="h-[600px] w-full bg-black"></div>
+          <div class="h-[600px] w-full bg-black"></div>
+          <div class="h-[600px] w-full bg-black"></div>
         </div>
       </div>
     </div>
