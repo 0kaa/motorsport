@@ -61,7 +61,7 @@ export default {
     ],
     script: [
       {
-        src: '~/assets/js/ads.js',
+        src: '/js/ads.js',
         body: false,
         crossorigin: 'anonymous',
         async: true,
