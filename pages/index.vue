@@ -18,13 +18,13 @@
         />
       </div>
       <div class="flex-1 bg-black lg:max-w-[300px]">
-        <client-only>
+        <!-- <client-only>
           <div id="motorsporthu_jobb_1">
             <component :is="'script'">
               activateBanner('motorsporthu_jobb_1')
             </component>
           </div>
-        </client-only>
+        </client-only> -->
       </div>
     </div>
     <Clients class="mb-[55px]" />

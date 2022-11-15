@@ -168,7 +168,7 @@
             </client-only>
           </div>
           <div class="hidden flex-col gap-[50px] lg:flex lg:w-[300px]">
-            <div class="flex-1 bg-black lg:max-w-[300px]">
+            <!-- <div class="flex-1 bg-black lg:max-w-[300px]">
               <client-only>
                 <div id="motorsporthu_jobb_1">
                   <component :is="'script'">
@@ -176,7 +176,7 @@
                   </component>
                 </div>
               </client-only>
-            </div>
+            </div> -->
             <Standings
               :standings="standings"
               :series="series"
