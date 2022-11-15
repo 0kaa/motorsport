@@ -122,7 +122,13 @@ export default {
       this.$refs.schedule_slick.destroy()
       this.$nextTick(() => {
         this.$refs.schedule_slick.create(this.slickOptions)
-        // this.$refs.schedule_slick.goTo(20, true)
+        this.$refs.schedule_slick.goTo(
+          this.races.length - this.slickOptions.slidesToShow,
+          true
+        )
+        if (window.innerWidth < 600) {
+          this.$refs.schedule_slick.goTo(this.races.length - 1, true)
+        }
       })
     },
   },
@@ -158,7 +164,7 @@ export default {
           true
         )
         if (window.innerWidth < 600) {
-          this.$refs.schedule_slick.goTo(this.races.length - 2)
+          this.$refs.schedule_slick.goTo(this.races.length - 1, true)
         }
       })
     },

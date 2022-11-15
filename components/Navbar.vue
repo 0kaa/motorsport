@@ -106,12 +106,13 @@ export default {
   data: () => ({
     nav: false,
     slickOptions: {
-      slidesToShow: 7,
+      slidesToShow: 6,
       infinite: true,
       swipeToSlide: true,
       nextArrow: '.nav-next-btn',
       prevArrow: false,
-
+      autoplay: true,
+      autoplaySpeed: 2000,
       responsive: [
         {
           breakpoint: 1480,
