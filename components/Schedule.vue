@@ -30,7 +30,7 @@
     <div
       class="relative px-4 py-4 overflow-hidden text-white bg-black schedule-slick lg:px-10 lg:py-7"
     >
-      <slick ref="schedule_slick" :options="slickOptions">
+      <slick ref="schedule_slick" :options="slickOptions" class="flex">
         <div
           v-for="(race, i) in races"
           :key="i"

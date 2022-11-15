@@ -3,7 +3,7 @@
     <div
       class="relative px-4 py-4 overflow-hidden text-white bg-black client-slick lg:px-10 lg:py-10"
     >
-      <slick ref="client-slick" :options="slickOptions">
+      <slick ref="client-slick" :options="slickOptions" class="flex">
         <nuxt-link
           :to="{
             name: 'csapatok-series-team',
