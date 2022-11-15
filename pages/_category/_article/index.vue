@@ -2,7 +2,7 @@
   <div class="mt-0 mb-4">
     <Hero class="mb-10 px-4 lg:mb-[74px] lg:px-7" :article="data.article" />
     <div class="flex flex-col-reverse gap-8 px-4 lg:flex-row lg:px-7">
-      <div class="sticky h-full lg:-top-[50px] lg:w-[15%]">
+      <div class="sticky h-full lg:top-[5px] lg:w-[15%]">
         <div
           class="mb-5 inline-block bg-black px-4 py-2.5 text-md font-bold uppercase text-white md:hidden"
         >
