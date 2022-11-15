@@ -44,6 +44,15 @@
             v-text="category.title"
           />
         </template>
+        <template v-else>
+          <nuxt-link
+            class="text-xl font-bold text-white uppercase"
+            v-for="(category, i) in localCategories"
+            :key="i"
+            :to="{ name: 'category', params: { category: category.slug } }"
+            v-text="category.title"
+          />
+        </template>
         <!-- <button>
           <img src="/dark.png" alt="search" />
         </button> -->
@@ -59,10 +68,13 @@
       </div>
     </div>
     <div
-      class="navbar-slick relative max-h-[35px] overflow-hidden bg-dark px-3 pr-4 text-[#F0F0F0]"
-      v-if="drivers && Object.keys(drivers).length"
+      class="navbar-slick relative max-h-[35px] min-h-[35px] overflow-hidden bg-dark px-3 pr-4 text-[#F0F0F0]"
     >
-      <slick ref="navbar" :options="slickOptions">
+      <slick
+        ref="navbar"
+        :options="slickOptions"
+        v-if="drivers && Object.keys(drivers).length"
+      >
         <div v-for="(driver, i) in drivers.drivers.slice(0, 20)" :key="'d' + i">
           <div
             class="!flex !w-auto cursor-pointer gap-2 border-l-[4px] px-2 py-2 text-xs font-semibold"
@@ -139,6 +151,32 @@ export default {
       // Any other options that can be got from plugin documentation
     },
     searchModal: false,
+    localCategories: [
+      {
+        title: 'FORMA-1',
+        slug: 'f1',
+      },
+      {
+        title: 'MOTOGP',
+        slug: 'motogp',
+      },
+      {
+        title: 'F2/F3',
+        slug: 'f2f3',
+      },
+      {
+        title: 'MOTORSPORTOK',
+        slug: 'motorsportok',
+      },
+      {
+        title: 'GYORSKÖR',
+        slug: 'gyorskor',
+      },
+      {
+        title: 'AUTÓ',
+        slug: 'auto',
+      },
+    ],
   }),
   methods: {
     searchSubmit(searchTerm) {

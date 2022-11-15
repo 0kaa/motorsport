@@ -100,10 +100,12 @@
       </div>
       <div class="flex-1">
         <client-only>
-          <div id="motorsporthu_fekvo_1">
-            <component :is="'script'">
-              activateBanner('motorsporthu_fekvo_1')
-            </component>
+          <div class="my-8">
+            <div id="motorsporthu_fekvo_1">
+              <component :is="'script'">
+                activateBanner('motorsporthu_fekvo_1')
+              </component>
+            </div>
           </div>
         </client-only>
         <div
@@ -129,10 +131,12 @@
               v-text="data.article.excerpt"
             />
             <client-only>
-              <div id="motorsporthu_roadblock_1">
-                <component :is="'script'">
-                  activateBanner('motorsporthu_roadblock_1')
-                </component>
+              <div class="my-8">
+                <div id="motorsporthu_roadblock_1">
+                  <component :is="'script'">
+                    activateBanner('motorsporthu_roadblock_1')
+                  </component>
+                </div>
               </div>
             </client-only>
             <RecommendedArticle
@@ -168,7 +172,7 @@
             </client-only>
           </div>
           <div class="hidden flex-col gap-[50px] lg:flex lg:w-[300px]">
-            <!-- <div class="flex-1 bg-black lg:max-w-[300px]">
+            <!-- <div class="flex-1 lg:max-w-[300px]">
               <client-only>
                 <div id="motorsporthu_jobb_1">
                   <component :is="'script'">
@@ -182,7 +186,7 @@
               :series="series"
               @selected="getStandingsBySeries"
             />
-            <div class="flex-1 bg-black lg:max-w-[300px]">
+            <div class="flex-1 lg:max-w-[300px]">
               <client-only>
                 <div id="motorsporthu_jobb_1">
                   <component :is="'script'">
