@@ -61,6 +61,12 @@ export default {
     ],
     script: [
       {
+        src: '~/assets/js/ads.js',
+        body: false,
+        crossorigin: 'anonymous',
+        async: true,
+      },
+      {
         src: 'https://vjs.zencdn.net/7.18.1/video.min.js',
         type: 'text/javascript',
         charset: 'utf-8',
