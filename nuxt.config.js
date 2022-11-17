@@ -97,7 +97,7 @@ export default {
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/jsonld.js' },
     { src: '~/plugins/owl-carousel', ssr: true },
-    { src: '~plugins/ga.js', ssr: false }
+    // { src: '~plugins/ga.js', ssr: false }
   ],
 
   components: true,
