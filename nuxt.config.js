@@ -97,6 +97,7 @@ export default {
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/jsonld.js' },
     { src: '~/plugins/owl-carousel', ssr: true },
+    { src: '~plugins/ga.js', ssr: false }
   ],
 
   components: true,
@@ -106,6 +107,7 @@ export default {
     '@nuxtjs/date-fns',
     'nuxt-delay-hydration',
     '@nuxtjs/stylelint-module',
+    // '@nuxtjs/google-analytics'
   ],
 
   dateFns: {
@@ -160,6 +162,10 @@ export default {
       ttl: 60,
     },
   },
+
+  // googleAnalytics: {
+  //   id: 'UA-249686895-1'
+  // },
 
   gtm: {
     enable: true,
