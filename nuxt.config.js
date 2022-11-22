@@ -169,6 +169,7 @@ export default {
 
   gtm: {
     enable: true,
+    pageTracking: true,
     id: 'GTM-MMNS5SC'
   },
   toast: {
