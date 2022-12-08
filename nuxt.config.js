@@ -230,6 +230,7 @@ export default {
 
   sitemap: {
     gzip: true,
+    hostname: 'https://motorsport.hu',
     exclude: [
       '/404',
       '/adatkezelesi-tajekoztato',
