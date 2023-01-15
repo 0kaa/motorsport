@@ -53,7 +53,7 @@ export default {
     slickOptions: {
       slidesToShow: 5,
       swipeToSlide: true,
-      infinite: true,
+      infinite: false,
       nextArrow: '.brand-next-btn',
       prevArrow: false,
       autoplay: false,
