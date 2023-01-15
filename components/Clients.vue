@@ -17,6 +17,7 @@
           class="!flex h-[90px] items-center justify-center rounded-[4px] border border-white py-3"
         >
           <nuxt-img
+            placeholder
             format="webp"
             loading="lazy"
             :src="
@@ -57,7 +58,7 @@ export default {
       infinite: true,
       nextArrow: '.brand-next-btn',
       prevArrow: false,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 5000,
       responsive: [
         {
