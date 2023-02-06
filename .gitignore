@@ -7,7 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 .yarn-integrity
 .npm
-yarn.lock
+# yarn.lock
 # node-waf configuration
 .lock-wscript
 
