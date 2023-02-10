@@ -96,6 +96,7 @@ export default {
     { src: '~/plugins/api.js' },
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/jsonld.js' },
+    { src: '~/plugins/routing-ads.js' },
     { src: '~/plugins/owl-carousel', ssr: true },
     // { src: '~plugins/ga.js', ssr: false }
   ],
