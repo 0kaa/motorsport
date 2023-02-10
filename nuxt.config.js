@@ -220,9 +220,7 @@ export default {
       data: [] // Will be passed as 2nd argument to `create` function
     }
   ],
-  delayHydration: {
-    mode: 'init'
-  },
+
   tailwindcss: {
     exposeConfig: true,
     viewer: false,

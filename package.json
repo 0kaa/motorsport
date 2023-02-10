@@ -22,7 +22,7 @@
     "core-js": "^3.23.2",
     "https": "^1.0.0",
     "lodash": "^4.17.21",
-    "nuxt": "^2.15.8",
+    "nuxt": "2.15.8",
     "nuxt-delay-hydration": "^0.4.5",
     "nuxt-jsonld": "v1",
     "nuxt-ssr-cache": "^1.5.2",
@@ -59,8 +59,5 @@
       "host": "0.0.0.0",
       "port": "35000"
     }
-  },
-  "resolutions": {
-    "@nuxt/kit": "3.0.0-rc.13"
   }
 }
