@@ -290,7 +290,13 @@ export default {
       )
     }
 
-    if (window.__adsConfig) window.__adsConfig.refreshAds()
+    if (window.__adsConfig) {
+      setTimeout(() => {
+        window.__adsConfig.refreshAds()
+        console.log('ads working')
+      }, 1000)
+    }
+    // console.log('ads working outside')
 
     // auto play video.js when visible in viewport playsinline
     const videoPlayer = document.querySelector('.video-js')
