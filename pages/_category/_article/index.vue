@@ -51,19 +51,19 @@
           </nuxt-link>
         </div>
         <div
-          class="flex items-center justify-center gap-3 mt-8 lg:justify-between"
+          class="mt-8 flex items-center justify-center gap-3 lg:justify-between"
         >
           <a
             target="_blank"
             :href="`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`"
-            class="flex items-center justify-center w-10 h-10 text-xl border border-black"
+            class="flex h-10 w-10 items-center justify-center border border-black text-xl"
           >
             <i class="fa-brands fa-facebook-f"></i>
           </a>
           <a
             :href="`https://twitter.com/intent/tweet?text=${data.article.title} &url=${currentUrl}`"
             target="_blank"
-            class="flex items-center justify-center w-10 h-10 text-xl border border-black"
+            class="flex h-10 w-10 items-center justify-center border border-black text-xl"
           >
             <i class="fa-brands fa-twitter"></i>
           </a>
@@ -71,7 +71,7 @@
           <div class="relative">
             <a
               :href="`/${category.slug}/${data.article.slug}`"
-              class="flex items-center justify-center w-10 h-10 text-xl border border-black"
+              class="flex h-10 w-10 items-center justify-center border border-black text-xl"
               @click.prevent="copyLink(category.slug, data.article.slug)"
             >
               <i class="fa-regular fa-copy"></i>
@@ -89,10 +89,10 @@
         <div class="mt-8">
           <nuxt-link
             to="/"
-            class="flex items-center justify-center gap-3 px-4 py-2 text-sm border border-black lg:hidden lg:text-lg"
+            class="flex items-center justify-center gap-3 border border-black px-4 py-2 text-sm lg:hidden lg:text-lg"
           >
             <i class="fa-solid fa-house"></i>
-            <h3 class="pl-3 font-semibold text-black border-l border-black">
+            <h3 class="border-l border-black pl-3 font-semibold text-black">
               Kezdőlap
             </h3>
           </nuxt-link>
@@ -113,7 +113,7 @@
         >
           <a
             href="#"
-            class="text-xs font-semibold text-black uppercase lg:text-md"
+            class="text-xs font-semibold uppercase text-black lg:text-md"
             v-text="data.article.post_author.name"
           />
 
@@ -256,6 +256,7 @@ export default {
   mounted() {
     this.currentUrl = window.location.href
     if (window.instgrm) window.instgrm.Embeds.process()
+    if (window.__adsConfig) window.__adsConfig.refreshAds()
     const oldScript = document.querySelector(
       'script[src="https://platform.twitter.com/widgets.js"]'
     )
