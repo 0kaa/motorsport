@@ -256,7 +256,6 @@ export default {
   mounted() {
     this.currentUrl = window.location.href
     if (window.instgrm) window.instgrm.Embeds.process()
-    if (window.__adsConfig) window.__adsConfig.refreshAds()
     const oldScript = document.querySelector(
       'script[src="https://platform.twitter.com/widgets.js"]'
     )
@@ -290,6 +289,8 @@ export default {
         firstParagraph.nextSibling
       )
     }
+
+    if (window.__adsConfig) window.__adsConfig.refreshAds()
 
     // auto play video.js when visible in viewport playsinline
     const videoPlayer = document.querySelector('.video-js')
