@@ -10,7 +10,7 @@
       v-if="data.tag_articles.data.length > 1"
     >
       <h3
-        class="pb-1 mb-10 text-lg font-bold text-black uppercase border-b border-black lg:text-2xl"
+        class="mb-10 border-b border-black pb-1 text-lg font-bold uppercase text-black lg:text-2xl"
       >
         <span class="ml-5 border-b-[10px] border-black">
           TOVÁBBI {{ data.tag.slug }}-HÍREK
@@ -31,7 +31,7 @@
       v-if="data.tag_articles.data.length > 1"
     >
       <div class="flex flex-col justify-between gap-24 lg:flex-row">
-        <div class="flex flex-col flex-1 gap-12 lg:pr-10">
+        <div class="flex flex-1 flex-col gap-12 lg:pr-10">
           <div
             v-for="(article, i) in data.tag_articles.data.slice(5, 100)"
             :key="i"
@@ -70,7 +70,7 @@
                   class="h-[200px] w-full rounded-[4px] object-cover lg:h-[175px] lg:w-[315px]"
                 />
               </nuxt-link>
-              <div class="absolute flex items-center gap-2 -bottom-5">
+              <div class="absolute -bottom-5 flex items-center gap-2">
                 <nuxt-link
                   :to="{
                     name: 'category',
@@ -126,9 +126,33 @@
           />
         </div>
         <div class="flex w-[300px] flex-col gap-[50px]">
-          <div class="h-[600px] w-full bg-black"></div>
-          <div class="h-[600px] w-full bg-black"></div>
-          <div class="h-[600px] w-full bg-black"></div>
+          <div class="h-[600px] w-full">
+            <client-only>
+              <div id="motorsporthu_tema_1" class="h-px w-full">
+                <component :is="'script'">
+                  activateBanner('motorsporthu_tema_1')
+                </component>
+              </div>
+            </client-only>
+          </div>
+          <div class="h-[600px] w-full">
+            <client-only>
+              <div id="motorsporthu_tema_2" class="h-px w-full">
+                <component :is="'script'">
+                  activateBanner('motorsporthu_tema_2')
+                </component>
+              </div>
+            </client-only>
+          </div>
+          <div class="h-[600px] w-full">
+            <client-only>
+              <div id="motorsporthu_tema_3" class="h-px w-full">
+                <component :is="'script'">
+                  activateBanner('motorsporthu_tema_3')
+                </component>
+              </div>
+            </client-only>
+          </div>
         </div>
       </div>
     </div>
