@@ -17,14 +17,14 @@
           :article="article"
         />
       </div>
-      <div class="flex-1 bg-black lg:max-w-[300px]">
-        <!-- <client-only>
-          <div id="motorsporthu_jobb_1">
+      <div class="flex-1 lg:max-w-[300px]">
+        <client-only>
+          <div id="motorsporthu_jobb_1" class="h-px w-full">
             <component :is="'script'">
               activateBanner('motorsporthu_jobb_1')
             </component>
           </div>
-        </client-only> -->
+        </client-only>
       </div>
     </div>
     <!-- <Clients class="mb-[55px]" /> -->
@@ -67,7 +67,7 @@
               article: levezeto.slug,
             },
           }"
-          class="block mb-6 text-xl font-bold lg:mb-0 lg:text-4xl"
+          class="mb-6 block text-xl font-bold lg:mb-0 lg:text-4xl"
         >
           {{ levezeto.title }}
         </nuxt-link>
@@ -92,11 +92,11 @@
       class="mt-5 p-4 lg:mx-3 lg:mt-[55px] lg:border lg:border-black lg:p-5"
       v-if="highlighted && highlighted.length"
     >
-      <div class="items-end gap-4 mb-8 border-b border-black lg:inline-flex">
-        <h2 class="text-3xl italic font-bold text-black">
+      <div class="mb-8 items-end gap-4 border-b border-black lg:inline-flex">
+        <h2 class="text-3xl font-bold italic text-black">
           LEGOLVASOTTABB CIKKEK
         </h2>
-        <h3 class="text-lg italic font-bold text-primary">
+        <h3 class="text-lg font-bold italic text-primary">
           AZ ELMÚLT 24 ÓRÁBÓL
         </h3>
       </div>
@@ -127,7 +127,7 @@
               class="h-[200px] w-full rounded-[4px] object-cover lg:h-[92px] lg:w-[140px]"
             />
           </nuxt-link>
-          <div class="flex flex-col justify-between flex-1 h-full">
+          <div class="flex h-full flex-1 flex-col justify-between">
             <nuxt-link
               :to="{
                 name: 'category-article',
@@ -142,7 +142,7 @@
                 v-text="article.title"
               />
             </nuxt-link>
-            <div class="flex gap-3 text-xs italic font-medium text-black">
+            <div class="flex gap-3 text-xs font-medium italic text-black">
               <div>
                 <!-- {{ $dateFns.formatDistanceStrict(new Date(), new Date(article.published_at)) }} -->
                 {{
