@@ -27,7 +27,7 @@
         </client-only>
       </div>
     </div>
-    <!-- <Clients class="mb-[55px]" /> -->
+    <Clients class="mb-[55px]" />
     <section class="mb-[55px] px-4 lg:px-7">
       <InlineTitle title="TOVÁBBI HÍREINK" />
       <div class="mt-8 mb-5 grid gap-5 lg:mb-[64px] lg:grid-cols-2">
@@ -52,7 +52,7 @@
         />
       </div>
     </section>
-    <!-- <Schedule :races="races" :series="series" @select="getRaces" /> -->
+    <Schedule :races="races" :series="series" @select="getRaces" />
     <section
       class="mt-[55px] flex flex-col bg-black p-6 text-white lg:flex-row lg:py-[50px] lg:pr-6 lg:pl-9"
       v-if="levezeto"

@@ -61,7 +61,7 @@
         </button>
       </div>
     </div>
-    <!-- <div
+    <div
       class="navbar-slick relative max-h-[35px] min-h-[35px] overflow-hidden bg-dark px-3 pr-4 text-[#F0F0F0]"
     >
       <slick
@@ -93,10 +93,10 @@
         </div>
       </slick>
 
-      <button class="absolute text-white nav-next-btn right-5 top-1">
+      <button class="nav-next-btn absolute right-5 top-1 text-white">
         <i class="fa-solid fa-angles-right"></i>
       </button>
-    </div> -->
+    </div>
   </div>
 </template>
 
