@@ -6,7 +6,7 @@
       @searchSubmit="searchSubmit"
     />
     <div
-      class="flex items-center justify-between w-full px-6 py-5 mb-1 bg-dark"
+      class="mb-1 flex w-full items-center justify-between bg-dark px-6 py-5"
     >
       <nuxt-link to="/" class="max-w-[180px] xl:max-w-[240px]">
         <nuxt-img format="webp" src="/logo.png" alt="logo" />
@@ -15,7 +15,7 @@
         <i class="fa-solid fa-bars"></i>
       </button>
       <div
-        class="fixed top-0 left-0 flex items-center gap-8 z-90 lg:static lg:h-auto lg:w-auto lg:flex-row lg:bg-transparent"
+        class="fixed top-0 left-0 z-90 flex items-center gap-8 lg:static lg:h-auto lg:w-auto lg:flex-row lg:bg-transparent"
         :class="{
           'h-full w-full flex-col bg-dark py-10 opacity-95': nav,
           'left-full': !nav,
@@ -25,13 +25,13 @@
         <button
           v-if="nav"
           @click="nav = false"
-          class="absolute flex items-center justify-center w-10 h-10 text-black bg-white rounded-full top-3 right-3 lg:hidden"
+          class="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-black lg:hidden"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
         <template v-if="categories && categories.length">
           <nuxt-link
-            class="text-xl font-bold text-white uppercase"
+            class="text-xl font-bold uppercase text-white"
             v-for="(category, i) in categories"
             :key="i"
             :to="{ name: 'category', params: { category: category.slug } }"
@@ -40,7 +40,7 @@
         </template>
         <template v-else>
           <nuxt-link
-            class="text-xl font-bold text-white uppercase"
+            class="text-xl font-bold uppercase text-white"
             v-for="(category, i) in localCategories"
             :key="i"
             :to="{ name: 'category', params: { category: category.slug } }"
@@ -61,7 +61,7 @@
         </button>
       </div>
     </div>
-    <div
+    <!-- <div
       class="navbar-slick relative max-h-[35px] min-h-[35px] overflow-hidden bg-dark px-3 pr-4 text-[#F0F0F0]"
     >
       <slick
@@ -96,7 +96,7 @@
       <button class="absolute text-white nav-next-btn right-5 top-1">
         <i class="fa-solid fa-angles-right"></i>
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
