@@ -326,6 +326,14 @@ export default {
       ],
     }
   },
+  mounted() {
+    if (window.__adsConfig) {
+      setTimeout(() => {
+        window.__adsConfig.repopulate()
+        console.log('ads working')
+      }, 1000)
+    }
+  },
   methods: {
     async paginate(index) {
       this.buttonDisabled = true

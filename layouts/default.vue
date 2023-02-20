@@ -3,18 +3,16 @@
     <!-- <client-only> -->
     <div
       lang="en"
-      class="flex flex-col justify-between min-h-screen gap-5 bg-white font-bai"
+      class="flex min-h-screen flex-col justify-between gap-5 bg-white font-bai"
     >
       <Navbar :categories="categories" :drivers="drivers" />
-      <LazyHydrate when-visible>
-        <div>
-          <Nuxt
-            class="mx-auto max-w-[1320px]"
-            keep-alive
-            :keep-alive-props="{ exclude: ['article-single'] }"
-          />
-        </div>
-      </LazyHydrate>
+      <div>
+        <Nuxt
+          class="mx-auto max-w-[1320px]"
+          keep-alive
+          :keep-alive-props="{ exclude: ['article-single'] }"
+        />
+      </div>
       <Footer />
     </div>
     <!-- </client-only> -->
@@ -22,14 +20,8 @@
 </template>
 
 <script>
-import LazyHydrate from 'vue-lazy-hydration'
-
 export default {
   name: 'default',
-  components: {
-    LazyHydrate,
-  },
-
   data: () => ({
     categories: [],
     drivers: {},

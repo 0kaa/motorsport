@@ -105,7 +105,6 @@ export default {
   buildModules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/date-fns',
-    'nuxt-delay-hydration',
     '@nuxtjs/stylelint-module',
     // '@nuxtjs/google-analytics'
   ],

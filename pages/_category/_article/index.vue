@@ -292,7 +292,7 @@ export default {
 
     if (window.__adsConfig) {
       setTimeout(() => {
-        window.__adsConfig.refreshAds()
+        window.__adsConfig.repopulate()
         console.log('ads working')
       }, 1000)
     }
