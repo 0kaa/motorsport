@@ -10,7 +10,9 @@
         </div>
         <div class="flex flex-col gap-6">
           <nuxt-link
-            :to="`/${category.slug}/${article.slug}`"
+            :to="`/${
+              !category ? article.post_categories[0].slug : category.slug
+            }/${article.slug}`"
             v-for="(article, i) in data.connectionArticles"
             :key="i"
             class="flex items-end gap-2 lg:block"
