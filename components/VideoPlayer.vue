@@ -52,7 +52,7 @@ export default {
           'https://pubads.g.doubleclick.net/gampad/ads?iu=/22652647,22830954724/motorsporthu_instream&description_url=https%3A%2F%2Fmotorsport.hu&tfcd=0&npa=0&sz=640x360&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=&vad_type=linear',
       }
 
-      player.ima(options)
+      this.player.ima(options)
 
       // var vastPlugin = this.player.vastClient({
       //   adTagUrl:
