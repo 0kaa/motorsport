@@ -1,28 +1,31 @@
 import axios from 'axios'
-import https from 'https';
+import https from 'https'
 const instance = axios.create({
   httpsAgent: new https.Agent({
-    rejectUnauthorized: false
-  })
-});
-const range = (size, startAt = 1) => [...Array(size).keys()].map(i => i + startAt);
+    rejectUnauthorized: false,
+  }),
+})
+const range = (size, startAt = 1) =>
+  [...Array(size).keys()].map((i) => i + startAt)
 
 const getSitemapsConfigurations = () => {
-  return range(10).map(index => ({
+  return range(10).map((index) => ({
     path: `/sitemap-${index}.xml`,
     routes: async () => {
       const instance = axios.create({
         httpsAgent: new https.Agent({
-          rejectUnauthorized: false
-        })
-      });
-      const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-data?page=${index}`)
+          rejectUnauthorized: false,
+        }),
+      })
+      const { data } = await instance.post(
+        `https://api.motorsport.hu/api/get-sitemap-data?page=${index}`
+      )
       const routes = data.data.map((article, i) => {
         return {
           url: article.url,
           // changefreq: 'daily',
           // priority: 1,
-          lastmod: article.mod
+          lastmod: article.mod,
         }
       })
       return routes
@@ -30,7 +33,7 @@ const getSitemapsConfigurations = () => {
     cacheTime: 1000,
     trailingSlash: true,
     exclude: ['/**'], //here we exclude all static routes
-  }));
+  }))
 }
 
 export default {
@@ -39,12 +42,20 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'F1 hírek, eredmények és egyéb érdekességek a motorsport világából' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'F1 hírek, eredmények és egyéb érdekességek a motorsport világából',
+      },
     ],
     link: [
-      { rel: 'alternate', type: 'application/rss+xml', href: '/api/article', },
+      { rel: 'alternate', type: 'application/rss+xml', href: '/api/article' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css',
+      },
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;700&display=swap',
@@ -55,9 +66,16 @@ export default {
       },
       {
         rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/7.2.0/videojs-contrib-ads.css',
+      },
+      {
+        rel: 'stylesheet',
+        href: '/css/videojs.ima.css',
+      },
+      {
+        rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs.vast.vpaid.min.css',
       },
-
     ],
     script: [
       {
@@ -68,11 +86,21 @@ export default {
       },
       {
         src: 'https://vjs.zencdn.net/7.18.1/video.min.js',
-        type: 'text/javascript',
-        charset: 'utf-8',
-        crossorigin: 'anonymous',
-        // defer: true,
+        body: true,
       },
+      {
+        src: '//imasdk.googleapis.com/js/sdkloader/ima3.js',
+        body: true,
+      },
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/7.2.0/videojs-contrib-ads.min.js',
+        body: true,
+      },
+      {
+        src: '/js/videojs.ima.min.js',
+        body: true,
+      },
+
       {
         src: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs_5.vast.vpaid.min.js',
         crossorigin: 'anonymous',
@@ -111,7 +139,7 @@ export default {
 
   dateFns: {
     /* module options */
-    defaultLocale: 'hu'
+    defaultLocale: 'hu',
   },
 
   modules: [
@@ -128,7 +156,7 @@ export default {
   ],
 
   image: {
-    domains: ['api.motorsport.hu']
+    domains: ['api.motorsport.hu'],
   },
 
   cache: {
@@ -139,13 +167,11 @@ export default {
     // express or whatever else that uses 'X-Forwarded-Host'
     // header field to provide req.hostname (actual host name)
     useHostPrefix: false,
-    pages: [
-      '/',
-    ],
+    pages: ['/'],
 
     key(route, context) {
       // custom function to return cache key, when used previous
-      // properties (useHostPrefix, pages) are ignored. return 
+      // properties (useHostPrefix, pages) are ignored. return
       // falsy value to bypass the cache
     },
 
@@ -169,11 +195,11 @@ export default {
   gtm: {
     enable: true,
     pageTracking: true,
-    id: 'GTM-MMNS5SC'
+    id: 'GTM-MMNS5SC',
   },
   toast: {
     position: 'top-center',
-    duration: 3000
+    duration: 3000,
   },
 
   feed: [
@@ -185,24 +211,26 @@ export default {
           title: 'Motorsport RSS: Legfrissebb',
           link: 'https://motorsport.hu/api/article',
           description: 'Articles from https://motorsport.hu',
-          copyright: "2022 - Motorsport – Liner Media Group Kft.",
+          copyright: '2022 - Motorsport – Liner Media Group Kft.',
         }
 
         const instance = axios.create({
           httpsAgent: new https.Agent({
-            rejectUnauthorized: false
-          })
-        });
-        const { data } = await (instance.post('https://api.motorsport.hu/api/get-rss-posts'))
+            rejectUnauthorized: false,
+          }),
+        })
+        const { data } = await instance.post(
+          'https://api.motorsport.hu/api/get-rss-posts'
+        )
 
-        data.data.forEach(post => {
+        data.data.forEach((post) => {
           feed.addItem({
             title: post.title,
             id: post.url,
             link: `https://motorsport.hu/${post.post_categories[0].slug}/${post.slug}`,
             description: post.excerpt,
             published: new Date(post.published_at),
-            image: post.featured_image.url
+            image: post.featured_image.url,
           })
         })
 
@@ -216,8 +244,8 @@ export default {
       },
       cacheTime: 1000, // How long should the feed be cached
       type: 'rss2', // Can be: rss2, atom1, json1
-      data: [] // Will be passed as 2nd argument to `create` function
-    }
+      data: [], // Will be passed as 2nd argument to `create` function
+    },
   ],
 
   tailwindcss: {
@@ -239,16 +267,17 @@ export default {
     ],
     path: '/sitemap/index.xml',
     sitemaps: [
-
       {
         path: '/sitemap/tags.xml',
         routes: async () => {
           const instance = axios.create({
             httpsAgent: new https.Agent({
-              rejectUnauthorized: false
-            })
-          });
-          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-tags`)
+              rejectUnauthorized: false,
+            }),
+          })
+          const { data } = await instance.post(
+            `https://api.motorsport.hu/api/get-sitemap-tags`
+          )
           const routes = data.data.map((tag, i) => {
             return {
               url: tag.url,
@@ -265,10 +294,12 @@ export default {
         routes: async () => {
           const instance = axios.create({
             httpsAgent: new https.Agent({
-              rejectUnauthorized: false
-            })
-          });
-          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-teams`)
+              rejectUnauthorized: false,
+            }),
+          })
+          const { data } = await instance.post(
+            `https://api.motorsport.hu/api/get-sitemap-teams`
+          )
           const routes = data.data.map((team, i) => {
             return {
               url: team.url,
@@ -285,10 +316,12 @@ export default {
         routes: async () => {
           const instance = axios.create({
             httpsAgent: new https.Agent({
-              rejectUnauthorized: false
-            })
-          });
-          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-drivers`)
+              rejectUnauthorized: false,
+            }),
+          })
+          const { data } = await instance.post(
+            `https://api.motorsport.hu/api/get-sitemap-drivers`
+          )
           const routes = data.data.map((driver, i) => {
             return {
               url: driver.url,
@@ -305,10 +338,12 @@ export default {
         routes: async () => {
           const instance = axios.create({
             httpsAgent: new https.Agent({
-              rejectUnauthorized: false
-            })
-          });
-          const { data } = await instance.post(`https://api.motorsport.hu/api/get-sitemap-races`)
+              rejectUnauthorized: false,
+            }),
+          })
+          const { data } = await instance.post(
+            `https://api.motorsport.hu/api/get-sitemap-races`
+          )
           const routes = data.data.map((race, i) => {
             return {
               url: race.url,
@@ -321,8 +356,7 @@ export default {
         exclude: ['/**'], //here we exclude all static routes
       },
       ...getSitemapsConfigurations(),
-    ]
-
+    ],
   },
 
   axios: {
@@ -333,9 +367,7 @@ export default {
   //   '/api': 'https://api.motorsport.hu/api'
   // },
 
-
-  build: {
-  },
+  build: {},
 
   loading: {
     color: '#bd191c',

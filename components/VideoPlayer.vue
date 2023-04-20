@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-full video-player">
+  <div class="video-player max-w-full">
     <!-- <video ref="videoPlayer" class="video-js"></video> -->
     <video id="video-js" class="video-js">
       <source
@@ -7,6 +7,7 @@
         type="video/mp4"
       />
     </video>
+    <div id="strossle_placeholder"></div>
   </div>
 </template>
 
@@ -44,21 +45,26 @@ export default {
       })
 
       setTimeout(() => {
-        var vastPlugin = this.player.vastClient({
+        var options = {
           adTagUrl:
             'https://pubads.g.doubleclick.net/gampad/ads?iu=/22652647,22830954724/motorsporthu_instream&description_url=https%3A%2F%2Fmotorsport.hu&tfcd=0&npa=0&sz=640x360&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=&vad_type=linear',
-          playAdAlways: true,
-          //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
-          adCancelTimeout: 3000,
-          adsEnabled: true,
-        })
-        this.player.on('reset', function () {
-          if (!vastPlugin.isEnabled()) {
-            vastPlugin.enable()
-          } else {
-            vastAd.disable()
-          }
-        })
+        }
+        this.player.ima(options)
+        // var vastPlugin = this.player.vastClient({
+        //   adTagUrl:
+        //     'https://pubads.g.doubleclick.net/gampad/ads?iu=/22652647,22830954724/motorsporthu_instream&description_url=https%3A%2F%2Fmotorsport.hu&tfcd=0&npa=0&sz=640x360&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=&vad_type=linear',
+        //   playAdAlways: true,
+        //   //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
+        //   adCancelTimeout: 3000,
+        //   adsEnabled: true,
+        // })
+        // this.player.on('reset', function () {
+        //   if (!vastPlugin.isEnabled()) {
+        //     vastPlugin.enable()
+        //   } else {
+        //     vastAd.disable()
+        //   }
+        // })
         // this.player.play()
       }, 1000)
     },
@@ -86,26 +92,6 @@ export default {
       this.videoJs()
     }, 500)
   },
-  // mounted() {
-  //   // videojs.registerPlugin('ads-setup', function (opts) {
-  //   //   var player = this
-  //   //   var adsCancelTimeout = 3000
-
-  //   //   var vastAd = player.vastClient({
-  //   //     //Media tag URL
-  //   //     adTag:
-  //   //       'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
-  //   //     playAdAlways: true,
-  //   //     //Note: As requested we set the preroll timeout at the same place than the adsCancelTimeout
-  //   //     adCancelTimeout: adsCancelTimeout,
-  //   //     adsEnabled: !!options.adsEnabled,
-  //   //   })
-  //   // })
-  //   this.player = videojs(this.$refs.videoPlayer, this.options, () => {
-  //     this.player.log('onPlayerReady', this)
-  //   })
-  // },
-
   beforeDestroy() {
     if (this.player) {
       this.player.dispose()

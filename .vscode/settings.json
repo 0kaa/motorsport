@@ -29,5 +29,6 @@
   },
   "[dotenv]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
-  }
+  },
+  "vue.features.codeActions.enable": false
 }

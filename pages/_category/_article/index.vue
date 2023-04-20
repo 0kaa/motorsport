@@ -156,7 +156,6 @@
               :category="category"
             />
             <video-player :options="videoOptions" />
-            <div id="strossle_placeholder"></div>
             <Taxonomies
               :category="category"
               :driver="driver"
