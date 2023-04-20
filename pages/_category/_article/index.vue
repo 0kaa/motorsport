@@ -185,8 +185,8 @@
               :series="series"
               @selected="getStandingsBySeries"
             />
-            <div class="flex-1 lg:max-w-[300px]">
-              <div id="oldalsav_1_cikk" class="mb-2.5"></div>
+            <div class="flex flex-col gap-2.5 lg:max-w-[300px]">
+              <div id="oldalsav_1_cikk"></div>
               <div id="oldalsav_2_cikk"></div>
             </div>
           </div>
