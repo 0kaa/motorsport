@@ -92,7 +92,6 @@ export default {
       },
       {
         src: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
-        crossorigin: 'anonymous',
         async: true,
         body: true,
       },
