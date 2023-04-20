@@ -62,20 +62,20 @@ export default {
       },
       {
         rel: 'stylesheet',
-        href: 'https://vjs.zencdn.net/7.18.1/video-js.css',
+        href: 'https://googleads.github.io/videojs-ima/node_modules/video.js/dist/video-js.min.css',
       },
       {
         rel: 'stylesheet',
-        href: 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/7.2.0/videojs-contrib-ads.css',
+        href: 'https://googleads.github.io/videojs-ima/node_modules/videojs-contrib-ads/dist/videojs.ads.css',
       },
       {
         rel: 'stylesheet',
-        href: '/css/videojs.ima.css',
+        href: 'https://googleads.github.io/videojs-ima/dist/videojs.ima.css',
       },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs.vast.vpaid.min.css',
-      },
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs.vast.vpaid.min.css',
+      // },
     ],
     script: [
       {
@@ -85,28 +85,36 @@ export default {
         async: true,
       },
       {
-        src: 'https://vjs.zencdn.net/7.18.1/video.min.js',
-        body: true,
-      },
-      {
-        src: '//imasdk.googleapis.com/js/sdkloader/ima3.js',
-        body: true,
-      },
-      {
-        src: 'https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-ads/7.2.0/videojs-contrib-ads.min.js',
-        body: true,
-      },
-      {
-        src: '/js/videojs.ima.min.js',
-        body: true,
-      },
-
-      {
-        src: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs_5.vast.vpaid.min.js',
+        src: 'https://googleads.github.io/videojs-ima/node_modules/video.js/dist/video.min.js',
         crossorigin: 'anonymous',
         async: true,
         body: true,
       },
+      {
+        src: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
+        crossorigin: 'anonymous',
+        async: true,
+        body: true,
+      },
+      {
+        src: 'https://googleads.github.io/videojs-ima/node_modules/videojs-contrib-ads/dist/videojs.ads.min.js',
+        crossorigin: 'anonymous',
+        async: true,
+        body: true,
+      },
+      {
+        src: 'https://googleads.github.io/videojs-ima/dist/videojs.ima.js',
+        crossorigin: 'anonymous',
+        async: true,
+        body: true,
+      },
+
+      // {
+      //   src: 'https://cdn.jsdelivr.net/gh/MailOnline/videojs-vast-vpaid@master/bin/videojs_5.vast.vpaid.min.js',
+      //   crossorigin: 'anonymous',
+      //   async: true,
+      //   body: true,
+      // },
 
       // {
       //   src: 'https://www.instagram.com/embed.js',
