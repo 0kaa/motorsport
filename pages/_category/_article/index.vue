@@ -507,6 +507,10 @@ export default {
   @apply mb-[30px] text-lg font-normal leading-[1.55] lg:text-lg;
 }
 
+.article-content .ads_show_ad_title {
+  @apply mb[30px];
+}
+
 .article-content blockquote {
   @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] lg:mb-7 lg:text-lg;
 }
