@@ -1,7 +1,7 @@
 <template>
   <div class="video-player max-w-full">
     <!-- <video ref="videoPlayer" class="video-js"></video> -->
-    <video id="video-js" class="video-js vjs-default-skin">
+    <video id="content_video" class="video-js vjs-default-skin">
       <source
         src="https://linerdisk.b-cdn.net/mcLaren_subteacher.mp4"
         type="video/mp4"
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     videoJs() {
-      this.player = videojs(`video-js`, {
+      this.player = videojs(`content_video`, {
         controls: true,
         autoplay: true,
         playsinline: true,
@@ -46,10 +46,14 @@ export default {
 
       // setTimeout(() => {
 
-      this.player.ima({
+      var options = {
+        id: 'content_video',
         adTagUrl:
           'https://pubads.g.doubleclick.net/gampad/ads?iu=/22652647,22830954724/motorsporthu_instream&description_url=https%3A%2F%2Fmotorsport.hu&tfcd=0&npa=0&sz=640x360&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=&vad_type=linear',
-      })
+      }
+
+      player.ima(options)
+
       // var vastPlugin = this.player.vastClient({
       //   adTagUrl:
       //     'https://pubads.g.doubleclick.net/gampad/ads?iu=/22652647,22830954724/motorsporthu_instream&description_url=https%3A%2F%2Fmotorsport.hu&tfcd=0&npa=0&sz=640x360&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=&vad_type=linear',

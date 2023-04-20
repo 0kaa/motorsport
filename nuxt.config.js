@@ -86,26 +86,15 @@ export default {
       },
       {
         src: 'https://googleads.github.io/videojs-ima/node_modules/video.js/dist/video.min.js',
-        crossorigin: 'anonymous',
-        async: true,
-        body: true,
       },
       {
         src: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
-        async: true,
-        body: true,
       },
       {
         src: 'https://googleads.github.io/videojs-ima/node_modules/videojs-contrib-ads/dist/videojs.ads.min.js',
-        crossorigin: 'anonymous',
-        async: true,
-        body: true,
       },
       {
         src: 'https://googleads.github.io/videojs-ima/dist/videojs.ima.js',
-        crossorigin: 'anonymous',
-        async: true,
-        body: true,
       },
 
       // {
