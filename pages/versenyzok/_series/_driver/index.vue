@@ -126,31 +126,31 @@
         </div>
         <div class="flex w-[300px] flex-col gap-[50px]">
           <div class="h-[600px] w-full">
-            <client-only>
-              <div id="motorsporthu_rovat_1" class="h-px w-full">
+            <!-- <client-only>
+              <div id="motorsporthu_rovat_1" class="w-full h-px">
                 <component :is="'script'">
                   activateBanner('motorsporthu_rovat_1')
                 </component>
               </div>
-            </client-only>
+            </client-only> -->
           </div>
           <div class="h-[600px] w-full">
-            <client-only>
-              <div id="motorsporthu_rovat_2" class="h-px w-full">
+            <!-- <client-only>
+              <div id="motorsporthu_rovat_2" class="w-full h-px">
                 <component :is="'script'">
                   activateBanner('motorsporthu_rovat_2')
                 </component>
               </div>
-            </client-only>
+            </client-only> -->
           </div>
           <div class="h-[600px] w-full">
-            <client-only>
-              <div id="motorsporthu_rovat_3" class="h-px w-full">
+            <!-- <client-only>
+              <div id="motorsporthu_rovat_3" class="w-full h-px">
                 <component :is="'script'">
                   activateBanner('motorsporthu_rovat_3')
                 </component>
               </div>
-            </client-only>
+            </client-only> -->
           </div>
         </div>
       </div>

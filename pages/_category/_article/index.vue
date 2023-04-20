@@ -99,7 +99,7 @@
         </div>
       </div>
       <div class="flex-1">
-        <client-only>
+        <!-- <client-only>
           <div class="mb-8">
             <div id="motorsporthu_fekvo_1">
               <component :is="'script'">
@@ -107,7 +107,7 @@
               </component>
             </div>
           </div>
-        </client-only>
+        </client-only> -->
         <div
           class="relative mb-7 flex items-center justify-between border-b-[10px] border-black after:absolute after:right-0 after:top-full after:h-[150px] after:w-2.5 after:bg-black"
         >
@@ -130,7 +130,7 @@
               class="mb-4 text-xl font-bold leading-[1.5] text-black lg:mb-8 lg:text-2xl"
               v-text="data.article.excerpt"
             />
-            <client-only>
+            <!-- <client-only>
               <div class="mb-8">
                 <div id="motorsporthu_roadblock_1">
                   <component :is="'script'">
@@ -138,7 +138,7 @@
                   </component>
                 </div>
               </div>
-            </client-only>
+            </client-only> -->
             <RecommendedArticle
               :article="recommendedArticle"
               v-if="
@@ -156,20 +156,20 @@
               :category="category"
             />
             <video-player :options="videoOptions" />
-
+            <div id="strossle_placeholder"></div>
             <Taxonomies
               :category="category"
               :driver="driver"
               :team="team"
               :tag="tag"
             />
-            <client-only>
+            <!-- <client-only>
               <div id="motorsporthu_roadblock_2">
                 <component :is="'script'">
                   activateBanner('motorsporthu_roadblock_2')
                 </component>
               </div>
-            </client-only>
+            </client-only> -->
           </div>
           <div class="hidden flex-col gap-[50px] lg:flex lg:w-[300px]">
             <!-- <div class="flex-1 lg:max-w-[300px]">
@@ -187,13 +187,13 @@
               @selected="getStandingsBySeries"
             />
             <div class="flex-1 lg:max-w-[300px]">
-              <client-only>
+              <!-- <client-only>
                 <div id="motorsporthu_jobb_1">
                   <component :is="'script'">
                     activateBanner('motorsporthu_jobb_1')
                   </component>
                 </div>
-              </client-only>
+              </client-only> -->
             </div>
           </div>
         </div>
