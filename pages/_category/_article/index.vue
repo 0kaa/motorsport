@@ -508,7 +508,7 @@ export default {
 }
 
 .article-content .ads_show_ad_title {
-  @apply mb[30px];
+  @apply mb-[30px];
 }
 
 .article-content blockquote {
