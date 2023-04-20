@@ -186,13 +186,8 @@
               @selected="getStandingsBySeries"
             />
             <div class="flex-1 lg:max-w-[300px]">
-              <!-- <client-only>
-                <div id="motorsporthu_jobb_1">
-                  <component :is="'script'">
-                    activateBanner('motorsporthu_jobb_1')
-                  </component>
-                </div>
-              </client-only> -->
+              <div id="oldalsav_1_cikk" class="mb-2.5"></div>
+              <div id="oldalsav_2_cikk"></div>
             </div>
           </div>
         </div>

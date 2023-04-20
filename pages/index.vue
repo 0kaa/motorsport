@@ -18,13 +18,7 @@
         />
       </div>
       <div class="flex-1 lg:max-w-[300px]">
-        <!-- <client-only>
-          <div id="motorsporthu_jobb_1" class="w-full h-px">
-            <component :is="'script'">
-              activateBanner('motorsporthu_jobb_1')
-            </component>
-          </div>
-        </client-only> -->
+        <div id="oldalsav_cimlap" class="h-px w-full"></div>
       </div>
     </div>
     <Clients class="mb-[55px]" />

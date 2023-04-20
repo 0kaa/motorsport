@@ -122,34 +122,9 @@
             @select="(i) => paginate(i)"
           />
         </div>
-        <div class="flex w-[300px] flex-col gap-[50px]">
-          <div class="h-[600px] w-full">
-            <!-- <client-only>
-              <div id="motorsporthu_csapat_1" class="w-full h-px">
-                <component :is="'script'">
-                  activateBanner('motorsporthu_csapat_1')
-                </component>
-              </div>
-            </client-only> -->
-          </div>
-          <div class="h-[600px] w-full">
-            <!-- <client-only>
-              <div id="motorsporthu_csapat_2" class="w-full h-px">
-                <component :is="'script'">
-                  activateBanner('motorsporthu_csapat_2')
-                </component>
-              </div>
-            </client-only> -->
-          </div>
-          <div class="h-[600px] w-full">
-            <!-- <client-only>
-              <div id="motorsporthu_csapat_3" class="w-full h-px">
-                <component :is="'script'">
-                  activateBanner('motorsporthu_csapat_3')
-                </component>
-              </div>
-            </client-only> -->
-          </div>
+        <div class="flex w-[300px] flex-col gap-2.5">
+          <div id="oldalsav_1_csapatok"></div>
+          <div id="oldalsav_2_csapatok"></div>
         </div>
       </div>
     </div>
