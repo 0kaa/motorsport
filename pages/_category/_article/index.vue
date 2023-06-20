@@ -521,7 +521,7 @@ export default {
   @apply !mx-auto;
 }
 .article-content .embed-youtube {
-  @apply mb-3 h-[300px] lg:mb-7;
+  @apply mb-3 h-[300px] w-full lg:mb-7;
 }
 .article-content a {
   @apply text-lg font-semibold text-primary underline;
