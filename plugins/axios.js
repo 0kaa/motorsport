@@ -1,4 +1,4 @@
-import https from 'https';
+import https from 'https'
 
 export default (context, redirect) => {
   context.$axios.setHeader('Content-Type', 'application/json')
@@ -13,12 +13,12 @@ export default (context, redirect) => {
   context.$axios.setHeader('X-Accel-Buffering', 'no')
 
   const agent = new https.Agent({
-    rejectUnauthorized: false
-  });
-  context.$axios.onRequest(config => {
-    config.httpsAgent = agent;
-  });
-  context.$axios.defaults.baseURL = 'https://api.motorsport.hu/api'
+    rejectUnauthorized: false,
+  })
+  context.$axios.onRequest((config) => {
+    config.httpsAgent = agent
+  })
+  context.$axios.defaults.baseURL = 'https://mstest.liner.hu/api'
   // context.$axios.defaults.baseURL = 'https://liner.test/api'
   context.$axios.onError((error) => {
     if (error.response === undefined) {
