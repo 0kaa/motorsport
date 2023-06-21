@@ -148,7 +148,9 @@
               "
             />
 
+            <!-- <client-only> -->
             <div class="article-content mb-7" v-html="articleContent" />
+            <!-- </client-only> -->
             <ConnectionArticles
               class="connection-component"
               v-if="twoArticles && twoArticles.length"
@@ -249,7 +251,7 @@ export default {
 
   mounted() {
     this.currentUrl = window.location.href
-    if (window.instgrm) window.instgrm.Embeds.process()
+
     const oldScript = document.querySelector(
       'script[src="https://platform.twitter.com/widgets.js"]'
     )
@@ -259,6 +261,19 @@ export default {
     var script = document.createElement('script')
     script.src = 'https://platform.twitter.com/widgets.js'
     document.body.appendChild(script)
+
+    // Instagram embed
+    const oldInstaScript = document.querySelector(
+      'script[src="https://www.instagram.com/embed.js"]'
+    )
+    if (oldInstaScript) {
+      oldInstaScript.parentNode.removeChild(oldInstaScript)
+    }
+    var scriptInsta = document.createElement('script')
+    scriptInsta.src = 'https://www.instagram.com/embed.js'
+    document.body.appendChild(scriptInsta)
+    if (window.instgrm) window.instgrm.Embeds.process()
+
     // add component before last 2 paragraphs
     const articleContent = document.querySelector('.article-content')
 
