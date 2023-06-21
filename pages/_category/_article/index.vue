@@ -286,6 +286,21 @@ export default {
     const connectionComponent = document.querySelector('.connection-component')
     const recommendedArticle = document.querySelector('.recommended-article')
 
+    const hyperlinksInArticle = document.querySelectorAll('.article-content a')
+
+    if (hyperlinksInArticle) {
+      hyperlinksInArticle.forEach((link) => {
+        link.setAttribute('target', '_blank')
+        // replace http to https
+        link.setAttribute(
+          'href',
+          link
+            .getAttribute('href')
+            .replace('api.motorsport.hu', 'motorsport.hu')
+        )
+      })
+    }
+
     if (connectionComponent) {
       thirdParagraph.parentNode.insertBefore(
         connectionComponent,
