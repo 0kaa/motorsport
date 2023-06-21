@@ -540,7 +540,8 @@ export default {
 }
 
 .article-content blockquote {
-  @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] lg:mb-7 lg:text-lg;
+  /* text-underline-position: under; */
+  @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] underline-offset-[6px] lg:mb-7 lg:text-lg;
 }
 .article-content > iframe {
   @apply !mx-auto !min-w-max max-w-full overflow-x-hidden lg:!w-[81%];
