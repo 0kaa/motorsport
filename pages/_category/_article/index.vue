@@ -584,4 +584,7 @@ export default {
 .article-content blockquote cite {
   @apply relative mt-1 block pl-1 text-right italic text-black before:absolute before:top-1/2 before:left-0 before:block before:h-[1px] before:w-[calc(100%-100px)] before:bg-[#ccc] lg:before:w-[calc(100%-150px)];
 }
+#motorsporthu_fekvo_1 {
+  min-height: 255px;
+}
 </style>
