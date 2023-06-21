@@ -296,7 +296,9 @@ export default {
         // replace http to https
         link.setAttribute(
           'href',
-          link.getAttribute('href').replace('mstest.liner.hu', 'motorsport.hu')
+          link
+            .getAttribute('href')
+            .replace('api.motorsport.hu', 'motorsport.hu')
         )
       })
     }
