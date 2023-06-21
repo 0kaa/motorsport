@@ -539,10 +539,15 @@ export default {
   @apply mb-[30px];
 }
 
-.article-content blockquote {
-  /* text-underline-position: under; */
-  @apply mb-3 text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] underline-offset-[6px] lg:mb-7 lg:text-lg;
+/* .article-content blockquote {
+  @apply mb-3 flex flex-col text-xs font-normal italic underline decoration-[#FF8686] decoration-[4px] underline-offset-[6px] lg:mb-7 lg:text-lg;
 }
+.article-content blockquote p {
+  @apply mb-3;
+}
+.article-content blockquote cite {
+  @apply self-end before:mr-1 before:inline-block before:content-['-'];
+} */
 .article-content > iframe {
   @apply !mx-auto !min-w-max max-w-full overflow-x-hidden lg:!w-[81%];
 }
@@ -559,5 +564,19 @@ export default {
 }
 .article-content a {
   @apply text-lg font-semibold text-primary underline;
+}
+
+.article-content blockquote {
+  @apply relative mb-5 inline-block rounded-md bg-white py-6 pr-6 pl-14 text-left text-xs text-black duration-[0.3s] before:absolute before:top-6 before:left-0 before:block before:text-[80px] before:text-[#ff8686] before:content-['"'] md:pl-[60px] md:pr-[30px] md:pb-[30px] md:pt-10 lg:text-lg before:lg:!top-8 lg:before:text-[120px];
+}
+.article-content blockquote p {
+  @apply text-sm lg:text-lg;
+}
+
+.article-content blockquote::before {
+  font-family: monospace;
+}
+.article-content blockquote cite {
+  @apply relative mt-1 block pl-1 text-right italic text-black before:absolute before:top-1/2 before:left-0 before:block before:h-[1px] before:w-[calc(100%-100px)] before:bg-[#ccc] lg:before:w-[calc(100%-150px)];
 }
 </style>
