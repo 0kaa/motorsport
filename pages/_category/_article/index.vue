@@ -157,7 +157,9 @@
               :articles="twoArticles"
               :category="category"
             />
+
             <video-player :options="videoOptions" />
+
             <Taxonomies
               :category="category"
               :driver="driver"
@@ -317,6 +319,7 @@ export default {
     if (window.__adsConfig) {
       setTimeout(() => {
         window.__adsConfig.repopulate()
+        window.__adsConfig.reinsertStrossle()
         console.log('ads working')
       }, 1000)
     }
