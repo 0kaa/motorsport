@@ -535,6 +535,11 @@ export default {
   @apply mb-[30px] text-lg font-normal leading-[1.55] lg:text-lg;
 }
 
+.article-content ol {
+  list-style: decimal;
+  padding: revert;
+}
+
 .article-content .ads_show_ad_title {
   @apply mb-[30px];
 }
@@ -567,10 +572,10 @@ export default {
 }
 
 .article-content blockquote {
-  @apply relative mb-5 inline-block rounded-md bg-white py-6 pr-6 pl-14 text-left text-xs text-black duration-[0.3s] before:absolute before:top-6 before:left-0 before:block before:text-[80px] before:text-[#ff8686] before:content-['"'] md:pl-[60px] md:pr-[30px] md:pb-[30px] md:pt-10 lg:text-lg before:lg:!top-8 lg:before:text-[120px];
+  @apply relative mb-5 inline-block rounded-md bg-white py-6 pr-6 pl-14 text-left text-xs font-medium text-black duration-[0.3s] before:absolute before:top-6 before:left-0 before:block before:text-[80px] before:text-[#ff8686] before:content-['"'] md:pl-[60px] md:pr-[30px] md:pb-[30px] md:pt-10 lg:text-lg before:lg:!top-8 lg:before:text-[120px];
 }
 .article-content blockquote p {
-  @apply text-sm lg:text-lg;
+  @apply text-sm font-medium lg:text-lg;
 }
 
 .article-content blockquote::before {
