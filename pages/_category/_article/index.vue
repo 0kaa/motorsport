@@ -340,8 +340,12 @@ export default {
       { threshold: 0.5 }
     )
     observer.observe(videoPlayer)
+    this.increaseViewCount()
   },
   methods: {
+    increaseViewCount() {
+      this.$api.articles.increaseViewCount(this.data.article.id)
+    },
     async copyLink() {
       try {
         await navigator.clipboard.writeText(window.location.href)
