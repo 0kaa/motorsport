@@ -18,7 +18,7 @@ const getSitemapsConfigurations = () => {
         }),
       })
       const { data } = await instance.post(
-        `https://api.motorsport.hu/api/get-sitemap-data?page=${index}`
+        `https://mstest.liner.hu/api/get-sitemap-data?page=${index}`
       )
       const routes = data.data.map((article, i) => {
         return {
@@ -152,7 +152,7 @@ export default {
   ],
 
   image: {
-    domains: ['api.motorsport.hu'],
+    domains: ['mstest.liner.hu'],
   },
 
   cache: {
@@ -216,7 +216,7 @@ export default {
           }),
         })
         const { data } = await instance.post(
-          'https://api.motorsport.hu/api/get-rss-posts'
+          'https://mstest.liner.hu/api/get-rss-posts'
         )
 
         data.data.forEach((post) => {
@@ -272,7 +272,7 @@ export default {
             }),
           })
           const { data } = await instance.post(
-            `https://api.motorsport.hu/api/get-sitemap-tags`
+            `https://mstest.liner.hu/api/get-sitemap-tags`
           )
           const routes = data.data.map((tag, i) => {
             return {
@@ -294,7 +294,7 @@ export default {
             }),
           })
           const { data } = await instance.post(
-            `https://api.motorsport.hu/api/get-sitemap-teams`
+            `https://mstest.liner.hu/api/get-sitemap-teams`
           )
           const routes = data.data.map((team, i) => {
             return {
@@ -316,7 +316,7 @@ export default {
             }),
           })
           const { data } = await instance.post(
-            `https://api.motorsport.hu/api/get-sitemap-drivers`
+            `https://mstest.liner.hu/api/get-sitemap-drivers`
           )
           const routes = data.data.map((driver, i) => {
             return {
@@ -338,7 +338,7 @@ export default {
             }),
           })
           const { data } = await instance.post(
-            `https://api.motorsport.hu/api/get-sitemap-races`
+            `https://mstest.liner.hu/api/get-sitemap-races`
           )
           const routes = data.data.map((race, i) => {
             return {
@@ -360,7 +360,7 @@ export default {
     // debug: true
   },
   // proxy: {
-  //   '/api': 'https://api.motorsport.hu/api'
+  //   '/api': 'https://mstest.liner.hu/api'
   // },
 
   build: {},
