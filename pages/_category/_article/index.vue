@@ -341,11 +341,14 @@ export default {
     this.increaseViewCount()
 
     // push to dataLayer for GTM tracking
+
+    // page url without query params
+
     this.$gtm.push({
       event: 'nuxtRoute',
       pageName: this.data.article.title,
       pageType: 'PageView',
-      pageUrl: this.currentUrl,
+      pageUrl: this.currentUrl.split('?')[0],
     })
   },
   methods: {
