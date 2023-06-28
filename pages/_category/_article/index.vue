@@ -339,6 +339,14 @@ export default {
     )
     observer.observe(videoPlayer)
     this.increaseViewCount()
+
+    // push to dataLayer for GTM tracking
+    this.$gtm.push({
+      event: 'nuxtRoute',
+      pageName: this.data.article.title,
+      pageType: 'PageView',
+      pageUrl: this.currentUrl,
+    })
   },
   methods: {
     increaseViewCount() {

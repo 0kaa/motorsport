@@ -190,7 +190,8 @@ export default {
 
   gtm: {
     enable: true,
-    pageTracking: true,
+    debug: true,
+    pageTracking: false,
     id: 'GTM-MMNS5SC',
   },
   toast: {
