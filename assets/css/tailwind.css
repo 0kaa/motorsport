@@ -30,3 +30,7 @@
   -webkit-box-orient: vertical;
   @apply overflow-hidden text-ellipsis;
 }
+
+#motorsporthu_fekvo_1 {
+  min-height: 305px !important;
+}
